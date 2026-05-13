@@ -1,0 +1,78 @@
+{
+  "@@locale": "ru",
+  "appName": "AI Stain Fix",
+  "appTagline": "Умное удаление пятен по фото",
+  "camera": "Камера",
+  "history": "История",
+  "pro": "PRO",
+  "settings": "Настройки",
+  "takePhoto": "Сделать фото",
+  "fromGallery": "Из галереи",
+  "photoStain": "Сфотографируйте пятно",
+  "aiWillHelp": "AI определит тип загрязнения и подскажет\nкак его вывести",
+  "analyzing": "Анализируем пятно...",
+  "analyzingDesc": "AI определяет тип загрязнения и ткани",
+  "analysisResult": "Результат анализа",
+  "aiAnalysis": "AI Анализ",
+  "stainType": "Тип пятна",
+  "fabricType": "Ткань",
+  "difficulty": "Сложность",
+  "stepByStep": "Пошаговая инструкция",
+  "recommendedProducts": "Рекомендуемые средства",
+  "warnings": "Предупреждения",
+  "historyTitle": "История анализов",
+  "emptyHistory": "Здесь будет история\nваших анализов",
+  "emptyHistoryHint": "Сфотографируйте пятно, чтобы начать",
+  "subscriptionTitle": "Подписка и пакеты",
+  "packagesTitle": "Пакеты анализов",
+  "freePlan": "Бесплатный план",
+  "freePlanDesc": "3 бесплатных анализа каждый день",
+  "unlimited": "Безлимитные анализы + без рекламы",
+  "savingsPercent": "Экономия 37%",
+  "settingsTitle": "Настройки",
+  "language": "Язык",
+  "howToUse": "Как пользоваться",
+  "support": "Поддержка",
+  "rateInRustore": "Оценить в RuStore",
+  "privacyPolicy": "Политика конфиденциальности",
+  "termsOfService": "Пользовательское соглашение",
+  "version": "Версия",
+  "limitExhausted": "Лимит исчерпан",
+  "limitExhaustedDesc": "Бесплатные анализы на сегодня закончились.\nКупите пакет или оформите PRO-подписку.",
+  "ok": "Понятно",
+  "cancel": "Отмена",
+  "next": "Далее",
+  "start": "Начать",
+  "skip": "Пропустить",
+  "close": "Закрыть",
+  "noInternet": "Нет подключения к интернету. Проверьте соединение.",
+  "serverError": "Сервер временно недоступен. Попробуйте позже.",
+  "tryAgain": "Не удалось проанализировать. Попробуйте позже.",
+  "justNow": "Только что",
+  "minutesAgo": "{count} мин. назад",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "hoursAgo": "{count} ч. назад",
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "daysAgo": "{count} дн. назад",
+  "@daysAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "onboardingTitle1": "Сфотографируйте пятно",
+  "onboardingDesc1": "Наведите камеру на загрязнение для мгновенного анализа",
+  "onboardingTitle2": "AI определит тип",
+  "onboardingDesc2": "Искусственный интеллект распознает вид пятна и тип ткани",
+  "onboardingTitle3": "Получите инструкцию",
+  "onboardingDesc3": "Пошаговый рецепт удаления с доступными средствами",
+  "onboardingTitle4": "Умный помощник",
+  "onboardingDesc4": "AI учитывает тип ткани, возраст пятна и доступные средства"
+}

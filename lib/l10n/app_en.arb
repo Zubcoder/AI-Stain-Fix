@@ -1,0 +1,78 @@
+{
+  "@@locale": "en",
+  "appName": "AI Stain Fix",
+  "appTagline": "Smart stain removal by photo",
+  "camera": "Camera",
+  "history": "History",
+  "pro": "PRO",
+  "settings": "Settings",
+  "takePhoto": "Take photo",
+  "fromGallery": "From gallery",
+  "photoStain": "Photograph the stain",
+  "aiWillHelp": "AI will identify the type of stain and suggest\nhow to remove it",
+  "analyzing": "Analyzing stain...",
+  "analyzingDesc": "AI is identifying the type of stain and fabric",
+  "analysisResult": "Analysis result",
+  "aiAnalysis": "AI Analysis",
+  "stainType": "Stain type",
+  "fabricType": "Fabric",
+  "difficulty": "Difficulty",
+  "stepByStep": "Step-by-step instructions",
+  "recommendedProducts": "Recommended products",
+  "warnings": "Warnings",
+  "historyTitle": "Analysis history",
+  "emptyHistory": "Your analysis history\nwill appear here",
+  "emptyHistoryHint": "Take a photo of a stain to get started",
+  "subscriptionTitle": "Subscription & packages",
+  "packagesTitle": "Analysis packages",
+  "freePlan": "Free plan",
+  "freePlanDesc": "3 free analyses every day",
+  "unlimited": "Unlimited analyses + no ads",
+  "savingsPercent": "Save 37%",
+  "settingsTitle": "Settings",
+  "language": "Language",
+  "howToUse": "How to use",
+  "support": "Support",
+  "rateInRustore": "Rate in RuStore",
+  "privacyPolicy": "Privacy policy",
+  "termsOfService": "Terms of service",
+  "version": "Version",
+  "limitExhausted": "Limit reached",
+  "limitExhaustedDesc": "Free analyses for today are used up.\nBuy a package or subscribe to PRO.",
+  "ok": "OK",
+  "cancel": "Cancel",
+  "next": "Next",
+  "start": "Start",
+  "skip": "Skip",
+  "close": "Close",
+  "noInternet": "No internet connection. Check your network.",
+  "serverError": "Server temporarily unavailable. Try again later.",
+  "tryAgain": "Could not analyze. Try again later.",
+  "justNow": "Just now",
+  "minutesAgo": "{count} min ago",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "hoursAgo": "{count} h ago",
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "daysAgo": "{count} d ago",
+  "@daysAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "onboardingTitle1": "Photograph the stain",
+  "onboardingDesc1": "Point your camera at the stain for instant analysis",
+  "onboardingTitle2": "AI identifies the type",
+  "onboardingDesc2": "Artificial intelligence recognizes the stain type and fabric",
+  "onboardingTitle3": "Get instructions",
+  "onboardingDesc3": "Step-by-step removal recipe with available products",
+  "onboardingTitle4": "Smart assistant",
+  "onboardingDesc4": "AI considers fabric type, stain age, and available products"
+}
