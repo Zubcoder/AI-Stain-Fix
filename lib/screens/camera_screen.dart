@@ -20,6 +20,7 @@ class CameraScreen extends StatefulWidget {
 class _CameraScreenState extends State<CameraScreen> {
   final _imagePicker = ImagePicker();
   int _remainingScans = 0;
+  Uint8List? _lastImageBytes;
 
   @override
   void initState() {
@@ -47,6 +48,7 @@ class _CameraScreenState extends State<CameraScreen> {
     if (picked == null) return;
 
     final bytes = await picked.readAsBytes();
+    _lastImageBytes = bytes;
     await _analyzeImage(bytes);
   }
 
@@ -65,10 +67,23 @@ class _CameraScreenState extends State<CameraScreen> {
         ),
       );
     } else if (provider.state == AnalysisState.error) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(provider.error ?? 'Ошибка анализа'),
           backgroundColor: AppColors.error,
+          duration: const Duration(seconds: 5),
+          action: _lastImageBytes != null
+              ? SnackBarAction(
+                  label: 'Повторить',
+                  textColor: Colors.white,
+                  onPressed: () {
+                    if (_lastImageBytes != null) {
+                      _analyzeImage(_lastImageBytes!);
+                    }
+                  },
+                )
+              : null,
         ),
       );
     }
