@@ -8,5 +8,8 @@ void main() {
     await tester.pump();
 
     expect(find.text('AI Stain Fix'), findsOneWidget);
+
+    // Advance past SplashScreen timer (2500ms)
+    await tester.pumpAndSettle(const Duration(seconds: 3));
   });
 }
