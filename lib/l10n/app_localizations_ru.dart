@@ -82,7 +82,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get subscriptionTitle => 'Подписка и пакеты';
 
   @override
-  String get packagesTitle => 'Пакеты анализов';
+  String get packagesTitle => 'Дополнительные анализы';
 
   @override
   String get freePlan => 'Бесплатный план';
@@ -91,7 +91,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get freePlanDesc => '3 бесплатных анализа каждый день';
 
   @override
-  String get unlimited => 'Безлимитные анализы + без рекламы';
+  String get unlimited => 'Безлимитные анализы каждый день';
 
   @override
   String get savingsPercent => 'Экономия 37%';

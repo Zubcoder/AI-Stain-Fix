@@ -52,6 +52,13 @@ class StainProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void removeFromHistory(int index) {
+    if (index >= 0 && index < _history.length) {
+      _history.removeAt(index);
+      notifyListeners();
+    }
+  }
+
   Future<int> getRemainingScans() async {
     final prefs = await SharedPreferences.getInstance();
     final today = DateTime.now().toIso8601String().substring(0, 10);

@@ -245,7 +245,7 @@ abstract class AppLocalizations {
   /// No description provided for @packagesTitle.
   ///
   /// In ru, this message translates to:
-  /// **'Пакеты анализов'**
+  /// **'Дополнительные анализы'**
   String get packagesTitle;
 
   /// No description provided for @freePlan.
@@ -263,7 +263,7 @@ abstract class AppLocalizations {
   /// No description provided for @unlimited.
   ///
   /// In ru, this message translates to:
-  /// **'Безлимитные анализы + без рекламы'**
+  /// **'Безлимитные анализы каждый день'**
   String get unlimited;
 
   /// No description provided for @savingsPercent.

@@ -82,7 +82,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get subscriptionTitle => 'Subscription & packages';
 
   @override
-  String get packagesTitle => 'Analysis packages';
+  String get packagesTitle => 'Extra analyses';
 
   @override
   String get freePlan => 'Free plan';
@@ -91,7 +91,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get freePlanDesc => '3 free analyses every day';
 
   @override
-  String get unlimited => 'Unlimited analyses + no ads';
+  String get unlimited => 'Unlimited analyses every day';
 
   @override
   String get savingsPercent => 'Save 37%';

@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'l10n/app_localizations.dart';
 
+import 'providers/locale_provider.dart';
 import 'providers/stain_provider.dart';
 import 'providers/subscription_provider.dart';
 import 'screens/splash_screen.dart';
@@ -51,23 +52,30 @@ class AIStainFixApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => StainProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => LocaleProvider(),
+        ),
       ],
-      child: MaterialApp(
-        title: AppConstants.appName,
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.darkTheme,
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('ru'),
-          Locale('en'),
-        ],
-        locale: const Locale('ru'),
-        home: SplashScreen(onboardingDone: onboardingDone),
+      child: Consumer<LocaleProvider>(
+        builder: (context, localeProv, _) {
+          return MaterialApp(
+            title: AppConstants.appName,
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.darkTheme,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('ru'),
+              Locale('en'),
+            ],
+            locale: localeProv.locale,
+            home: SplashScreen(onboardingDone: onboardingDone),
+          );
+        },
       ),
     );
   }

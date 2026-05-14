@@ -23,7 +23,7 @@ class SubscriptionScreen extends StatelessWidget {
             _buildProCard(context),
             const SizedBox(height: 24),
             const Text(
-              'Пакеты анализов',
+              'Дополнительные анализы',
               style: TextStyle(
                 color: AppColors.textPrimary,
                 fontSize: 18,
@@ -74,11 +74,24 @@ class SubscriptionScreen extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           const Text(
-            'Безлимитные анализы + без рекламы',
+            'Безлимитные анализы каждый день',
             style: TextStyle(
               color: Colors.white70,
               fontSize: 14,
             ),
+          ),
+          const SizedBox(height: 10),
+          const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _ProFeatureRow(text: 'Безлимитные анализы пятен'),
+              SizedBox(height: 4),
+              _ProFeatureRow(text: 'Доступ к истории анализов'),
+              SizedBox(height: 4),
+              _ProFeatureRow(text: 'Приоритетная обработка'),
+              SizedBox(height: 4),
+              _ProFeatureRow(text: 'Поддержка новых типов тканей'),
+            ],
           ),
           const SizedBox(height: 16),
           Row(
@@ -192,37 +205,59 @@ class SubscriptionScreen extends StatelessWidget {
     );
   }
 
-  void _showPurchaseDialog(BuildContext context, String product) {
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: AppColors.surface,
-        title: Text('Покупка: $product'),
-        content: const Text(
-          'Интеграция с RuStore Pay будет доступна после публикации.\n\n'
-          'В демо-режиме покупки не списывают средства.',
+}
+
+class _ProFeatureRow extends StatelessWidget {
+  final String text;
+  const _ProFeatureRow({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Icon(Icons.check_circle_outline, color: Colors.white70, size: 16),
+        const SizedBox(width: 8),
+        Flexible(
+          child: Text(
+            text,
+            style: const TextStyle(color: Colors.white70, fontSize: 13),
+          ),
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Отмена'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              final subs = context.read<SubscriptionProvider>();
-              subs.addBonusScans(10);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Демо: +10 анализов добавлено'),
-                  backgroundColor: AppColors.success,
-                ),
-              );
-            },
-            child: const Text('Демо-покупка'),
-          ),
-        ],
-      ),
+      ],
     );
   }
+}
+
+void _showPurchaseDialog(BuildContext context, String product) {
+  showDialog(
+    context: context,
+    builder: (_) => AlertDialog(
+      backgroundColor: AppColors.surface,
+      title: Text('Покупка: $product'),
+      content: const Text(
+        'Интеграция с RuStore Pay будет доступна после публикации.\n\n'
+        'В демо-режиме покупки не списывают средства.',
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('Отмена'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+            final subs = context.read<SubscriptionProvider>();
+            subs.addBonusScans(10);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Демо: +10 анализов добавлено'),
+                backgroundColor: AppColors.success,
+              ),
+            );
+          },
+          child: const Text('Демо-покупка'),
+        ),
+      ],
+    ),
+  );
 }
