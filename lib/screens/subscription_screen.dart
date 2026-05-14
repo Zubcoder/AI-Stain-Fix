@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/scan_package.dart';
 import '../providers/subscription_provider.dart';
 import '../utils/constants.dart';
@@ -10,37 +11,39 @@ class SubscriptionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('Подписка и пакеты'),
+        title: Text(l10n.subscriptionTitle),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildProCard(context),
+            _buildProCard(context, l10n),
             const SizedBox(height: 24),
-            const Text(
-              'Дополнительные анализы',
-              style: TextStyle(
+            Text(
+              l10n.packagesTitle,
+              style: const TextStyle(
                 color: AppColors.textPrimary,
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: 12),
-            ...ScanPackages.packages.map((p) => _buildPackageCard(context, p)),
+            ...ScanPackages.packages.map((p) => _buildPackageCard(context, p, l10n)),
             const SizedBox(height: 24),
-            _buildFreeInfo(),
+            _buildFreeInfo(l10n),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildProCard(BuildContext context) {
+  Widget _buildProCard(BuildContext context, AppLocalizations l10n) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
@@ -73,24 +76,24 @@ class SubscriptionScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          const Text(
-            'Безлимитные анализы каждый день',
-            style: TextStyle(
+          Text(
+            l10n.unlimited,
+            style: const TextStyle(
               color: Colors.white70,
               fontSize: 14,
             ),
           ),
           const SizedBox(height: 10),
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _ProFeatureRow(text: 'Безлимитные анализы пятен'),
-              SizedBox(height: 4),
-              _ProFeatureRow(text: 'Доступ к истории анализов'),
-              SizedBox(height: 4),
-              _ProFeatureRow(text: 'Приоритетная обработка'),
-              SizedBox(height: 4),
-              _ProFeatureRow(text: 'Поддержка новых типов тканей'),
+              _ProFeatureRow(text: l10n.proFeature1),
+              const SizedBox(height: 4),
+              _ProFeatureRow(text: l10n.proFeature2),
+              const SizedBox(height: 4),
+              _ProFeatureRow(text: l10n.proFeature3),
+              const SizedBox(height: 4),
+              _ProFeatureRow(text: l10n.proFeature4),
             ],
           ),
           const SizedBox(height: 16),
@@ -98,28 +101,28 @@ class SubscriptionScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: OutlinedButton(
-                  onPressed: () => _showPurchaseDialog(context, 'PRO месяц'),
+                  onPressed: () => _showPurchaseDialog(context, 'PRO', l10n),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.white,
                     side: const BorderSide(color: Colors.white70),
                   ),
-                  child: const Text('149 ₽/мес'),
+                  child: Text(l10n.proMonthly),
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () => _showPurchaseDialog(context, 'PRO год'),
+                  onPressed: () => _showPurchaseDialog(context, 'PRO', l10n),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: AppColors.primary,
                   ),
-                  child: const Column(
+                  child: Column(
                     children: [
-                      Text('1 190 ₽/год',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('Экономия 37%',
-                          style: TextStyle(fontSize: 10)),
+                      Text(l10n.proYearly,
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      Text(l10n.savingsPercent,
+                          style: const TextStyle(fontSize: 10)),
                     ],
                   ),
                 ),
@@ -131,7 +134,7 @@ class SubscriptionScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPackageCard(BuildContext context, ScanPackage package) {
+  Widget _buildPackageCard(BuildContext context, ScanPackage package, AppLocalizations l10n) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: ListTile(
@@ -163,7 +166,7 @@ class SubscriptionScreen extends StatelessWidget {
           style: const TextStyle(color: AppColors.textSecondary),
         ),
         trailing: ElevatedButton(
-          onPressed: () => _showPurchaseDialog(context, package.name),
+          onPressed: () => _showPurchaseDialog(context, package.name, l10n),
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           ),
@@ -173,7 +176,7 @@ class SubscriptionScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFreeInfo() {
+  Widget _buildFreeInfo(AppLocalizations l10n) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
@@ -181,21 +184,21 @@ class SubscriptionScreen extends StatelessWidget {
         color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: const Column(
+      child: Column(
         children: [
-          Icon(Icons.info_outline, color: AppColors.textSecondary, size: 24),
-          SizedBox(height: 8),
+          const Icon(Icons.info_outline, color: AppColors.textSecondary, size: 24),
+          const SizedBox(height: 8),
           Text(
-            'Бесплатный план',
-            style: TextStyle(
+            l10n.freePlan,
+            style: const TextStyle(
               color: AppColors.textPrimary,
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
-            '3 бесплатных анализа каждый день',
-            style: TextStyle(
+            l10n.freePlanDesc,
+            style: const TextStyle(
               color: AppColors.textSecondary,
               fontSize: 13,
             ),
@@ -205,6 +208,36 @@ class SubscriptionScreen extends StatelessWidget {
     );
   }
 
+  void _showPurchaseDialog(BuildContext context, String product, AppLocalizations l10n) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        backgroundColor: AppColors.surface,
+        title: Text(l10n.purchaseTitle(product)),
+        content: Text(l10n.purchaseDesc),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(l10n.cancel),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              final subs = context.read<SubscriptionProvider>();
+              subs.addBonusScans(10);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(l10n.demoAdded),
+                  backgroundColor: AppColors.success,
+                ),
+              );
+            },
+            child: Text(l10n.demoPurchase),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class _ProFeatureRow extends StatelessWidget {
@@ -226,38 +259,4 @@ class _ProFeatureRow extends StatelessWidget {
       ],
     );
   }
-}
-
-void _showPurchaseDialog(BuildContext context, String product) {
-  showDialog(
-    context: context,
-    builder: (_) => AlertDialog(
-      backgroundColor: AppColors.surface,
-      title: Text('Покупка: $product'),
-      content: const Text(
-        'Интеграция с RuStore Pay будет доступна после публикации.\n\n'
-        'В демо-режиме покупки не списывают средства.',
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text('Отмена'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-            final subs = context.read<SubscriptionProvider>();
-            subs.addBonusScans(10);
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Демо: +10 анализов добавлено'),
-                backgroundColor: AppColors.success,
-              ),
-            );
-          },
-          child: const Text('Демо-покупка'),
-        ),
-      ],
-    ),
-  );
 }

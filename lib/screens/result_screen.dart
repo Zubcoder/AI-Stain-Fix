@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/stain_result.dart';
 import '../utils/constants.dart';
 
@@ -10,26 +11,28 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('Результат анализа'),
+        title: Text(l10n.analysisResult),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildHeader(),
+            _buildHeader(l10n),
             const SizedBox(height: 16),
-            _buildInfoCards(),
+            _buildInfoCards(l10n),
             const SizedBox(height: 16),
-            _buildSteps(),
+            _buildSteps(l10n),
             const SizedBox(height: 16),
-            _buildProducts(),
+            _buildProducts(l10n),
             if (result.warnings.isNotEmpty) ...[
               const SizedBox(height: 16),
-              _buildWarnings(),
+              _buildWarnings(l10n),
             ],
           ],
         ),
@@ -37,7 +40,7 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(AppLocalizations l10n) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
@@ -59,9 +62,9 @@ class ResultScreen extends StatelessWidget {
             children: [
               const Icon(Icons.auto_awesome, color: AppColors.accent, size: 24),
               const SizedBox(width: 8),
-              const Text(
-                'AI Анализ',
-                style: TextStyle(
+              Text(
+                l10n.aiAnalysis,
+                style: const TextStyle(
                   color: AppColors.accent,
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -83,12 +86,12 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoCards() {
+  Widget _buildInfoCards(AppLocalizations l10n) {
     return Row(
       children: [
         Expanded(
           child: _infoCard(
-            'Тип пятна',
+            l10n.stainType,
             result.stainType,
             Icons.colorize,
             AppColors.primary,
@@ -97,7 +100,7 @@ class ResultScreen extends StatelessWidget {
         const SizedBox(width: 12),
         Expanded(
           child: _infoCard(
-            'Ткань',
+            l10n.fabricType,
             result.fabricType,
             Icons.texture,
             AppColors.accent,
@@ -106,7 +109,7 @@ class ResultScreen extends StatelessWidget {
         const SizedBox(width: 12),
         Expanded(
           child: _infoCard(
-            'Сложность',
+            l10n.difficulty,
             result.difficulty,
             Icons.speed,
             _difficultyColor(result.difficultyLevel),
@@ -151,7 +154,7 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSteps() {
+  Widget _buildSteps(AppLocalizations l10n) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
@@ -162,13 +165,13 @@ class ResultScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              Icon(Icons.checklist, color: AppColors.primary, size: 20),
-              SizedBox(width: 8),
+              const Icon(Icons.checklist, color: AppColors.primary, size: 20),
+              const SizedBox(width: 8),
               Text(
-                'Пошаговая инструкция',
-                style: TextStyle(
+                l10n.stepByStep,
+                style: const TextStyle(
                   color: AppColors.textPrimary,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -221,7 +224,7 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProducts() {
+  Widget _buildProducts(AppLocalizations l10n) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
@@ -232,14 +235,14 @@ class ResultScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              Icon(Icons.shopping_bag_outlined,
+              const Icon(Icons.shopping_bag_outlined,
                   color: AppColors.accent, size: 20),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               Text(
-                'Рекомендуемые средства',
-                style: TextStyle(
+                l10n.recommendedProducts,
+                style: const TextStyle(
                   color: AppColors.textPrimary,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -277,7 +280,7 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildWarnings() {
+  Widget _buildWarnings(AppLocalizations l10n) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
@@ -291,13 +294,13 @@ class ResultScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              Icon(Icons.warning_amber, color: AppColors.warning, size: 20),
-              SizedBox(width: 8),
+              const Icon(Icons.warning_amber, color: AppColors.warning, size: 20),
+              const SizedBox(width: 8),
               Text(
-                'Предупреждения',
-                style: TextStyle(
+                l10n.warnings,
+                style: const TextStyle(
                   color: AppColors.warning,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,

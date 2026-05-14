@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../l10n/app_localizations.dart';
 import '../providers/locale_provider.dart';
 import '../utils/constants.dart';
 import 'onboarding_screen.dart';
@@ -14,29 +15,30 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localeProv = context.watch<LocaleProvider>();
+    final l10n = AppLocalizations.of(context)!;
     final isRu = localeProv.locale.languageCode == 'ru';
 
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: Text(isRu ? 'Настройки' : 'Settings'),
+        title: Text(l10n.settingsTitle),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          _buildSection(isRu ? 'Основные' : 'General', [
+          _buildSection(l10n.general, [
             _SettingsTile(
               icon: Icons.language,
-              title: isRu ? 'Язык' : 'Language',
+              title: l10n.language,
               subtitle: isRu ? 'Русский' : 'English',
-              onTap: () => _showLanguageDialog(context, localeProv),
+              onTap: () => _showLanguageDialog(context, localeProv, l10n),
             ),
           ]),
           const SizedBox(height: 16),
-          _buildSection(isRu ? 'О приложении' : 'About', [
+          _buildSection(l10n.about, [
             _SettingsTile(
               icon: Icons.help_outline,
-              title: isRu ? 'Как пользоваться' : 'How to use',
+              title: l10n.howToUse,
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -48,18 +50,18 @@ class SettingsScreen extends StatelessWidget {
             ),
             _SettingsTile(
               icon: Icons.mail_outline,
-              title: isRu ? 'Поддержка' : 'Support',
+              title: l10n.support,
               subtitle: AppConstants.supportEmail,
-              onTap: () => _launchSupport(),
+              onTap: () => _launchSupport(l10n),
             ),
             _SettingsTile(
               icon: Icons.star_outline,
-              title: isRu ? 'Оценить в RuStore' : 'Rate in RuStore',
+              title: l10n.rateInRustore,
               onTap: () {},
             ),
             _SettingsTile(
               icon: Icons.privacy_tip_outlined,
-              title: isRu ? 'Политика конфиденциальности' : 'Privacy policy',
+              title: l10n.privacyPolicy,
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -70,7 +72,7 @@ class SettingsScreen extends StatelessWidget {
             ),
             _SettingsTile(
               icon: Icons.description_outlined,
-              title: isRu ? 'Пользовательское соглашение' : 'Terms of service',
+              title: l10n.termsOfService,
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
@@ -81,7 +83,7 @@ class SettingsScreen extends StatelessWidget {
             ),
             _SettingsTile(
               icon: Icons.info_outline,
-              title: isRu ? 'Версия' : 'Version',
+              title: l10n.version,
               subtitle: AppConstants.appVersion,
               onTap: null,
             ),
@@ -156,20 +158,20 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  void _showLanguageDialog(BuildContext context, LocaleProvider localeProv) {
+  void _showLanguageDialog(BuildContext context, LocaleProvider localeProv, AppLocalizations l10n) {
     final isRu = localeProv.locale.languageCode == 'ru';
 
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
         backgroundColor: AppColors.surface,
-        title: Text(isRu ? 'Выбор языка' : 'Select language'),
+        title: Text(l10n.selectLanguage),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
               title: const Text('Русский'),
-              leading: const Text('🇷🇺', style: TextStyle(fontSize: 24)),
+              leading: const Text('\u{1F1F7}\u{1F1FA}', style: TextStyle(fontSize: 24)),
               trailing: isRu
                   ? const Icon(Icons.check, color: AppColors.primary)
                   : null,
@@ -180,7 +182,7 @@ class SettingsScreen extends StatelessWidget {
             ),
             ListTile(
               title: const Text('English'),
-              leading: const Text('🇬🇧', style: TextStyle(fontSize: 24)),
+              leading: const Text('\u{1F1EC}\u{1F1E7}', style: TextStyle(fontSize: 24)),
               trailing: !isRu
                   ? const Icon(Icons.check, color: AppColors.primary)
                   : null,
@@ -195,13 +197,13 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  Future<void> _launchSupport() async {
+  Future<void> _launchSupport(AppLocalizations l10n) async {
     final uri = Uri(
       scheme: 'mailto',
       path: AppConstants.supportEmail,
       queryParameters: {
-        'subject': '${AppConstants.appName} v${AppConstants.appVersion} — Обратная связь',
-        'body': 'Опишите проблему:\n',
+        'subject': '${AppConstants.appName} v${AppConstants.appVersion} — ${l10n.feedback}',
+        'body': l10n.describeProblem,
       },
     );
     if (await canLaunchUrl(uri)) {

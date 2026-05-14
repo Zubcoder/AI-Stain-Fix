@@ -457,6 +457,342 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'AI учитывает тип ткани, возраст пятна и доступные средства'**
   String get onboardingDesc4;
+
+  /// No description provided for @errorAnalysis.
+  ///
+  /// In ru, this message translates to:
+  /// **'Ошибка анализа'**
+  String get errorAnalysis;
+
+  /// No description provided for @retry.
+  ///
+  /// In ru, this message translates to:
+  /// **'Повторить'**
+  String get retry;
+
+  /// No description provided for @recordDeleted.
+  ///
+  /// In ru, this message translates to:
+  /// **'Запись удалена'**
+  String get recordDeleted;
+
+  /// No description provided for @fabricLabel.
+  ///
+  /// In ru, this message translates to:
+  /// **'Ткань: {fabric}'**
+  String fabricLabel(String fabric);
+
+  /// No description provided for @historyProLock.
+  ///
+  /// In ru, this message translates to:
+  /// **'История доступна в PRO'**
+  String get historyProLock;
+
+  /// No description provided for @historyProLockDesc.
+  ///
+  /// In ru, this message translates to:
+  /// **'Оформите PRO-подписку, чтобы сохранять\nи просматривать историю анализов'**
+  String get historyProLockDesc;
+
+  /// No description provided for @goToPro.
+  ///
+  /// In ru, this message translates to:
+  /// **'Перейти к PRO'**
+  String get goToPro;
+
+  /// No description provided for @proFeature1.
+  ///
+  /// In ru, this message translates to:
+  /// **'Безлимитные анализы пятен'**
+  String get proFeature1;
+
+  /// No description provided for @proFeature2.
+  ///
+  /// In ru, this message translates to:
+  /// **'Доступ к истории анализов'**
+  String get proFeature2;
+
+  /// No description provided for @proFeature3.
+  ///
+  /// In ru, this message translates to:
+  /// **'Приоритетная обработка'**
+  String get proFeature3;
+
+  /// No description provided for @proFeature4.
+  ///
+  /// In ru, this message translates to:
+  /// **'Поддержка новых типов тканей'**
+  String get proFeature4;
+
+  /// No description provided for @proMonthly.
+  ///
+  /// In ru, this message translates to:
+  /// **'149 ₽/мес'**
+  String get proMonthly;
+
+  /// No description provided for @proYearly.
+  ///
+  /// In ru, this message translates to:
+  /// **'1 190 ₽/год'**
+  String get proYearly;
+
+  /// No description provided for @purchaseTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Покупка: {product}'**
+  String purchaseTitle(String product);
+
+  /// No description provided for @purchaseDesc.
+  ///
+  /// In ru, this message translates to:
+  /// **'Интеграция с RuStore Pay будет доступна после публикации.\n\nВ демо-режиме покупки не списывают средства.'**
+  String get purchaseDesc;
+
+  /// No description provided for @demoPurchase.
+  ///
+  /// In ru, this message translates to:
+  /// **'Демо-покупка'**
+  String get demoPurchase;
+
+  /// No description provided for @demoAdded.
+  ///
+  /// In ru, this message translates to:
+  /// **'Демо: +10 анализов добавлено'**
+  String get demoAdded;
+
+  /// No description provided for @general.
+  ///
+  /// In ru, this message translates to:
+  /// **'Основные'**
+  String get general;
+
+  /// No description provided for @about.
+  ///
+  /// In ru, this message translates to:
+  /// **'О приложении'**
+  String get about;
+
+  /// No description provided for @selectLanguage.
+  ///
+  /// In ru, this message translates to:
+  /// **'Выбор языка'**
+  String get selectLanguage;
+
+  /// No description provided for @describeProblem.
+  ///
+  /// In ru, this message translates to:
+  /// **'Опишите проблему:\n'**
+  String get describeProblem;
+
+  /// No description provided for @feedback.
+  ///
+  /// In ru, this message translates to:
+  /// **'Обратная связь'**
+  String get feedback;
+
+  /// No description provided for @privacyPolicyTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Политика конфиденциальности'**
+  String get privacyPolicyTitle;
+
+  /// No description provided for @privacyPolicyLastUpdated.
+  ///
+  /// In ru, this message translates to:
+  /// **'Последнее обновление: 13 мая 2026'**
+  String get privacyPolicyLastUpdated;
+
+  /// No description provided for @privacySection1Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'1. Общие положения'**
+  String get privacySection1Title;
+
+  /// No description provided for @privacySection1Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Приложение AI Stain Fix (далее — «Приложение») разработано для помощи пользователям в удалении пятен с различных типов тканей. Настоящая Политика конфиденциальности описывает, какие данные мы собираем, как мы их используем и защищаем.'**
+  String get privacySection1Body;
+
+  /// No description provided for @privacySection2Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'2. Какие данные мы собираем'**
+  String get privacySection2Title;
+
+  /// No description provided for @privacySection2Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'• Фотографии пятен — используются исключительно для анализа типа загрязнения и генерации инструкций по удалению.\n\n• Техническая информация об устройстве — версия ОС, модель устройства, язык интерфейса (для улучшения качества работы).\n\n• Данные о покупках — информация о приобретённых пакетах и подписках (обрабатывается платёжной системой RuStore).'**
+  String get privacySection2Body;
+
+  /// No description provided for @privacySection3Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'3. Обработка фотографий'**
+  String get privacySection3Title;
+
+  /// No description provided for @privacySection3Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Фотографии передаются на сервер-прокси, который перенаправляет запросы в сервис искусственного интеллекта для анализа изображений и генерации инструкций.\n\nФотографии не сохраняются на сервере после обработки и не передаются третьим лицам. Изображения используются исключительно для генерации рекомендаций по удалению пятен.'**
+  String get privacySection3Body;
+
+  /// No description provided for @privacySection4Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'4. Хранение данных'**
+  String get privacySection4Title;
+
+  /// No description provided for @privacySection4Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'История анализов хранится локально на вашем устройстве. Мы не имеем доступа к вашей локальной истории.\n\nСервер-прокси не ведёт журнал запросов и не сохраняет отправленные изображения.'**
+  String get privacySection4Body;
+
+  /// No description provided for @privacySection5Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'5. Безопасность'**
+  String get privacySection5Title;
+
+  /// No description provided for @privacySection5Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Все данные передаются по защищённому протоколу HTTPS. Мы принимаем разумные меры для защиты вашей информации от несанкционированного доступа.'**
+  String get privacySection5Body;
+
+  /// No description provided for @privacySection6Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'6. Права пользователя'**
+  String get privacySection6Title;
+
+  /// No description provided for @privacySection6Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Вы можете в любое время:\n• Удалить историю анализов на устройстве\n• Удалить приложение и все связанные данные\n• Обратиться к нам с вопросами о ваших данных'**
+  String get privacySection6Body;
+
+  /// No description provided for @privacySection7Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'7. Контакты'**
+  String get privacySection7Title;
+
+  /// No description provided for @privacySection7Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'По вопросам конфиденциальности обращайтесь:\nai.stain.fix.app@gmail.com'**
+  String get privacySection7Body;
+
+  /// No description provided for @termsTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Пользовательское соглашение'**
+  String get termsTitle;
+
+  /// No description provided for @termsLastUpdated.
+  ///
+  /// In ru, this message translates to:
+  /// **'Последнее обновление: 13 мая 2026'**
+  String get termsLastUpdated;
+
+  /// No description provided for @termsSection1Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'1. Предмет соглашения'**
+  String get termsSection1Title;
+
+  /// No description provided for @termsSection1Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между разработчиком приложения AI Stain Fix (далее — «Разработчик») и пользователем (далее — «Пользователь»), возникающие при использовании мобильного приложения AI Stain Fix (далее — «Приложение»).'**
+  String get termsSection1Body;
+
+  /// No description provided for @termsSection2Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'2. Описание услуги'**
+  String get termsSection2Title;
+
+  /// No description provided for @termsSection2Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Приложение предоставляет услугу анализа фотографий пятен с помощью искусственного интеллекта и генерации рекомендаций по их удалению. Рекомендации носят информационный характер.'**
+  String get termsSection2Body;
+
+  /// No description provided for @termsSection3Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'3. Условия использования'**
+  String get termsSection3Title;
+
+  /// No description provided for @termsSection3Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'• Пользователь обязуется использовать Приложение только в законных целях.\n\n• Бесплатный план включает 3 анализа в день.\n\n• Дополнительные анализы доступны через покупку пакетов или оформление PRO-подписки.\n\n• Пользователь несёт ответственность за качество предоставленных фотографий.'**
+  String get termsSection3Body;
+
+  /// No description provided for @termsSection4Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'4. Ограничение ответственности'**
+  String get termsSection4Title;
+
+  /// No description provided for @termsSection4Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Рекомендации, предоставленные Приложением, носят информационный характер. Разработчик не несёт ответственности за:\n\n• Повреждение ткани или вещей при следовании рекомендациям\n• Аллергические реакции на рекомендованные средства\n• Неточность определения типа пятна или ткани\n• Перебои в работе сервиса по техническим причинам\n\nПеред применением любого средства рекомендуется протестировать его на незаметном участке ткани.'**
+  String get termsSection4Body;
+
+  /// No description provided for @termsSection5Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'5. Платные услуги'**
+  String get termsSection5Title;
+
+  /// No description provided for @termsSection5Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Оплата производится через платёжную систему RuStore. Условия возврата средств определяются правилами RuStore.\n\nPRO-подписка продлевается автоматически, если не отменена за 24 часа до окончания текущего периода.'**
+  String get termsSection5Body;
+
+  /// No description provided for @termsSection6Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'6. Интеллектуальная собственность'**
+  String get termsSection6Title;
+
+  /// No description provided for @termsSection6Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Все права на Приложение, его дизайн, код и контент принадлежат Разработчику. Пользователю предоставляется неисключительная лицензия на использование Приложения в личных некоммерческих целях.'**
+  String get termsSection6Body;
+
+  /// No description provided for @termsSection7Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'7. Изменение условий'**
+  String get termsSection7Title;
+
+  /// No description provided for @termsSection7Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Разработчик оставляет за собой право изменять условия настоящего Соглашения. Актуальная версия всегда доступна в разделе «Настройки» Приложения.'**
+  String get termsSection7Body;
+
+  /// No description provided for @termsSection8Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'8. Контакты'**
+  String get termsSection8Title;
+
+  /// No description provided for @termsSection8Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'По вопросам, связанным с настоящим Соглашением:\nai.stain.fix.app@gmail.com'**
+  String get termsSection8Body;
 }
 
 class _AppLocalizationsDelegate

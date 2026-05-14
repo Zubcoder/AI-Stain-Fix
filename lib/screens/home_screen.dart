@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../utils/constants.dart';
 import 'camera_screen.dart';
 import 'history_screen.dart';
@@ -25,6 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
@@ -39,26 +42,26 @@ class _HomeScreenState extends State<HomeScreen> {
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (i) => setState(() => _currentIndex = i),
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.camera_alt_outlined),
-              activeIcon: Icon(Icons.camera_alt),
-              label: 'Камера',
+              icon: const Icon(Icons.camera_alt_outlined),
+              activeIcon: const Icon(Icons.camera_alt),
+              label: l10n.camera,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.history_outlined),
-              activeIcon: Icon(Icons.history),
-              label: 'История',
+              icon: const Icon(Icons.history_outlined),
+              activeIcon: const Icon(Icons.history),
+              label: l10n.history,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.workspace_premium_outlined),
-              activeIcon: Icon(Icons.workspace_premium),
-              label: 'PRO',
+              icon: const Icon(Icons.workspace_premium_outlined),
+              activeIcon: const Icon(Icons.workspace_premium),
+              label: l10n.pro,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
-              activeIcon: Icon(Icons.settings),
-              label: 'Настройки',
+              icon: const Icon(Icons.settings_outlined),
+              activeIcon: const Icon(Icons.settings),
+              label: l10n.settings,
             ),
           ],
         ),

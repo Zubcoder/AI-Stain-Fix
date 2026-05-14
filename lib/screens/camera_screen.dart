@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../l10n/app_localizations.dart';
 import '../providers/stain_provider.dart';
 import '../providers/subscription_provider.dart';
 import '../utils/constants.dart';
@@ -68,14 +69,15 @@ class _CameraScreenState extends State<CameraScreen> {
       );
     } else if (provider.state == AnalysisState.error) {
       if (!mounted) return;
+      final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(provider.error ?? 'Ошибка анализа'),
+          content: Text(provider.error ?? l10n.errorAnalysis),
           backgroundColor: AppColors.error,
           duration: const Duration(seconds: 5),
           action: _lastImageBytes != null
               ? SnackBarAction(
-                  label: 'Повторить',
+                  label: l10n.retry,
                   textColor: Colors.white,
                   onPressed: () {
                     if (_lastImageBytes != null) {
@@ -90,19 +92,17 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   void _showNoScansDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
         backgroundColor: AppColors.surface,
-        title: const Text('Лимит исчерпан'),
-        content: const Text(
-          'Бесплатные анализы на сегодня закончились.\n'
-          'Купите пакет или оформите PRO-подписку.',
-        ),
+        title: Text(l10n.limitExhausted),
+        content: Text(l10n.limitExhaustedDesc),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Понятно'),
+            child: Text(l10n.ok),
           ),
         ],
       ),
@@ -111,6 +111,8 @@ class _CameraScreenState extends State<CameraScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -155,23 +157,23 @@ class _CameraScreenState extends State<CameraScreen> {
       body: Consumer<StainProvider>(
         builder: (context, provider, _) {
           if (provider.state == AnalysisState.analyzing) {
-            return const Center(
+            return Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  CircularProgressIndicator(color: AppColors.primary),
-                  SizedBox(height: 24),
+                  const CircularProgressIndicator(color: AppColors.primary),
+                  const SizedBox(height: 24),
                   Text(
-                    'Анализируем пятно...',
-                    style: TextStyle(
+                    l10n.analyzing,
+                    style: const TextStyle(
                       color: AppColors.textSecondary,
                       fontSize: 16,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
-                    'AI определяет тип загрязнения и ткани',
-                    style: TextStyle(
+                    l10n.analyzingDesc,
+                    style: const TextStyle(
                       color: AppColors.textSecondary,
                       fontSize: 13,
                     ),
@@ -205,9 +207,9 @@ class _CameraScreenState extends State<CameraScreen> {
                     ),
                   ),
                   const SizedBox(height: 32),
-                  const Text(
-                    'Сфотографируйте пятно',
-                    style: TextStyle(
+                  Text(
+                    l10n.photoStain,
+                    style: const TextStyle(
                       color: AppColors.textPrimary,
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -215,9 +217,9 @@ class _CameraScreenState extends State<CameraScreen> {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 12),
-                  const Text(
-                    'AI определит тип загрязнения и подскажет\nкак его вывести',
-                    style: TextStyle(
+                  Text(
+                    l10n.aiWillHelp,
+                    style: const TextStyle(
                       color: AppColors.textSecondary,
                       fontSize: 14,
                       height: 1.5,
@@ -230,7 +232,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     child: ElevatedButton.icon(
                       onPressed: () => _pickAndAnalyze(ImageSource.camera),
                       icon: const Icon(Icons.camera_alt),
-                      label: const Text('Сделать фото'),
+                      label: Text(l10n.takePhoto),
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -239,7 +241,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     child: OutlinedButton.icon(
                       onPressed: () => _pickAndAnalyze(ImageSource.gallery),
                       icon: const Icon(Icons.photo_library_outlined),
-                      label: const Text('Из галереи'),
+                      label: Text(l10n.fromGallery),
                     ),
                   ),
                 ],

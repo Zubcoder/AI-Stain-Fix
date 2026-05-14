@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../utils/constants.dart';
 import '../widgets/app_logo.dart';
 import 'home_screen.dart';
@@ -83,13 +84,18 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  AppConstants.appTagline,
-                  style: TextStyle(
-                    color: AppColors.textSecondary,
-                    fontSize: 14,
-                    fontStyle: FontStyle.italic,
-                  ),
+                Builder(
+                  builder: (context) {
+                    final l10n = AppLocalizations.of(context);
+                    return Text(
+                      l10n?.appTagline ?? AppConstants.appTagline,
+                      style: const TextStyle(
+                        color: AppColors.textSecondary,
+                        fontSize: 14,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

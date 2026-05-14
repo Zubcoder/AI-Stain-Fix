@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../l10n/app_localizations.dart';
 import '../utils/constants.dart';
 import 'home_screen.dart';
 
@@ -17,31 +18,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final _pageController = PageController();
   int _currentPage = 0;
 
-  final _slides = const [
-    _OnboardingSlide(
-      icon: Icons.camera_alt_outlined,
-      title: 'Сфотографируйте пятно',
-      description: 'Наведите камеру на загрязнение для мгновенного анализа',
-    ),
-    _OnboardingSlide(
-      icon: Icons.auto_awesome,
-      title: 'AI определит тип',
-      description:
-          'Искусственный интеллект распознает вид пятна и тип ткани',
-    ),
-    _OnboardingSlide(
-      icon: Icons.checklist_outlined,
-      title: 'Получите инструкцию',
-      description:
-          'Пошаговый рецепт удаления с доступными средствами',
-    ),
-    _OnboardingSlide(
-      icon: Icons.psychology_outlined,
-      title: 'Умный помощник',
-      description:
-          'AI учитывает тип ткани, возраст пятна и доступные средства',
-    ),
-  ];
+  List<_OnboardingSlide> _getSlides(AppLocalizations l10n) {
+    return [
+      _OnboardingSlide(
+        icon: Icons.camera_alt_outlined,
+        title: l10n.onboardingTitle1,
+        description: l10n.onboardingDesc1,
+      ),
+      _OnboardingSlide(
+        icon: Icons.auto_awesome,
+        title: l10n.onboardingTitle2,
+        description: l10n.onboardingDesc2,
+      ),
+      _OnboardingSlide(
+        icon: Icons.checklist_outlined,
+        title: l10n.onboardingTitle3,
+        description: l10n.onboardingDesc3,
+      ),
+      _OnboardingSlide(
+        icon: Icons.psychology_outlined,
+        title: l10n.onboardingTitle4,
+        description: l10n.onboardingDesc4,
+      ),
+    ];
+  }
 
   Future<void> _completeOnboarding() async {
     if (!widget.isFromSettings) {
@@ -68,6 +68,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final slides = _getSlides(l10n);
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -75,11 +78,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           children: [
             Align(
               alignment: Alignment.topRight,
-              child: _currentPage < _slides.length - 1
+              child: _currentPage < slides.length - 1
                   ? TextButton(
                       onPressed: _completeOnboarding,
                       child: Text(
-                        widget.isFromSettings ? 'Закрыть' : 'Пропустить',
+                        widget.isFromSettings ? l10n.close : l10n.skip,
                         style: const TextStyle(color: AppColors.textSecondary),
                       ),
                     )
@@ -89,25 +92,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               child: PageView.builder(
                 controller: _pageController,
                 onPageChanged: (i) => setState(() => _currentPage = i),
-                itemCount: _slides.length,
-                itemBuilder: (_, i) => _buildSlide(_slides[i]),
+                itemCount: slides.length,
+                itemBuilder: (_, i) => _buildSlide(slides[i]),
               ),
             ),
-            _buildDots(),
+            _buildDots(slides.length),
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: _currentPage == _slides.length - 1
+                  onPressed: _currentPage == slides.length - 1
                       ? _completeOnboarding
                       : () => _pageController.nextPage(
                             duration: const Duration(milliseconds: 300),
                             curve: Curves.easeInOut,
                           ),
                   child: Text(
-                    _currentPage == _slides.length - 1 ? 'Начать' : 'Далее',
+                    _currentPage == slides.length - 1 ? l10n.start : l10n.next,
                   ),
                 ),
               ),
@@ -163,11 +166,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Widget _buildDots() {
+  Widget _buildDots(int count) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
-        _slides.length,
+        count,
         (i) => Container(
           margin: const EdgeInsets.symmetric(horizontal: 4),
           width: _currentPage == i ? 24 : 8,

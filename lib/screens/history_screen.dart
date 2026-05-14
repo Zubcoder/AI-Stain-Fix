@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../l10n/app_localizations.dart';
 import '../providers/stain_provider.dart';
 import '../providers/subscription_provider.dart';
 import '../utils/constants.dart';
@@ -11,19 +12,21 @@ class HistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('История анализов'),
+        title: Text(l10n.historyTitle),
       ),
       body: Consumer2<StainProvider, SubscriptionProvider>(
         builder: (context, stainProv, subProv, _) {
           if (!subProv.isPro) {
-            return _buildProLock(context);
+            return _buildProLock(context, l10n);
           }
 
           if (stainProv.history.isEmpty) {
-            return _buildEmpty();
+            return _buildEmpty(l10n);
           }
 
           return ListView.builder(
@@ -47,8 +50,8 @@ class HistoryScreen extends StatelessWidget {
                 onDismissed: (_) {
                   stainProv.removeFromHistory(index);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Запись удалена'),
+                    SnackBar(
+                      content: Text(l10n.recordDeleted),
                       backgroundColor: AppColors.surface,
                     ),
                   );
@@ -81,7 +84,7 @@ class HistoryScreen extends StatelessWidget {
                       children: [
                         const SizedBox(height: 4),
                         Text(
-                          'Ткань: ${result.fabricType}',
+                          l10n.fabricLabel(result.fabricType),
                           style: const TextStyle(
                             color: AppColors.textSecondary,
                             fontSize: 13,
@@ -89,7 +92,7 @@ class HistoryScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          _formatDate(result.analyzedAt),
+                          _formatDate(result.analyzedAt, l10n),
                           style: const TextStyle(
                             color: AppColors.textSecondary,
                             fontSize: 12,
@@ -118,7 +121,7 @@ class HistoryScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProLock(BuildContext context) {
+  Widget _buildProLock(BuildContext context, AppLocalizations l10n) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -139,9 +142,9 @@ class HistoryScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            const Text(
-              'История доступна в PRO',
-              style: TextStyle(
+            Text(
+              l10n.historyProLock,
+              style: const TextStyle(
                 color: AppColors.textPrimary,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -149,9 +152,9 @@ class HistoryScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
-            const Text(
-              'Оформите PRO-подписку, чтобы сохранять\nи просматривать историю анализов',
-              style: TextStyle(
+            Text(
+              l10n.historyProLockDesc,
+              style: const TextStyle(
                 color: AppColors.textSecondary,
                 fontSize: 14,
                 height: 1.5,
@@ -167,7 +170,7 @@ class HistoryScreen extends StatelessWidget {
                 }
               },
               icon: const Icon(Icons.workspace_premium),
-              label: const Text('Перейти к PRO'),
+              label: Text(l10n.goToPro),
             ),
           ],
         ),
@@ -175,7 +178,7 @@ class HistoryScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildEmpty() {
+  Widget _buildEmpty(AppLocalizations l10n) {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -186,18 +189,18 @@ class HistoryScreen extends StatelessWidget {
             color: AppColors.textSecondary.withValues(alpha: 0.3),
           ),
           const SizedBox(height: 16),
-          const Text(
-            'Здесь будет история\nваших анализов',
-            style: TextStyle(
+          Text(
+            l10n.emptyHistory,
+            style: const TextStyle(
               color: AppColors.textSecondary,
               fontSize: 16,
             ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 24),
-          const Text(
-            'Сфотографируйте пятно, чтобы начать',
-            style: TextStyle(
+          Text(
+            l10n.emptyHistoryHint,
+            style: const TextStyle(
               color: AppColors.textSecondary,
               fontSize: 13,
             ),
@@ -207,14 +210,14 @@ class HistoryScreen extends StatelessWidget {
     );
   }
 
-  String _formatDate(DateTime date) {
+  String _formatDate(DateTime date, AppLocalizations l10n) {
     final now = DateTime.now();
     final diff = now.difference(date);
 
-    if (diff.inMinutes < 1) return 'Только что';
-    if (diff.inHours < 1) return '${diff.inMinutes} мин. назад';
-    if (diff.inDays < 1) return '${diff.inHours} ч. назад';
-    if (diff.inDays < 7) return '${diff.inDays} дн. назад';
+    if (diff.inMinutes < 1) return l10n.justNow;
+    if (diff.inHours < 1) return l10n.minutesAgo(diff.inMinutes);
+    if (diff.inDays < 1) return l10n.hoursAgo(diff.inHours);
+    if (diff.inDays < 7) return l10n.daysAgo(diff.inDays);
 
     return '${date.day}.${date.month.toString().padLeft(2, '0')}.${date.year}';
   }
