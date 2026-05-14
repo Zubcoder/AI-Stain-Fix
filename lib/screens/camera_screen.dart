@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../l10n/app_localizations.dart';
+import '../providers/locale_provider.dart';
 import '../providers/stain_provider.dart';
 import '../providers/subscription_provider.dart';
 import '../utils/constants.dart';
@@ -55,7 +56,8 @@ class _CameraScreenState extends State<CameraScreen> {
 
   Future<void> _analyzeImage(Uint8List bytes) async {
     final provider = context.read<StainProvider>();
-    await provider.analyzeStain(bytes);
+    final lang = context.read<LocaleProvider>().locale.languageCode;
+    await provider.analyzeStain(bytes, language: lang);
 
     if (!mounted) return;
 

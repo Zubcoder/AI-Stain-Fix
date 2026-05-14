@@ -7,6 +7,10 @@ class AnalyzeRequest(BaseModel):
         default=None,
         description="Optional fabric type hint from user",
     )
+    language: str = Field(
+        default="ru",
+        description="Language code for AI response (ru/en)",
+    )
 
 
 class AiResponse(BaseModel):

@@ -19,7 +19,7 @@ class StainProvider extends ChangeNotifier {
   String? get error => _error;
   List<StainResult> get history => List.unmodifiable(_history);
 
-  Future<void> analyzeStain(Uint8List imageBytes, {String? fabricHint}) async {
+  Future<void> analyzeStain(Uint8List imageBytes, {String? fabricHint, String language = 'ru'}) async {
     _state = AnalysisState.analyzing;
     _error = null;
     notifyListeners();
@@ -29,6 +29,7 @@ class StainProvider extends ChangeNotifier {
       _result = await AiService.analyzeStain(
         imageBase64: base64,
         fabricHint: fabricHint,
+        language: language,
       );
       _history.insert(0, _result!);
       _state = AnalysisState.done;

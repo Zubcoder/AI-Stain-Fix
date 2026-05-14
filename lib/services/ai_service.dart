@@ -12,6 +12,7 @@ class AiService {
   static Future<StainResult> analyzeStain({
     required String imageBase64,
     String? fabricHint,
+    String language = 'ru',
   }) async {
     AiServiceException? lastError;
 
@@ -20,6 +21,7 @@ class AiService {
         return await _doAnalyze(
           imageBase64: imageBase64,
           fabricHint: fabricHint,
+          language: language,
         );
       } on AiServiceException catch (e) {
         lastError = e;
@@ -34,6 +36,7 @@ class AiService {
   static Future<StainResult> _doAnalyze({
     required String imageBase64,
     String? fabricHint,
+    String language = 'ru',
   }) async {
     try {
       final response = await http
@@ -42,6 +45,7 @@ class AiService {
             headers: {'Content-Type': 'application/json'},
             body: jsonEncode({
               'image_base64': imageBase64,
+              'language': language,
               // ignore: use_null_aware_elements
               if (fabricHint != null) 'fabric_hint': fabricHint,
             }),

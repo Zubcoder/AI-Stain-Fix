@@ -18,7 +18,7 @@ GEMINI_API_URL = (
     "gemini-2.5-flash:generateContent"
 )
 
-STAIN_PROMPT = (
+STAIN_PROMPT_RU = (
     "Ты — эксперт по удалению пятен и уходу за тканями. "
     "Проанализируй фото и определи:\n"
     "1) Тип пятна (загрязнения)\n"
@@ -30,9 +30,7 @@ STAIN_PROMPT = (
     "Верни ответ СТРОГО в формате JSON без markdown-разметки:\n"
     "{\n"
     '  "stain_type": "Тип пятна на русском",\n'
-    '  "stain_type_en": "Stain type in English",\n'
     '  "fabric_type": "Тип ткани на русском",\n'
-    '  "fabric_type_en": "Fabric type in English",\n'
     '  "difficulty": "Легко/Средне/Сложно",\n'
     '  "difficulty_level": 1,\n'
     '  "steps": [\n'
@@ -45,8 +43,43 @@ STAIN_PROMPT = (
     '  "summary": "Краткое резюме на русском в 1-2 предложения"\n'
     "}\n\n"
     "difficulty_level: 1 = легко, 2 = средне, 3 = сложно.\n"
+    "Отвечай ТОЛЬКО на русском языке.\n"
     "Инструкции должны быть практичными, с использованием бытовых средств."
 )
+
+STAIN_PROMPT_EN = (
+    "You are an expert in stain removal and fabric care. "
+    "Analyze the photo and determine:\n"
+    "1) Stain type\n"
+    "2) Fabric type (if visible)\n"
+    "3) Removal difficulty\n"
+    "4) Step-by-step removal instructions\n"
+    "5) Recommended products (commonly available household items)\n"
+    "6) Warnings (what NOT to do)\n\n"
+    "Return the answer STRICTLY in JSON format without markdown:\n"
+    "{\n"
+    '  "stain_type": "Stain type in English",\n'
+    '  "fabric_type": "Fabric type in English",\n'
+    '  "difficulty": "Easy/Medium/Hard",\n'
+    '  "difficulty_level": 1,\n'
+    '  "steps": [\n'
+    '    "Step 1: description",\n'
+    '    "Step 2: description",\n'
+    '    "Step 3: description"\n'
+    "  ],\n"
+    '  "products": ["Product 1", "Product 2"],\n'
+    '  "warnings": ["Warning 1"],\n'
+    '  "summary": "Brief summary in English in 1-2 sentences"\n'
+    "}\n\n"
+    "difficulty_level: 1 = easy, 2 = medium, 3 = hard.\n"
+    "Respond ONLY in English.\n"
+    "Instructions should be practical, using commonly available household products."
+)
+
+STAIN_PROMPTS = {
+    "ru": STAIN_PROMPT_RU,
+    "en": STAIN_PROMPT_EN,
+}
 
 
 async def _call_gemini(parts: list[dict]) -> dict:
@@ -104,9 +137,10 @@ async def analyze_stain(req: AnalyzeRequest):
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid base64 image")
 
-    prompt = STAIN_PROMPT
+    prompt = STAIN_PROMPTS.get(req.language, STAIN_PROMPT_RU)
     if req.fabric_hint:
-        prompt += f"\n\nПодсказка пользователя о ткани: {req.fabric_hint}"
+        hint_label = "User hint about fabric" if req.language == "en" else "Подсказка пользователя о ткани"
+        prompt += f"\n\n{hint_label}: {req.fabric_hint}"
 
     parts: list[dict] = [
         {"text": prompt},
