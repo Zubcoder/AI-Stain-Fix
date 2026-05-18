@@ -73,7 +73,7 @@ class SettingsScreen extends StatelessWidget {
             _SettingsTile(
               icon: Icons.star_outline,
               title: l10n.rateInRustore,
-              onTap: () {},
+              onTap: () => _launchRuStore(),
             ),
             _SettingsTile(
               icon: Icons.privacy_tip_outlined,
@@ -219,13 +219,21 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
+  Future<void> _launchRuStore() async {
+    final uri = Uri.parse(
+        'https://apps.rustore.ru/app/com.zubcoder.ai_stain_fix');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+
   Future<void> _launchSupport(AppLocalizations l10n) async {
     final uri = Uri(
       scheme: 'mailto',
       path: AppConstants.supportEmail,
       queryParameters: {
         'subject':
-            '${AppConstants.appNameRu} v${AppConstants.appVersion} — ${l10n.feedback}',
+            '${l10n.appName} v${AppConstants.appVersion} — ${l10n.feedback}',
         'body': l10n.describeProblem,
       },
     );

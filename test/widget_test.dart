@@ -4,7 +4,7 @@ import 'package:ai_stain_fix/main.dart';
 
 void main() {
   testWidgets('App launches smoke test', (WidgetTester tester) async {
-    await tester.pumpWidget(const StainFixApp(onboardingDone: false));
+    await tester.pumpWidget(const AIStainFixApp(onboardingDone: false));
     await tester.pump();
 
     // Advance past SplashScreen timer (2500ms)

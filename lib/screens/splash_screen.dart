@@ -75,25 +75,29 @@ class _SplashScreenState extends State<SplashScreen>
               children: [
                 const AppLogo(size: 120),
                 const SizedBox(height: 24),
-                Text(
-                  AppConstants.appNameRu,
-                  style: TextStyle(
-                    color: theme.textTheme.bodyLarge?.color,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
                 Builder(
                   builder: (context) {
                     final l10n = AppLocalizations.of(context);
-                    return Text(
-                      l10n?.appTagline ?? AppConstants.appTagline,
-                      style: TextStyle(
-                        color: theme.textTheme.bodyMedium?.color,
-                        fontSize: 14,
-                        fontStyle: FontStyle.italic,
-                      ),
+                    return Column(
+                      children: [
+                        Text(
+                          l10n?.appName ?? AppConstants.appName,
+                          style: TextStyle(
+                            color: theme.textTheme.bodyLarge?.color,
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          l10n?.appTagline ?? AppConstants.appTagline,
+                          style: TextStyle(
+                            color: theme.textTheme.bodyMedium?.color,
+                            fontSize: 14,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
                     );
                   },
                 ),
