@@ -63,8 +63,8 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: AppColors.background,
       body: Center(
         child: FadeTransition(
           opacity: _fadeAnimation,
@@ -75,10 +75,10 @@ class _SplashScreenState extends State<SplashScreen>
               children: [
                 const AppLogo(size: 120),
                 const SizedBox(height: 24),
-                const Text(
-                  AppConstants.appName,
+                Text(
+                  AppConstants.appNameRu,
                   style: TextStyle(
-                    color: AppColors.textPrimary,
+                    color: theme.textTheme.bodyLarge?.color,
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                   ),
@@ -89,8 +89,8 @@ class _SplashScreenState extends State<SplashScreen>
                     final l10n = AppLocalizations.of(context);
                     return Text(
                       l10n?.appTagline ?? AppConstants.appTagline,
-                      style: const TextStyle(
-                        color: AppColors.textSecondary,
+                      style: TextStyle(
+                        color: theme.textTheme.bodyMedium?.color,
                         fontSize: 14,
                         fontStyle: FontStyle.italic,
                       ),

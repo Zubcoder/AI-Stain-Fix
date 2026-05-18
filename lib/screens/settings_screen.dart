@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../l10n/app_localizations.dart';
 import '../providers/locale_provider.dart';
+import '../providers/theme_provider.dart';
 import '../utils/constants.dart';
 import 'onboarding_screen.dart';
 import 'privacy_policy_screen.dart';
@@ -15,27 +16,42 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localeProv = context.watch<LocaleProvider>();
+    final themeProvider = context.watch<ThemeProvider>();
     final l10n = AppLocalizations.of(context)!;
     final isRu = localeProv.locale.languageCode == 'ru';
+    final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
       appBar: AppBar(
         title: Text(l10n.settingsTitle),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          _buildSection(l10n.general, [
+          _buildSection(theme, l10n.general, [
             _SettingsTile(
               icon: Icons.language,
               title: l10n.language,
               subtitle: isRu ? 'Русский' : 'English',
               onTap: () => _showLanguageDialog(context, localeProv, l10n),
             ),
+            _SettingsTile(
+              icon: themeProvider.isDark
+                  ? Icons.dark_mode_rounded
+                  : Icons.light_mode_rounded,
+              title: themeProvider.isDark
+                  ? (isRu ? 'Тёмная тема' : 'Dark theme')
+                  : (isRu ? 'Светлая тема' : 'Light theme'),
+              trailing: Switch(
+                value: themeProvider.isDark,
+                activeColor: AppColors.primary,
+                onChanged: (_) => themeProvider.toggleTheme(),
+              ),
+              onTap: () => themeProvider.toggleTheme(),
+            ),
           ]),
           const SizedBox(height: 16),
-          _buildSection(l10n.about, [
+          _buildSection(theme, l10n.about, [
             _SettingsTile(
               icon: Icons.help_outline,
               title: l10n.howToUse,
@@ -93,7 +109,7 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSection(String title, List<_SettingsTile> tiles) {
+  Widget _buildSection(ThemeData theme, String title, List<_SettingsTile> tiles) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -101,8 +117,8 @@ class SettingsScreen extends StatelessWidget {
           padding: const EdgeInsets.only(left: 4, bottom: 8),
           child: Text(
             title,
-            style: const TextStyle(
-              color: AppColors.textSecondary,
+            style: TextStyle(
+              color: theme.textTheme.bodyMedium?.color,
               fontSize: 13,
               fontWeight: FontWeight.w600,
             ),
@@ -110,7 +126,7 @@ class SettingsScreen extends StatelessWidget {
         ),
         Container(
           decoration: BoxDecoration(
-            color: AppColors.cardBackground,
+            color: theme.cardTheme.color ?? theme.colorScheme.surface,
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(
@@ -123,31 +139,33 @@ class SettingsScreen extends StatelessWidget {
                     leading: Icon(tile.icon, color: AppColors.primary, size: 22),
                     title: Text(
                       tile.title,
-                      style: const TextStyle(
-                        color: AppColors.textPrimary,
+                      style: TextStyle(
+                        color: theme.textTheme.bodyLarge?.color,
                         fontSize: 15,
                       ),
                     ),
                     subtitle: tile.subtitle != null
                         ? Text(
                             tile.subtitle!,
-                            style: const TextStyle(
-                              color: AppColors.textSecondary,
+                            style: TextStyle(
+                              color: theme.textTheme.bodyMedium?.color,
                               fontSize: 13,
                             ),
                           )
                         : null,
-                    trailing: tile.onTap != null
-                        ? const Icon(Icons.chevron_right,
-                            color: AppColors.textSecondary, size: 20)
-                        : null,
+                    trailing: tile.trailing ??
+                        (tile.onTap != null
+                            ? Icon(Icons.chevron_right,
+                                color: theme.textTheme.bodyMedium?.color,
+                                size: 20)
+                            : null),
                     onTap: tile.onTap,
                   ),
                   if (i < tiles.length - 1)
-                    const Divider(
+                    Divider(
                       height: 1,
                       indent: 56,
-                      color: AppColors.divider,
+                      color: theme.dividerColor,
                     ),
                 ],
               );
@@ -158,20 +176,23 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  void _showLanguageDialog(BuildContext context, LocaleProvider localeProv, AppLocalizations l10n) {
+  void _showLanguageDialog(
+      BuildContext context, LocaleProvider localeProv, AppLocalizations l10n) {
     final isRu = localeProv.locale.languageCode == 'ru';
+    final theme = Theme.of(context);
 
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        backgroundColor: AppColors.surface,
+        backgroundColor: theme.colorScheme.surface,
         title: Text(l10n.selectLanguage),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
               title: const Text('Русский'),
-              leading: const Text('\u{1F1F7}\u{1F1FA}', style: TextStyle(fontSize: 24)),
+              leading:
+                  const Text('\u{1F1F7}\u{1F1FA}', style: TextStyle(fontSize: 24)),
               trailing: isRu
                   ? const Icon(Icons.check, color: AppColors.primary)
                   : null,
@@ -182,7 +203,8 @@ class SettingsScreen extends StatelessWidget {
             ),
             ListTile(
               title: const Text('English'),
-              leading: const Text('\u{1F1EC}\u{1F1E7}', style: TextStyle(fontSize: 24)),
+              leading:
+                  const Text('\u{1F1EC}\u{1F1E7}', style: TextStyle(fontSize: 24)),
               trailing: !isRu
                   ? const Icon(Icons.check, color: AppColors.primary)
                   : null,
@@ -202,7 +224,8 @@ class SettingsScreen extends StatelessWidget {
       scheme: 'mailto',
       path: AppConstants.supportEmail,
       queryParameters: {
-        'subject': '${AppConstants.appName} v${AppConstants.appVersion} — ${l10n.feedback}',
+        'subject':
+            '${AppConstants.appNameRu} v${AppConstants.appVersion} — ${l10n.feedback}',
         'body': l10n.describeProblem,
       },
     );
@@ -217,11 +240,13 @@ class _SettingsTile {
   final String title;
   final String? subtitle;
   final VoidCallback? onTap;
+  final Widget? trailing;
 
   const _SettingsTile({
     required this.icon,
     required this.title,
     this.subtitle,
     this.onTap,
+    this.trailing,
   });
 }

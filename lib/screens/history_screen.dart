@@ -13,20 +13,20 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
       appBar: AppBar(
         title: Text(l10n.historyTitle),
       ),
       body: Consumer2<StainProvider, SubscriptionProvider>(
         builder: (context, stainProv, subProv, _) {
           if (!subProv.isPro) {
-            return _buildProLock(context, l10n);
+            return _buildProLock(context, l10n, theme);
           }
 
           if (stainProv.history.isEmpty) {
-            return _buildEmpty(l10n);
+            return _buildEmpty(l10n, theme);
           }
 
           return ListView.builder(
@@ -35,7 +35,8 @@ class HistoryScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final result = stainProv.history[index];
               return Dismissible(
-                key: ValueKey('${result.stainType}_${result.analyzedAt.toIso8601String()}'),
+                key: ValueKey(
+                    '${result.stainType}_${result.analyzedAt.toIso8601String()}'),
                 direction: DismissDirection.endToStart,
                 background: Container(
                   alignment: Alignment.centerRight,
@@ -52,7 +53,7 @@ class HistoryScreen extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(l10n.recordDeleted),
-                      backgroundColor: AppColors.surface,
+                      backgroundColor: theme.colorScheme.surface,
                     ),
                   );
                 },
@@ -74,8 +75,8 @@ class HistoryScreen extends StatelessWidget {
                     ),
                     title: Text(
                       result.stainType,
-                      style: const TextStyle(
-                        color: AppColors.textPrimary,
+                      style: TextStyle(
+                        color: theme.textTheme.bodyLarge?.color,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -85,24 +86,24 @@ class HistoryScreen extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           l10n.fabricLabel(result.fabricType),
-                          style: const TextStyle(
-                            color: AppColors.textSecondary,
+                          style: TextStyle(
+                            color: theme.textTheme.bodyMedium?.color,
                             fontSize: 13,
                           ),
                         ),
                         const SizedBox(height: 2),
                         Text(
                           _formatDate(result.analyzedAt, l10n),
-                          style: const TextStyle(
-                            color: AppColors.textSecondary,
+                          style: TextStyle(
+                            color: theme.textTheme.bodyMedium?.color,
                             fontSize: 12,
                           ),
                         ),
                       ],
                     ),
-                    trailing: const Icon(
+                    trailing: Icon(
                       Icons.chevron_right,
-                      color: AppColors.textSecondary,
+                      color: theme.textTheme.bodyMedium?.color,
                     ),
                     onTap: () {
                       Navigator.of(context).push(
@@ -121,7 +122,8 @@ class HistoryScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProLock(BuildContext context, AppLocalizations l10n) {
+  Widget _buildProLock(
+      BuildContext context, AppLocalizations l10n, ThemeData theme) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -144,8 +146,8 @@ class HistoryScreen extends StatelessWidget {
             const SizedBox(height: 24),
             Text(
               l10n.historyProLock,
-              style: const TextStyle(
-                color: AppColors.textPrimary,
+              style: TextStyle(
+                color: theme.textTheme.bodyLarge?.color,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -154,8 +156,8 @@ class HistoryScreen extends StatelessWidget {
             const SizedBox(height: 12),
             Text(
               l10n.historyProLockDesc,
-              style: const TextStyle(
-                color: AppColors.textSecondary,
+              style: TextStyle(
+                color: theme.textTheme.bodyMedium?.color,
                 fontSize: 14,
                 height: 1.5,
               ),
@@ -178,7 +180,7 @@ class HistoryScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildEmpty(AppLocalizations l10n) {
+  Widget _buildEmpty(AppLocalizations l10n, ThemeData theme) {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -186,13 +188,14 @@ class HistoryScreen extends StatelessWidget {
           Icon(
             Icons.history,
             size: 64,
-            color: AppColors.textSecondary.withValues(alpha: 0.3),
+            color: (theme.textTheme.bodyMedium?.color ?? AppColors.textSecondary)
+                .withValues(alpha: 0.3),
           ),
           const SizedBox(height: 16),
           Text(
             l10n.emptyHistory,
-            style: const TextStyle(
-              color: AppColors.textSecondary,
+            style: TextStyle(
+              color: theme.textTheme.bodyMedium?.color,
               fontSize: 16,
             ),
             textAlign: TextAlign.center,
@@ -200,8 +203,8 @@ class HistoryScreen extends StatelessWidget {
           const SizedBox(height: 24),
           Text(
             l10n.emptyHistoryHint,
-            style: const TextStyle(
-              color: AppColors.textSecondary,
+            style: TextStyle(
+              color: theme.textTheme.bodyMedium?.color,
               fontSize: 13,
             ),
           ),

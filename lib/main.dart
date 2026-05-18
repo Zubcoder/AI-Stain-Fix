@@ -9,6 +9,7 @@ import 'l10n/app_localizations.dart';
 import 'providers/locale_provider.dart';
 import 'providers/stain_provider.dart';
 import 'providers/subscription_provider.dart';
+import 'providers/theme_provider.dart';
 import 'screens/splash_screen.dart';
 import 'utils/constants.dart';
 import 'utils/theme.dart';
@@ -20,24 +21,17 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-    ),
-  );
-
   final prefs = await SharedPreferences.getInstance();
   final onboardingDone =
       prefs.getBool(AppConstants.onboardingDonePrefKey) ?? false;
 
-  runApp(AIStainFixApp(onboardingDone: onboardingDone));
+  runApp(StainFixApp(onboardingDone: onboardingDone));
 }
 
-class AIStainFixApp extends StatelessWidget {
+class StainFixApp extends StatelessWidget {
   final bool onboardingDone;
 
-  const AIStainFixApp({
+  const StainFixApp({
     super.key,
     required this.onboardingDone,
   });
@@ -46,22 +40,29 @@ class AIStainFixApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => SubscriptionProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => StainProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => LocaleProvider(),
-        ),
+        ChangeNotifierProvider(create: (_) => SubscriptionProvider()),
+        ChangeNotifierProvider(create: (_) => StainProvider()),
+        ChangeNotifierProvider(create: (_) => LocaleProvider()),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()..loadTheme()),
       ],
-      child: Consumer<LocaleProvider>(
-        builder: (context, localeProv, _) {
+      child: Consumer2<LocaleProvider, ThemeProvider>(
+        builder: (context, localeProv, themeProvider, _) {
+          final isDark = themeProvider.isDark;
+          SystemChrome.setSystemUIOverlayStyle(
+            SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness:
+                  isDark ? Brightness.light : Brightness.dark,
+            ),
+          );
           return MaterialApp(
-            title: AppConstants.appName,
+            title: localeProv.locale.languageCode == 'ru'
+                ? AppConstants.appNameRu
+                : AppConstants.appName,
             debugShowCheckedModeBanner: false,
-            theme: AppTheme.darkTheme,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: themeProvider.themeMode,
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
-import '../utils/constants.dart';
 import 'camera_screen.dart';
 import 'history_screen.dart';
 import 'settings_screen.dart';
@@ -27,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return Scaffold(
       body: IndexedStack(
@@ -34,9 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
         children: _screens,
       ),
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           border: Border(
-            top: BorderSide(color: AppColors.divider, width: 0.5),
+            top: BorderSide(color: theme.dividerColor, width: 0.5),
           ),
         ),
         child: BottomNavigationBar(
