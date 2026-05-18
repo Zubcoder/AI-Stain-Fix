@@ -70,9 +70,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final slides = _getSlides(l10n);
+    final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
       body: SafeArea(
         child: Column(
           children: [
@@ -83,7 +83,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       onPressed: _completeOnboarding,
                       child: Text(
                         widget.isFromSettings ? l10n.close : l10n.skip,
-                        style: const TextStyle(color: AppColors.textSecondary),
+                        style: TextStyle(
+                            color: theme.textTheme.bodyMedium?.color),
                       ),
                     )
                   : const SizedBox(height: 48),
@@ -93,10 +94,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 controller: _pageController,
                 onPageChanged: (i) => setState(() => _currentPage = i),
                 itemCount: slides.length,
-                itemBuilder: (_, i) => _buildSlide(slides[i]),
+                itemBuilder: (_, i) => _buildSlide(slides[i], theme),
               ),
             ),
-            _buildDots(slides.length),
+            _buildDots(slides.length, theme),
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -122,7 +123,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Widget _buildSlide(_OnboardingSlide slide) {
+  Widget _buildSlide(_OnboardingSlide slide, ThemeData theme) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: Column(
@@ -144,8 +145,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           const SizedBox(height: 40),
           Text(
             slide.title,
-            style: const TextStyle(
-              color: AppColors.textPrimary,
+            style: TextStyle(
+              color: theme.textTheme.bodyLarge?.color,
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
@@ -154,8 +155,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           const SizedBox(height: 16),
           Text(
             slide.description,
-            style: const TextStyle(
-              color: AppColors.textSecondary,
+            style: TextStyle(
+              color: theme.textTheme.bodyMedium?.color,
               fontSize: 16,
               height: 1.5,
             ),
@@ -166,7 +167,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Widget _buildDots(int count) {
+  Widget _buildDots(int count, ThemeData theme) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
@@ -178,7 +179,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           decoration: BoxDecoration(
             color: _currentPage == i
                 ? AppColors.primary
-                : AppColors.textSecondary.withValues(alpha: 0.3),
+                : (theme.textTheme.bodyMedium?.color ?? AppColors.textSecondary)
+                    .withValues(alpha: 0.3),
             borderRadius: BorderRadius.circular(4),
           ),
         ),

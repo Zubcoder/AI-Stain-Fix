@@ -95,10 +95,11 @@ class _CameraScreenState extends State<CameraScreen> {
 
   void _showNoScansDialog() {
     final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        backgroundColor: AppColors.surface,
+        backgroundColor: theme.colorScheme.surface,
         title: Text(l10n.limitExhausted),
         content: Text(l10n.limitExhaustedDesc),
         actions: [
@@ -114,16 +115,16 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
       appBar: AppBar(
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             const AppLogo(size: 28),
             const SizedBox(width: 8),
-            const Text(AppConstants.appName),
+            Text(l10n.appName),
           ],
         ),
         actions: [
@@ -167,16 +168,16 @@ class _CameraScreenState extends State<CameraScreen> {
                   const SizedBox(height: 24),
                   Text(
                     l10n.analyzing,
-                    style: const TextStyle(
-                      color: AppColors.textSecondary,
+                    style: TextStyle(
+                      color: theme.textTheme.bodyMedium?.color,
                       fontSize: 16,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     l10n.analyzingDesc,
-                    style: const TextStyle(
-                      color: AppColors.textSecondary,
+                    style: TextStyle(
+                      color: theme.textTheme.bodyMedium?.color,
                       fontSize: 13,
                     ),
                   ),
@@ -211,8 +212,8 @@ class _CameraScreenState extends State<CameraScreen> {
                   const SizedBox(height: 32),
                   Text(
                     l10n.photoStain,
-                    style: const TextStyle(
-                      color: AppColors.textPrimary,
+                    style: TextStyle(
+                      color: theme.textTheme.bodyLarge?.color,
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
@@ -221,8 +222,8 @@ class _CameraScreenState extends State<CameraScreen> {
                   const SizedBox(height: 12),
                   Text(
                     l10n.aiWillHelp,
-                    style: const TextStyle(
-                      color: AppColors.textSecondary,
+                    style: TextStyle(
+                      color: theme.textTheme.bodyMedium?.color,
                       fontSize: 14,
                       height: 1.5,
                     ),

@@ -61,11 +61,11 @@ class AiService {
             json['error'] as String? ?? 'Неизвестная ошибка');
       } else if (response.statusCode == 502) {
         throw AiServiceException(
-            'AI-сервис перегружен. Повторяем запрос...',
+            'Сервис перегружен. Повторяем запрос...',
             isRetryable: true);
       } else if (response.statusCode == 503) {
         throw AiServiceException(
-            'AI-сервис временно недоступен. Попробуйте через минуту.',
+            'Сервис временно недоступен. Попробуйте через минуту.',
             isRetryable: true);
       } else {
         throw AiServiceException(

@@ -12,9 +12,9 @@ class ResultScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
       appBar: AppBar(
         title: Text(l10n.analysisResult),
       ),
@@ -23,16 +23,16 @@ class ResultScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildHeader(l10n),
+            _buildHeader(l10n, theme),
             const SizedBox(height: 16),
-            _buildInfoCards(l10n),
+            _buildInfoCards(l10n, theme),
             const SizedBox(height: 16),
-            _buildSteps(l10n),
+            _buildSteps(l10n, theme),
             const SizedBox(height: 16),
-            _buildProducts(l10n),
+            _buildProducts(l10n, theme),
             if (result.warnings.isNotEmpty) ...[
               const SizedBox(height: 16),
-              _buildWarnings(l10n),
+              _buildWarnings(l10n, theme),
             ],
           ],
         ),
@@ -40,7 +40,7 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(AppLocalizations l10n) {
+  Widget _buildHeader(AppLocalizations l10n, ThemeData theme) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
@@ -75,8 +75,8 @@ class ResultScreen extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             result.summary,
-            style: const TextStyle(
-              color: AppColors.textPrimary,
+            style: TextStyle(
+              color: theme.textTheme.bodyLarge?.color,
               fontSize: 16,
               height: 1.4,
             ),
@@ -86,44 +86,33 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoCards(AppLocalizations l10n) {
+  Widget _buildInfoCards(AppLocalizations l10n, ThemeData theme) {
     return Row(
       children: [
         Expanded(
           child: _infoCard(
-            l10n.stainType,
-            result.stainType,
-            Icons.colorize,
-            AppColors.primary,
-          ),
+              theme, l10n.stainType, result.stainType, Icons.colorize, AppColors.primary),
         ),
         const SizedBox(width: 12),
         Expanded(
           child: _infoCard(
-            l10n.fabricType,
-            result.fabricType,
-            Icons.texture,
-            AppColors.accent,
-          ),
+              theme, l10n.fabricType, result.fabricType, Icons.texture, AppColors.accent),
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: _infoCard(
-            l10n.difficulty,
-            result.difficulty,
-            Icons.speed,
-            _difficultyColor(result.difficultyLevel),
-          ),
+          child: _infoCard(theme, l10n.difficulty, result.difficulty, Icons.speed,
+              _difficultyColor(result.difficultyLevel)),
         ),
       ],
     );
   }
 
-  Widget _infoCard(String label, String value, IconData icon, Color color) {
+  Widget _infoCard(
+      ThemeData theme, String label, String value, IconData icon, Color color) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
+        color: theme.cardTheme.color ?? theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -132,16 +121,16 @@ class ResultScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             label,
-            style: const TextStyle(
-              color: AppColors.textSecondary,
+            style: TextStyle(
+              color: theme.textTheme.bodyMedium?.color,
               fontSize: 11,
             ),
           ),
           const SizedBox(height: 4),
           Text(
             value,
-            style: const TextStyle(
-              color: AppColors.textPrimary,
+            style: TextStyle(
+              color: theme.textTheme.bodyLarge?.color,
               fontSize: 13,
               fontWeight: FontWeight.w600,
             ),
@@ -154,12 +143,12 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSteps(AppLocalizations l10n) {
+  Widget _buildSteps(AppLocalizations l10n, ThemeData theme) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
+        color: theme.cardTheme.color ?? theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -171,8 +160,8 @@ class ResultScreen extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 l10n.stepByStep,
-                style: const TextStyle(
-                  color: AppColors.textPrimary,
+                style: TextStyle(
+                  color: theme.textTheme.bodyLarge?.color,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
@@ -208,8 +197,8 @@ class ResultScreen extends StatelessWidget {
                   Expanded(
                     child: Text(
                       result.steps[i],
-                      style: const TextStyle(
-                        color: AppColors.textPrimary,
+                      style: TextStyle(
+                        color: theme.textTheme.bodyLarge?.color,
                         fontSize: 14,
                         height: 1.4,
                       ),
@@ -224,12 +213,12 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProducts(AppLocalizations l10n) {
+  Widget _buildProducts(AppLocalizations l10n, ThemeData theme) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
+        color: theme.cardTheme.color ?? theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -242,8 +231,8 @@ class ResultScreen extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 l10n.recommendedProducts,
-                style: const TextStyle(
-                  color: AppColors.textPrimary,
+                style: TextStyle(
+                  color: theme.textTheme.bodyLarge?.color,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
@@ -280,7 +269,7 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildWarnings(AppLocalizations l10n) {
+  Widget _buildWarnings(AppLocalizations l10n, ThemeData theme) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
@@ -319,8 +308,8 @@ class ResultScreen extends StatelessWidget {
                     Expanded(
                       child: Text(
                         w,
-                        style: const TextStyle(
-                          color: AppColors.textPrimary,
+                        style: TextStyle(
+                          color: theme.textTheme.bodyLarge?.color,
                           fontSize: 13,
                           height: 1.4,
                         ),
