@@ -44,7 +44,7 @@ class SettingsScreen extends StatelessWidget {
                   : (isRu ? 'Светлая тема' : 'Light theme'),
               trailing: Switch(
                 value: themeProvider.isDark,
-                activeColor: AppColors.primary,
+                activeThumbColor: AppColors.primary,
                 onChanged: (_) => themeProvider.toggleTheme(),
               ),
               onTap: () => themeProvider.toggleTheme(),

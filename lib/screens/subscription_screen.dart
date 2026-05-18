@@ -15,7 +15,7 @@ class SubscriptionScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.proTitle),
+        title: Text(l10n.subscriptionTitle),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -25,9 +25,16 @@ class SubscriptionScreen extends StatelessWidget {
             const SizedBox(height: 24),
             _buildFeatures(l10n, theme),
             const SizedBox(height: 24),
-            ...context
-                .watch<SubscriptionProvider>()
-                .packages
+            Text(
+              l10n.packagesTitle,
+              style: TextStyle(
+                color: theme.textTheme.bodyLarge?.color,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(height: 12),
+            ...ScanPackages.packages
                 .map((p) => _buildPackageCard(context, p, theme, l10n)),
             const SizedBox(height: 16),
             _buildFreeInfo(l10n, theme),
@@ -69,7 +76,7 @@ class SubscriptionScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            l10n.proTitle,
+            l10n.subscriptionTitle,
             style: TextStyle(
               color: theme.textTheme.bodyLarge?.color,
               fontSize: 24,
@@ -78,7 +85,7 @@ class SubscriptionScreen extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            l10n.proDesc,
+            l10n.unlimited,
             style: TextStyle(
               color: theme.textTheme.bodyMedium?.color,
               fontSize: 14,
@@ -93,9 +100,10 @@ class SubscriptionScreen extends StatelessWidget {
 
   Widget _buildFeatures(AppLocalizations l10n, ThemeData theme) {
     final features = [
-      l10n.featureUnlimitedScans,
-      l10n.featureHistory,
-      l10n.featurePriority,
+      l10n.proFeature1,
+      l10n.proFeature2,
+      l10n.proFeature3,
+      l10n.proFeature4,
     ];
 
     return Column(
@@ -106,7 +114,7 @@ class SubscriptionScreen extends StatelessWidget {
   }
 
   Widget _buildPackageCard(
-      BuildContext context, SubscriptionPackage package, ThemeData theme, AppLocalizations l10n) {
+      BuildContext context, ScanPackage package, ThemeData theme, AppLocalizations l10n) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: ListTile(
@@ -118,7 +126,9 @@ class SubscriptionScreen extends StatelessWidget {
             color: AppColors.primary.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: const Icon(Icons.star, color: AppColors.primary, size: 22),
+          child: Center(
+            child: Text(package.icon, style: const TextStyle(fontSize: 22)),
+          ),
         ),
         title: Text(
           package.name,

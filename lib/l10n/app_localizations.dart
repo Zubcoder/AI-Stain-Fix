@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// No description provided for @appName.
   ///
   /// In ru, this message translates to:
-  /// **'AI Stain Fix'**
+  /// **'Пятновыводитель'**
   String get appName;
 
   /// No description provided for @appTagline.
@@ -155,7 +155,7 @@ abstract class AppLocalizations {
   /// No description provided for @aiWillHelp.
   ///
   /// In ru, this message translates to:
-  /// **'AI определит тип загрязнения и подскажет\nкак его вывести'**
+  /// **'Приложение определит тип загрязнения и подскажет\nкак его вывести'**
   String get aiWillHelp;
 
   /// No description provided for @analyzing.
@@ -167,7 +167,7 @@ abstract class AppLocalizations {
   /// No description provided for @analyzingDesc.
   ///
   /// In ru, this message translates to:
-  /// **'AI определяет тип загрязнения и ткани'**
+  /// **'Определяем тип загрязнения и ткани'**
   String get analyzingDesc;
 
   /// No description provided for @analysisResult.
@@ -179,7 +179,7 @@ abstract class AppLocalizations {
   /// No description provided for @aiAnalysis.
   ///
   /// In ru, this message translates to:
-  /// **'AI Анализ'**
+  /// **'Результат анализа'**
   String get aiAnalysis;
 
   /// No description provided for @stainType.
@@ -425,13 +425,13 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingTitle2.
   ///
   /// In ru, this message translates to:
-  /// **'AI определит тип'**
+  /// **'Определение типа'**
   String get onboardingTitle2;
 
   /// No description provided for @onboardingDesc2.
   ///
   /// In ru, this message translates to:
-  /// **'Искусственный интеллект распознает вид пятна и тип ткани'**
+  /// **'Приложение распознает вид пятна и тип ткани'**
   String get onboardingDesc2;
 
   /// No description provided for @onboardingTitle3.
@@ -455,7 +455,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingDesc4.
   ///
   /// In ru, this message translates to:
-  /// **'AI учитывает тип ткани, возраст пятна и доступные средства'**
+  /// **'Учитывается тип ткани, возраст пятна и доступные средства'**
   String get onboardingDesc4;
 
   /// No description provided for @errorAnalysis.
@@ -611,7 +611,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacySection1Body.
   ///
   /// In ru, this message translates to:
-  /// **'Приложение AI Stain Fix (далее — «Приложение») разработано для помощи пользователям в удалении пятен с различных типов тканей. Настоящая Политика конфиденциальности описывает, какие данные мы собираем, как мы их используем и защищаем.'**
+  /// **'Приложение «Пятновыводитель» (далее — «Приложение») разработано для помощи пользователям в удалении пятен с различных типов тканей. Настоящая Политика конфиденциальности описывает, какие данные мы собираем, как мы их используем и защищаем.'**
   String get privacySection1Body;
 
   /// No description provided for @privacySection2Title.
@@ -635,7 +635,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacySection3Body.
   ///
   /// In ru, this message translates to:
-  /// **'Фотографии передаются на сервер-прокси, который перенаправляет запросы в сервис искусственного интеллекта для анализа изображений и генерации инструкций.\n\nФотографии не сохраняются на сервере после обработки и не передаются третьим лицам. Изображения используются исключительно для генерации рекомендаций по удалению пятен.'**
+  /// **'Фотографии передаются на защищённый сервер для анализа изображений и генерации инструкций.\n\nФотографии не сохраняются на сервере после обработки и не передаются третьим лицам. Изображения используются исключительно для генерации рекомендаций по удалению пятен.'**
   String get privacySection3Body;
 
   /// No description provided for @privacySection4Title.
@@ -707,7 +707,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsSection1Body.
   ///
   /// In ru, this message translates to:
-  /// **'Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между разработчиком приложения AI Stain Fix (далее — «Разработчик») и пользователем (далее — «Пользователь»), возникающие при использовании мобильного приложения AI Stain Fix (далее — «Приложение»).'**
+  /// **'Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между разработчиком приложения «Пятновыводитель» (далее — «Разработчик») и пользователем (далее — «Пользователь»), возникающие при использовании мобильного приложения «Пятновыводитель» (далее — «Приложение»).'**
   String get termsSection1Body;
 
   /// No description provided for @termsSection2Title.
@@ -719,7 +719,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsSection2Body.
   ///
   /// In ru, this message translates to:
-  /// **'Приложение предоставляет услугу анализа фотографий пятен с помощью искусственного интеллекта и генерации рекомендаций по их удалению. Рекомендации носят информационный характер.'**
+  /// **'Приложение предоставляет услугу анализа фотографий пятен с использованием технологий распознавания изображений и генерации рекомендаций по их удалению. Рекомендации носят информационный характер.'**
   String get termsSection2Body;
 
   /// No description provided for @termsSection3Title.
