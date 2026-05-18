@@ -1,0 +1,43 @@
+name: ai_stain_fix
+description: "AI Stain Fix (Пятновыводитель) — фото пятна → чем вывести + пошаговая инструкция"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+
+  # Camera & Image
+  image_picker: ^1.1.2
+
+  # State management
+  provider: ^6.1.2
+
+  # Storage
+  shared_preferences: ^2.3.3
+
+  # HTTP
+  http: ^1.2.2
+
+  # URL launcher
+  url_launcher: ^6.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/images/
