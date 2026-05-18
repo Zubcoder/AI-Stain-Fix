@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../l10n/app_localizations.dart';
 import '../providers/locale_provider.dart';
 import '../providers/theme_provider.dart';
-import '../utils/constants.dart';
+import '../utils/constants.dart' show AppConstants;
 import 'onboarding_screen.dart';
 import 'privacy_policy_screen.dart';
 import 'terms_screen.dart';
@@ -40,11 +40,11 @@ class SettingsScreen extends StatelessWidget {
                   ? Icons.dark_mode_rounded
                   : Icons.light_mode_rounded,
               title: themeProvider.isDark
-                  ? (isRu ? 'Тёмная тема' : 'Dark theme')
-                  : (isRu ? 'Светлая тема' : 'Light theme'),
+                  ? l10n.darkTheme
+                  : l10n.lightTheme,
               trailing: Switch(
                 value: themeProvider.isDark,
-                activeThumbColor: AppColors.primary,
+                activeThumbColor: theme.colorScheme.primary,
                 onChanged: (_) => themeProvider.toggleTheme(),
               ),
               onTap: () => themeProvider.toggleTheme(),
@@ -136,7 +136,7 @@ class SettingsScreen extends StatelessWidget {
               return Column(
                 children: [
                   ListTile(
-                    leading: Icon(tile.icon, color: AppColors.primary, size: 22),
+                    leading: Icon(tile.icon, color: theme.colorScheme.primary, size: 22),
                     title: Text(
                       tile.title,
                       style: TextStyle(
@@ -194,7 +194,7 @@ class SettingsScreen extends StatelessWidget {
               leading:
                   const Text('\u{1F1F7}\u{1F1FA}', style: TextStyle(fontSize: 24)),
               trailing: isRu
-                  ? const Icon(Icons.check, color: AppColors.primary)
+                  ? Icon(Icons.check, color: theme.colorScheme.primary)
                   : null,
               onTap: () {
                 localeProv.setLocale(const Locale('ru'));
@@ -206,7 +206,7 @@ class SettingsScreen extends StatelessWidget {
               leading:
                   const Text('\u{1F1EC}\u{1F1E7}', style: TextStyle(fontSize: 24)),
               trailing: !isRu
-                  ? const Icon(Icons.check, color: AppColors.primary)
+                  ? Icon(Icons.check, color: theme.colorScheme.primary)
                   : null,
               onTap: () {
                 localeProv.setLocale(const Locale('en'));

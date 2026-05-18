@@ -18,7 +18,7 @@ class AppColors {
 }
 
 class AppConstants {
-  static const String appName = 'AI Stain Fix';
+  static const String appName = 'Stain Fix';
   static const String appNameRu = 'Пятновыводитель';
   static const String appTagline = 'Умное удаление пятен по фото';
   static const String appVersion = '1.0.0';

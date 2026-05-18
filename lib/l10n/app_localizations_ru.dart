@@ -9,7 +9,7 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get appName => 'AI Stain Fix';
+  String get appName => 'Пятновыводитель';
 
   @override
   String get appTagline => 'Умное удаление пятен по фото';
@@ -37,19 +37,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get aiWillHelp =>
-      'AI определит тип загрязнения и подскажет\nкак его вывести';
+      'Определит тип загрязнения и подскажет\nкак его вывести';
 
   @override
   String get analyzing => 'Анализируем пятно...';
 
   @override
-  String get analyzingDesc => 'AI определяет тип загрязнения и ткани';
+  String get analyzingDesc => 'Определяем тип загрязнения и ткани';
 
   @override
   String get analysisResult => 'Результат анализа';
 
   @override
-  String get aiAnalysis => 'AI Анализ';
+  String get aiAnalysis => 'Анализ';
 
   @override
   String get stainType => 'Тип пятна';
@@ -180,11 +180,10 @@ class AppLocalizationsRu extends AppLocalizations {
       'Наведите камеру на загрязнение для мгновенного анализа';
 
   @override
-  String get onboardingTitle2 => 'AI определяет тип';
+  String get onboardingTitle2 => 'Умное определение';
 
   @override
-  String get onboardingDesc2 =>
-      'Приложение распознает вид пятна и тип ткани';
+  String get onboardingDesc2 => 'Умное распознавание вида пятна и типа ткани';
 
   @override
   String get onboardingTitle3 => 'Получите инструкцию';
@@ -198,7 +197,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get onboardingDesc4 =>
-      'AI учитывает тип ткани, возраст пятна и доступные средства';
+      'Учитывает тип ткани, возраст пятна и доступные средства';
 
   @override
   String get errorAnalysis => 'Ошибка анализа';
@@ -273,6 +272,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get feedback => 'Обратная связь';
 
   @override
+  String get darkTheme => 'Тёмная тема';
+
+  @override
+  String get lightTheme => 'Светлая тема';
+
+  @override
   String get privacyPolicyTitle => 'Политика конфиденциальности';
 
   @override
@@ -283,7 +288,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get privacySection1Body =>
-      'Приложение «AI Stain Fix» (далее — «Приложение») разработано для помощи пользователям в удалении пятен с различных типов тканей. Настоящая Политика конфиденциальности описывает, какие данные мы собираем, как мы их используем и защищаем.';
+      'Приложение «Пятновыводитель» (далее — «Приложение») разработано для помощи пользователям в удалении пятен с различных типов тканей. Настоящая Политика конфиденциальности описывает, какие данные мы собираем, как мы их используем и защищаем.';
 
   @override
   String get privacySection2Title => '2. Какие данные мы собираем';
@@ -338,7 +343,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get termsSection1Body =>
-      'Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между разработчиком приложения «AI Stain Fix» (далее — «Разработчик») и пользователем (далее — «Пользователь»), возникающие при использовании мобильного приложения «AI Stain Fix» (далее — «Приложение»).';
+      'Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между разработчиком приложения «Пятновыводитель» (далее — «Разработчик») и пользователем (далее — «Пользователь»), возникающие при использовании мобильного приложения «Пятновыводитель» (далее — «Приложение»).';
 
   @override
   String get termsSection2Title => '2. Описание услуги';

@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// No description provided for @appName.
   ///
   /// In ru, this message translates to:
-  /// **'AI Stain Fix'**
+  /// **'Пятновыводитель'**
   String get appName;
 
   /// No description provided for @appTagline.
@@ -155,7 +155,7 @@ abstract class AppLocalizations {
   /// No description provided for @aiWillHelp.
   ///
   /// In ru, this message translates to:
-  /// **'AI определит тип загрязнения и подскажет\nкак его вывести'**
+  /// **'Определит тип загрязнения и подскажет\nкак его вывести'**
   String get aiWillHelp;
 
   /// No description provided for @analyzing.
@@ -167,7 +167,7 @@ abstract class AppLocalizations {
   /// No description provided for @analyzingDesc.
   ///
   /// In ru, this message translates to:
-  /// **'AI определяет тип загрязнения и ткани'**
+  /// **'Определяем тип загрязнения и ткани'**
   String get analyzingDesc;
 
   /// No description provided for @analysisResult.
@@ -179,7 +179,7 @@ abstract class AppLocalizations {
   /// No description provided for @aiAnalysis.
   ///
   /// In ru, this message translates to:
-  /// **'AI Анализ'**
+  /// **'Анализ'**
   String get aiAnalysis;
 
   /// No description provided for @stainType.
@@ -425,13 +425,13 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingTitle2.
   ///
   /// In ru, this message translates to:
-  /// **'AI определяет тип'**
+  /// **'Умное определение'**
   String get onboardingTitle2;
 
   /// No description provided for @onboardingDesc2.
   ///
   /// In ru, this message translates to:
-  /// **'Искусственный интеллект распознает вид пятна и тип ткани'**
+  /// **'Умное распознавание вида пятна и типа ткани'**
   String get onboardingDesc2;
 
   /// No description provided for @onboardingTitle3.
@@ -455,7 +455,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingDesc4.
   ///
   /// In ru, this message translates to:
-  /// **'AI учитывает тип ткани, возраст пятна и доступные средства'**
+  /// **'Учитывает тип ткани, возраст пятна и доступные средства'**
   String get onboardingDesc4;
 
   /// No description provided for @errorAnalysis.
@@ -590,6 +590,18 @@ abstract class AppLocalizations {
   /// **'Обратная связь'**
   String get feedback;
 
+  /// No description provided for @darkTheme.
+  ///
+  /// In ru, this message translates to:
+  /// **'Тёмная тема'**
+  String get darkTheme;
+
+  /// No description provided for @lightTheme.
+  ///
+  /// In ru, this message translates to:
+  /// **'Светлая тема'**
+  String get lightTheme;
+
   /// No description provided for @privacyPolicyTitle.
   ///
   /// In ru, this message translates to:
@@ -611,7 +623,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacySection1Body.
   ///
   /// In ru, this message translates to:
-  /// **'Приложение «AI Stain Fix» (далее — «Приложение») разработано для помощи пользователям в удалении пятен с различных типов тканей. Настоящая Политика конфиденциальности описывает, какие данные мы собираем, как мы их используем и защищаем.'**
+  /// **'Приложение «Пятновыводитель» (далее — «Приложение») разработано для помощи пользователям в удалении пятен с различных типов тканей. Настоящая Политика конфиденциальности описывает, какие данные мы собираем, как мы их используем и защищаем.'**
   String get privacySection1Body;
 
   /// No description provided for @privacySection2Title.
@@ -707,7 +719,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsSection1Body.
   ///
   /// In ru, this message translates to:
-  /// **'Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между разработчиком приложения «AI Stain Fix» (далее — «Разработчик») и пользователем (далее — «Пользователь»), возникающие при использовании мобильного приложения «AI Stain Fix» (далее — «Приложение»).'**
+  /// **'Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между разработчиком приложения «Пятновыводитель» (далее — «Разработчик») и пользователем (далее — «Пользователь»), возникающие при использовании мобильного приложения «Пятновыводитель» (далее — «Приложение»).'**
   String get termsSection1Body;
 
   /// No description provided for @termsSection2Title.
