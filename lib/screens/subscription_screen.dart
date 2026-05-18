@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../l10n/app_localizations.dart';
+import '../models/scan_package.dart';
+import '../providers/locale_provider.dart';
 import '../providers/subscription_provider.dart';
 import '../utils/constants.dart';
 
@@ -12,6 +14,7 @@ class SubscriptionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
+    final lang = context.watch<LocaleProvider>().locale.languageCode;
 
     return Scaffold(
       appBar: AppBar(
@@ -25,6 +28,8 @@ class SubscriptionScreen extends StatelessWidget {
             const SizedBox(height: 24),
             _buildFeatures(l10n, theme),
             const SizedBox(height: 24),
+            _buildProSubscription(context, l10n, theme),
+            const SizedBox(height: 24),
             Text(
               l10n.packagesTitle,
               style: TextStyle(
@@ -35,7 +40,7 @@ class SubscriptionScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             ...ScanPackages.packages
-                .map((p) => _buildPackageCard(context, p, theme, l10n)),
+                .map((p) => _buildPackageCard(context, p, theme, l10n, lang)),
             const SizedBox(height: 16),
             _buildFreeInfo(l10n, theme),
           ],
@@ -113,8 +118,67 @@ class SubscriptionScreen extends StatelessWidget {
     );
   }
 
+  Widget _buildProSubscription(BuildContext context, AppLocalizations l10n, ThemeData theme) {
+    return Column(
+      children: [
+        Text(
+          'PRO',
+          style: TextStyle(
+            color: theme.textTheme.bodyLarge?.color,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            Expanded(
+              child: _ProPlanCard(
+                title: l10n.proMonthly,
+                theme: theme,
+                onTap: () => _showPurchaseDialog(context, 'PRO Monthly', l10n, theme),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Stack(
+                children: [
+                  _ProPlanCard(
+                    title: l10n.proYearly,
+                    theme: theme,
+                    highlighted: true,
+                    onTap: () => _showPurchaseDialog(context, 'PRO Yearly', l10n, theme),
+                  ),
+                  Positioned(
+                    top: 0,
+                    right: 8,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: AppColors.accent,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        l10n.savingsPercent,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
   Widget _buildPackageCard(
-      BuildContext context, ScanPackage package, ThemeData theme, AppLocalizations l10n) {
+      BuildContext context, ScanPackage package, ThemeData theme, AppLocalizations l10n, String lang) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: ListTile(
@@ -131,18 +195,18 @@ class SubscriptionScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          package.name,
+          package.localizedName(lang),
           style: TextStyle(
             color: theme.textTheme.bodyLarge?.color,
             fontWeight: FontWeight.w600,
           ),
         ),
         subtitle: Text(
-          package.description,
+          package.localizedDescription(lang),
           style: TextStyle(color: theme.textTheme.bodyMedium?.color),
         ),
         trailing: ElevatedButton(
-          onPressed: () => _showPurchaseDialog(context, package.name, l10n, theme),
+          onPressed: () => _showPurchaseDialog(context, package.localizedName(lang), l10n, theme),
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           ),
@@ -240,6 +304,52 @@ class _ProFeatureRow extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ProPlanCard extends StatelessWidget {
+  final String title;
+  final ThemeData theme;
+  final bool highlighted;
+  final VoidCallback onTap;
+
+  const _ProPlanCard({
+    required this.title,
+    required this.theme,
+    this.highlighted = false,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+        decoration: BoxDecoration(
+          color: highlighted
+              ? AppColors.primary.withValues(alpha: 0.2)
+              : theme.cardTheme.color ?? theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(16),
+          border: highlighted
+              ? Border.all(color: AppColors.primary, width: 2)
+              : Border.all(color: theme.dividerColor),
+        ),
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyle(
+              color: highlighted
+                  ? AppColors.primary
+                  : theme.textTheme.bodyLarge?.color,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
     );
   }

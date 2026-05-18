@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appName => 'Stain Fix';
+  String get appName => 'AI Stain Fix';
 
   @override
   String get appTagline => 'Smart stain removal by photo';
@@ -37,19 +37,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aiWillHelp =>
-      'The app will identify the type of stain and suggest\nhow to remove it';
+      'AI will identify the type of stain and suggest\nhow to remove it';
 
   @override
   String get analyzing => 'Analyzing stain...';
 
   @override
-  String get analyzingDesc => 'Identifying the type of stain and fabric';
+  String get analyzingDesc => 'AI is identifying the type of stain and fabric';
 
   @override
   String get analysisResult => 'Analysis result';
 
   @override
-  String get aiAnalysis => 'Analysis result';
+  String get aiAnalysis => 'AI Analysis';
 
   @override
   String get stainType => 'Stain type';
@@ -180,7 +180,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Point your camera at the stain for instant analysis';
 
   @override
-  String get onboardingTitle2 => 'Type identification';
+  String get onboardingTitle2 => 'AI identifies the type';
 
   @override
   String get onboardingDesc2 =>
@@ -198,7 +198,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingDesc4 =>
-      'Considers fabric type, stain age, and available products';
+      'AI considers fabric type, stain age, and available products';
 
   @override
   String get errorAnalysis => 'Analysis error';
@@ -283,7 +283,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacySection1Body =>
-      'The Stain Fix application (hereinafter referred to as the \"Application\") is designed to help users remove stains from various types of fabrics. This Privacy Policy describes what data we collect, how we use it, and how we protect it.';
+      'The AI Stain Fix application (hereinafter referred to as the \"Application\") is designed to help users remove stains from various types of fabrics. This Privacy Policy describes what data we collect, how we use it, and how we protect it.';
 
   @override
   String get privacySection2Title => '2. Data We Collect';
@@ -338,7 +338,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsSection1Body =>
-      'This Terms of Service agreement (hereinafter referred to as the \"Agreement\") governs the relationship between the developer of the Stain Fix application (hereinafter referred to as the \"Developer\") and the user (hereinafter referred to as the \"User\"), arising from the use of the Stain Fix mobile application (hereinafter referred to as the \"Application\").';
+      'This Terms of Service agreement (hereinafter referred to as the \"Agreement\") governs the relationship between the developer of the AI Stain Fix application (hereinafter referred to as the \"Developer\") and the user (hereinafter referred to as the \"User\"), arising from the use of the AI Stain Fix mobile application (hereinafter referred to as the \"Application\").';
 
   @override
   String get termsSection2Title => '2. Service Description';

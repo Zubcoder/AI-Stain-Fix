@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI Stain Fix</string>
+    <!-- RuStore Console Application ID — replace with actual value after registration -->
+    <string name="CONSOLE_APPLICATION_ID">0</string>
+</resources>

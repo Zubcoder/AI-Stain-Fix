@@ -25,13 +25,13 @@ void main() async {
   final onboardingDone =
       prefs.getBool(AppConstants.onboardingDonePrefKey) ?? false;
 
-  runApp(StainFixApp(onboardingDone: onboardingDone));
+  runApp(AIStainFixApp(onboardingDone: onboardingDone));
 }
 
-class StainFixApp extends StatelessWidget {
+class AIStainFixApp extends StatelessWidget {
   final bool onboardingDone;
 
-  const StainFixApp({
+  const AIStainFixApp({
     super.key,
     required this.onboardingDone,
   });
@@ -56,9 +56,7 @@ class StainFixApp extends StatelessWidget {
             ),
           );
           return MaterialApp(
-            title: localeProv.locale.languageCode == 'ru'
-                ? AppConstants.appNameRu
-                : AppConstants.appName,
+            title: AppConstants.appName,
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
