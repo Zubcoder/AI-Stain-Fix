@@ -52,19 +52,25 @@
   "minutesAgo": "{count} min ago",
   "@minutesAgo": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "hoursAgo": "{count} h ago",
   "@hoursAgo": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "daysAgo": "{count} d ago",
   "@daysAgo": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "onboardingTitle1": "Photograph the stain",
@@ -81,7 +87,9 @@
   "fabricLabel": "Fabric: {fabric}",
   "@fabricLabel": {
     "placeholders": {
-      "fabric": {"type": "String"}
+      "fabric": {
+        "type": "String"
+      }
     }
   },
   "historyProLock": "History available in PRO",
@@ -96,7 +104,9 @@
   "purchaseTitle": "Purchase: {product}",
   "@purchaseTitle": {
     "placeholders": {
-      "product": {"type": "String"}
+      "product": {
+        "type": "String"
+      }
     }
   },
   "purchaseDesc": "Integration with RuStore Pay will be available after publishing.\n\nIn demo mode, purchases do not charge funds.",
@@ -110,37 +120,48 @@
   "darkTheme": "Dark theme",
   "lightTheme": "Light theme",
   "privacyPolicyTitle": "Privacy Policy",
-  "privacyPolicyLastUpdated": "Last updated: May 13, 2026",
+  "privacyPolicyLastUpdated": "Last updated: May 19, 2026",
   "privacySection1Title": "1. General Provisions",
-  "privacySection1Body": "The Stain Fix application (hereinafter referred to as the \"Application\") is designed to help users remove stains from various types of fabrics. This Privacy Policy describes what data we collect, how we use it, and how we protect it.",
+  "privacySection1Body": "This Privacy Policy is developed in accordance with Federal Law No. 152-FZ dated July 27, 2006 \"On Personal Data\".\nData Controller: IE Zubkov S.V. (hereinafter — the Developer).\nApplication: \"Stain Fix\" (hereinafter — the Application).",
   "privacySection2Title": "2. Data We Collect",
-  "privacySection2Body": "• Stain photos — used exclusively for analyzing the type of contamination and generating removal instructions.\n\n• Technical device information — OS version, device model, interface language (to improve service quality).\n\n• Purchase data — information about acquired packages and subscriptions (processed by the RuStore payment system).",
-  "privacySection3Title": "3. Photo Processing",
-  "privacySection3Body": "Photos are transmitted to a secure server for image analysis and instruction generation.\n\nPhotos are not stored on the server after processing and are not shared with third parties. Images are used exclusively for generating stain removal recommendations.",
-  "privacySection4Title": "4. Data Storage",
-  "privacySection4Body": "Analysis history is stored locally on your device. We do not have access to your local history.\n\nThe proxy server does not keep request logs and does not store uploaded images.",
-  "privacySection5Title": "5. Security",
-  "privacySection5Body": "All data is transmitted via the secure HTTPS protocol. We take reasonable measures to protect your information from unauthorized access.",
-  "privacySection6Title": "6. User Rights",
-  "privacySection6Body": "You can at any time:\n• Delete analysis history on your device\n• Delete the application and all associated data\n• Contact us with questions about your data",
-  "privacySection7Title": "7. Contact",
-  "privacySection7Body": "For privacy inquiries, contact:\nai.stain.fix.app@gmail.com",
+  "privacySection2Body": "The Application may collect the following data:\n\n• Photos and images — only those you voluntarily upload for analysis. Photos are processed on secure cloud servers and are NOT stored after processing.\n• Local data — analysis history. Stored ONLY on your device.\n• App settings (language, theme) — stored locally on the device.\n\nThe Application does NOT collect: full name, address, phone, email, geolocation, payment card data, advertising identifiers.",
+  "privacySection3Title": "3. Purpose of Data Processing",
+  "privacySection3Body": "Data is processed exclusively for:\n\n• Recognizing stain type and fabric from photographs\n• Generating stain removal recommendations\n• Maintaining analysis history on the user's device\n• Improving the quality of the application",
+  "privacySection4Title": "4. Data Storage and Protection",
+  "privacySection4Body": "• All data is stored exclusively on the user's device in a local database.\n• Photos are transmitted via an encrypted channel (HTTPS/TLS).\n• Photos are processed in server memory and are not written to disk.\n• The Developer has no access to user's local data.",
+  "privacySection5Title": "5. Third-Party Data Sharing",
+  "privacySection5Body": "Photos are sent to secure cloud servers exclusively for processing and recognition.\n\n• Data is not stored on third-party servers after processing.\n• The Developer does not transfer, sell, or share user data with third parties.\n• Anonymized statistics may be used to improve the service.",
+  "privacySection6Title": "6. User Rights (Art. 14 No. 152-FZ)",
+  "privacySection6Body": "In accordance with Federal Law No. 152-FZ \"On Personal Data\" you have the right to:\n\n• Obtain information about the processing of your data\n• Request deletion of your data\n• Withdraw consent for data processing\n\nTo delete all data, simply delete the application or clear app data in device settings.",
+  "privacySection7Title": "7. Cookies and Analytics",
+  "privacySection7Body": "The Application does not use cookies or advertising trackers. The Application does not require registration.",
   "termsTitle": "Terms of Service",
-  "termsLastUpdated": "Last updated: May 13, 2026",
-  "termsSection1Title": "1. Subject of Agreement",
-  "termsSection1Body": "This Terms of Service agreement (hereinafter referred to as the \"Agreement\") governs the relationship between the developer of the Stain Fix application (hereinafter referred to as the \"Developer\") and the user (hereinafter referred to as the \"User\"), arising from the use of the Stain Fix mobile application (hereinafter referred to as the \"Application\").",
+  "termsLastUpdated": "Last updated: May 19, 2026",
+  "termsSection1Title": "1. General Provisions",
+  "termsSection1Body": "These Terms of Service (hereinafter — the \"Agreement\") govern the use of the mobile application \"Stain Fix\" (hereinafter — the \"Application\"), developed by IE Zubkov S.V. (hereinafter — the \"Developer\").\nBy using the Application, you confirm your agreement with the terms of this Agreement. If you disagree — stop using the Application.",
   "termsSection2Title": "2. Service Description",
-  "termsSection2Body": "The Application provides a service for analyzing photos of stains using image recognition technologies and generating removal recommendations. Recommendations are for informational purposes only.",
-  "termsSection3Title": "3. Terms of Use",
-  "termsSection3Body": "• The User agrees to use the Application only for lawful purposes.\n\n• The free plan includes 3 analyses per day.\n\n• Additional analyses are available through purchasing packages or subscribing to PRO.\n\n• The User is responsible for the quality of provided photos.",
+  "termsSection2Body": "The Application provides the following features:\n\n• Photo analysis of stains to determine contamination type\n• Generation of stain removal recommendations for various fabric types\n• Analysis history management",
+  "termsSection3Title": "3. Professional Disclaimer",
+  "termsSection3Body": "IMPORTANT: The Application provides reference information only. Recommendations are informational in nature.\n\n• The Developer is not responsible for damage to fabric or items when following recommendations\n• Before applying any product, it is recommended to test it on an inconspicuous area of fabric\n• The Application does NOT replace professional dry cleaning",
   "termsSection4Title": "4. Limitation of Liability",
-  "termsSection4Body": "Recommendations provided by the Application are for informational purposes only. The Developer is not responsible for:\n\n• Damage to fabric or items when following recommendations\n• Allergic reactions to recommended products\n• Inaccuracy in determining the type of stain or fabric\n• Service interruptions due to technical reasons\n\nBefore applying any product, it is recommended to test it on an inconspicuous area of the fabric.",
-  "termsSection5Title": "5. Paid Services",
-  "termsSection5Body": "Payment is processed through the RuStore payment system. Refund conditions are determined by RuStore rules.\n\nPRO subscription renews automatically unless canceled 24 hours before the end of the current period.",
+  "termsSection4Body": "• Analysis results are advisory and NOT expert opinions.\n• The Developer is NOT responsible for decisions made based on the Application's results.\n• The Developer does NOT guarantee 100% recognition and analysis accuracy.\n• The Developer is NOT responsible for losses arising from the use or inability to use the Application.\n• The Developer is NOT responsible for service interruptions caused by technical reasons, third-party actions, or force majeure.\n• The Developer's maximum liability is limited to the amount paid by the user in the last 12 months.",
+  "termsSection5Title": "5. Subscriptions, Payments and Refunds",
+  "termsSection5Body": "• Some features are available via subscription or analysis package purchases.\n• Payment is processed through RuStore.\n• Refunds are provided in accordance with RuStore policy and applicable Russian law (Art. 32 of the Consumer Protection Law).\n• Subscription renews automatically unless cancelled 24 hours before the current period ends.\n• To cancel, go to RuStore settings → Subscriptions.",
   "termsSection6Title": "6. Intellectual Property",
-  "termsSection6Body": "All rights to the Application, its design, code, and content belong to the Developer. The User is granted a non-exclusive license to use the Application for personal non-commercial purposes.",
-  "termsSection7Title": "7. Changes to Terms",
-  "termsSection7Body": "The Developer reserves the right to change the terms of this Agreement. The current version is always available in the \"Settings\" section of the Application.",
-  "termsSection8Title": "8. Contact",
-  "termsSection8Body": "For questions related to this Agreement:\nai.stain.fix.app@gmail.com"
+  "termsSection6Body": "• All rights to the Application, including design, code, logos, texts and graphics, belong to the Developer.\n• The user is granted a limited, non-exclusive, non-transferable license to use the Application.\n• Prohibited: copying, decompilation, reverse engineering (studying a finished mobile application and its documentation to understand how it works), distribution of the Application or its parts.\n• The user retains rights to uploaded photos. Analysis results are provided for personal use.",
+  "termsSection7Title": "7. User Rights and Obligations",
+  "termsSection7Body": "• The user agrees to use the Application in accordance with the laws of the Russian Federation.\n• Use of the Application for illegal purposes is prohibited.\n• The user is responsible for the content of uploaded images.\n• The user may stop using the Application at any time by deleting it from the device.",
+  "termsSection8Title": "8. Age Restrictions",
+  "termsSection8Body": "The Application is intended for persons aged 12+.",
+  "privacyLastUpdated": "Last updated: May 19, 2026",
+  "privacySection8Title": "8. Age Restrictions",
+  "privacySection8Body": "The Application is intended for persons aged 12+.",
+  "privacySection9Title": "9. Policy Changes",
+  "privacySection9Body": "The Developer reserves the right to update this Policy. The current version is always available in the application and at: https://zubcoder.github.io/AI-Stain-Fix/privacy-policy.html",
+  "privacySection10Title": "10. Contact",
+  "privacySection10Body": "For questions regarding personal data processing: ai.stain.fix.app@gmail.com",
+  "termsSection9Title": "9. Governing Law and Dispute Resolution",
+  "termsSection9Body": "• This Agreement is governed by the laws of the Russian Federation.\n• Disputes shall be resolved through negotiation, and if no agreement is reached — in court at the Developer's location.\n• The Developer may unilaterally amend the terms of this Agreement by notifying users through an Application update.",
+  "termsSection10Title": "10. Contact",
+  "termsSection10Body": "For questions related to this Agreement: ai.stain.fix.app@gmail.com"
 }
