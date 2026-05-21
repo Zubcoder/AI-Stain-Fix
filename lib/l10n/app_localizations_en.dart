@@ -438,4 +438,49 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get termsSection10Body =>
       'For questions related to this Agreement: ai.stain.fix.app@gmail.com';
+
+  @override
+  String get fabricInspectorButton => 'Fabric Inspector';
+
+  @override
+  String get fabricFromGallery => 'Fabric from gallery';
+
+  @override
+  String get fabricInspectorTitle => 'Fabric Inspector';
+
+  @override
+  String get fabricDensity => 'Density';
+
+  @override
+  String get fabricConfidence => 'Confidence';
+
+  @override
+  String get fabricCareTitle => 'Care Instructions';
+
+  @override
+  String get fabricWashing => 'Washing';
+
+  @override
+  String get fabricDetergent => 'Detergent';
+
+  @override
+  String get fabricDrying => 'Drying';
+
+  @override
+  String get fabricIroning => 'Ironing';
+
+  @override
+  String get fabricForbidden => 'Forbidden';
+
+  @override
+  String get fabricMachineYes => 'Machine washable';
+
+  @override
+  String get fabricLabelSymbols => 'Care Label Symbols';
+
+  @override
+  String get fabricStainTip => 'Stain removal tip';
+
+  @override
+  String get analyzingFabric => 'Identifying fabric...';
 }

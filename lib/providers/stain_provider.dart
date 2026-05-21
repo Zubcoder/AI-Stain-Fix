@@ -1,21 +1,24 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../models/fabric_result.dart';
 import '../models/stain_result.dart';
 import '../services/ai_service.dart';
 import '../utils/constants.dart';
 import '../utils/helpers.dart';
 
-enum AnalysisState { idle, analyzing, done, error }
+enum AnalysisState { idle, analyzing, analyzingFabric, done, doneFabric, error }
 
 class StainProvider extends ChangeNotifier {
   AnalysisState _state = AnalysisState.idle;
   StainResult? _result;
+  FabricResult? _fabricResult;
   String? _error;
   final List<StainResult> _history = [];
 
   AnalysisState get state => _state;
   StainResult? get result => _result;
+  FabricResult? get fabricResult => _fabricResult;
   String? get error => _error;
   List<StainResult> get history => List.unmodifiable(_history);
 
@@ -46,9 +49,42 @@ class StainProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> inspectFabric(Uint8List imageBytes, {String language = 'ru'}) async {
+    _state = AnalysisState.analyzingFabric;
+    _error = null;
+    _fabricResult = null;
+    notifyListeners();
+
+    try {
+      final base64 = encodeImageToBase64(imageBytes);
+      _fabricResult = await AiService.inspectFabric(
+        imageBase64: base64,
+        language: language,
+      );
+
+      if (_fabricResult!.isError) {
+        _error = _fabricResult!.error;
+        _fabricResult = null;
+        _state = AnalysisState.error;
+      } else {
+        _state = AnalysisState.doneFabric;
+        await _incrementScanCount();
+      }
+    } on AiServiceException catch (e) {
+      _error = e.message;
+      _state = AnalysisState.error;
+    } catch (e) {
+      _error = 'Произошла ошибка. Попробуйте ещё раз.';
+      _state = AnalysisState.error;
+    }
+
+    notifyListeners();
+  }
+
   void reset() {
     _state = AnalysisState.idle;
     _result = null;
+    _fabricResult = null;
     _error = null;
     notifyListeners();
   }

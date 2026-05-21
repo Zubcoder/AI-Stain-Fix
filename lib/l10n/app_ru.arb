@@ -165,5 +165,21 @@
   "termsSection9Title": "9. Применимое право и разрешение споров",
   "termsSection9Body": "• Настоящее Соглашение регулируется законодательством Российской Федерации.\n• Споры разрешаются путём переговоров, а при недостижении согласия — в суде по месту нахождения Разработчика.\n• Разработчик вправе в одностороннем порядке изменять условия настоящего Соглашения, уведомив пользователей через обновление Приложения.",
   "termsSection10Title": "10. Контакты",
-  "termsSection10Body": "По вопросам, связанным с настоящим Соглашением: ai.stain.fix.app@gmail.com"
+  "termsSection10Body": "По вопросам, связанным с настоящим Соглашением: ai.stain.fix.app@gmail.com",
+
+  "fabricInspectorButton": "Инспектор ткани",
+  "fabricFromGallery": "Ткань из галереи",
+  "fabricInspectorTitle": "Инспектор ткани",
+  "fabricDensity": "Плотность",
+  "fabricConfidence": "Уверенность",
+  "fabricCareTitle": "Рекомендации по уходу",
+  "fabricWashing": "Стирка",
+  "fabricDetergent": "Средство",
+  "fabricDrying": "Сушка",
+  "fabricIroning": "Глажка",
+  "fabricForbidden": "Запрещено",
+  "fabricMachineYes": "Можно в машинке",
+  "fabricLabelSymbols": "Символы на ярлыке",
+  "fabricStainTip": "Совет по пятнам",
+  "analyzingFabric": "Определяем ткань..."
 }
