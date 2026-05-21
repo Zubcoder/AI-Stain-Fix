@@ -1,0 +1,47 @@
+name: Flutter CI
+
+on:
+  push:
+    branches: [ main, master, 'devin/**', 'initial-setup' ]
+  pull_request:
+
+jobs:
+  analyze:
+    name: Analyze & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for Flutter project
+        id: check
+        run: |
+          if [ -f "pubspec.yaml" ]; then
+            echo "is_flutter=true" >> $GITHUB_OUTPUT
+          else
+            echo "is_flutter=false" >> $GITHUB_OUTPUT
+            echo "No pubspec.yaml found — skipping Flutter checks."
+          fi
+
+      - uses: subosito/flutter-action@v2
+        if: steps.check.outputs.is_flutter == 'true'
+        with:
+          flutter-version: '3.44.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        if: steps.check.outputs.is_flutter == 'true'
+        run: flutter pub get
+
+      - name: Generate l10n
+        if: steps.check.outputs.is_flutter == 'true'
+        run: flutter gen-l10n
+
+      - name: Analyze
+        if: steps.check.outputs.is_flutter == 'true'
+        run: flutter analyze --no-fatal-infos
+
+      - name: Run tests
+        if: steps.check.outputs.is_flutter == 'true' && hashFiles('test/**') != ''
+        run: flutter test --no-pub
