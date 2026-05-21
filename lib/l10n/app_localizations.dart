@@ -302,6 +302,18 @@ abstract class AppLocalizations {
   /// **'Оценить в RuStore'**
   String get rateInRustore;
 
+  /// No description provided for @shareApp.
+  ///
+  /// In ru, this message translates to:
+  /// **'Поделиться приложением'**
+  String get shareApp;
+
+  /// No description provided for @shareAppText.
+  ///
+  /// In ru, this message translates to:
+  /// **'Попробуй Пятновыводитель — определяет как вывести пятна по фото! https://apps.rustore.ru/app/com.zubcoder.ai_stain_fix'**
+  String get shareAppText;
+
   /// No description provided for @privacyPolicy.
   ///
   /// In ru, this message translates to:
@@ -527,13 +539,13 @@ abstract class AppLocalizations {
   /// No description provided for @proMonthly.
   ///
   /// In ru, this message translates to:
-  /// **'149 ₽/мес'**
+  /// **'79 ₽/мес'**
   String get proMonthly;
 
   /// No description provided for @proYearly.
   ///
   /// In ru, this message translates to:
-  /// **'1 190 ₽/год'**
+  /// **'590 ₽/год'**
   String get proYearly;
 
   /// No description provided for @purchaseTitle.
@@ -611,7 +623,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyPolicyLastUpdated.
   ///
   /// In ru, this message translates to:
-  /// **'Последнее обновление: 13 мая 2026'**
+  /// **'Последнее обновление: 19 мая 2026 г.'**
   String get privacyPolicyLastUpdated;
 
   /// No description provided for @privacySection1Title.
@@ -623,7 +635,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacySection1Body.
   ///
   /// In ru, this message translates to:
-  /// **'Приложение «Пятновыводитель» (далее — «Приложение») разработано для помощи пользователям в удалении пятен с различных типов тканей. Настоящая Политика конфиденциальности описывает, какие данные мы собираем, как мы их используем и защищаем.'**
+  /// **'Настоящая Политика конфиденциальности разработана в соответствии с Федеральным законом от 27.07.2006 №152-ФЗ «О персональных данных».\nОператор персональных данных: ИП Зубков С.В. (далее — Разработчик).\nПриложение: «Пятновыводитель» (далее — Приложение).'**
   String get privacySection1Body;
 
   /// No description provided for @privacySection2Title.
@@ -635,67 +647,67 @@ abstract class AppLocalizations {
   /// No description provided for @privacySection2Body.
   ///
   /// In ru, this message translates to:
-  /// **'• Фотографии пятен — используются исключительно для анализа типа загрязнения и генерации инструкций по удалению.\n\n• Техническая информация об устройстве — версия ОС, модель устройства, язык интерфейса (для улучшения качества работы).\n\n• Данные о покупках — информация о приобретённых пакетах и подписках (обрабатывается платёжной системой RuStore).'**
+  /// **'Приложение может собирать следующие данные:\n\n• Фотографии и изображения — только те, что вы добровольно загружаете для анализа. Фотографии обрабатываются на защищённых облачных серверах и НЕ сохраняются после обработки.\n• Локальные данные — история анализов. Хранятся ТОЛЬКО на вашем устройстве.\n• Настройки приложения (язык, тема оформления) — хранятся локально на устройстве.\n\nПриложение НЕ собирает: ФИО, адрес, телефон, email, геолокацию, данные банковских карт, рекламные идентификаторы.'**
   String get privacySection2Body;
 
   /// No description provided for @privacySection3Title.
   ///
   /// In ru, this message translates to:
-  /// **'3. Обработка фотографий'**
+  /// **'3. Цели обработки данных'**
   String get privacySection3Title;
 
   /// No description provided for @privacySection3Body.
   ///
   /// In ru, this message translates to:
-  /// **'Фотографии передаются на защищённый сервер для анализа изображений и генерации инструкций.\n\nФотографии не сохраняются на сервере после обработки и не передаются третьим лицам. Изображения используются исключительно для генерации рекомендаций по удалению пятен.'**
+  /// **'Обработка данных осуществляется исключительно для:\n\n• Распознавания типа пятна и ткани по фотографии\n• Генерации рекомендаций по удалению пятен\n• Ведения истории анализов на устройстве пользователя\n• Улучшения качества работы приложения'**
   String get privacySection3Body;
 
   /// No description provided for @privacySection4Title.
   ///
   /// In ru, this message translates to:
-  /// **'4. Хранение данных'**
+  /// **'4. Хранение и защита данных'**
   String get privacySection4Title;
 
   /// No description provided for @privacySection4Body.
   ///
   /// In ru, this message translates to:
-  /// **'История анализов хранится локально на вашем устройстве. Мы не имеем доступа к вашей локальной истории.\n\nСервер-прокси не ведёт журнал запросов и не сохраняет отправленные изображения.'**
+  /// **'• Все данные хранятся исключительно на устройстве пользователя в локальной базе данных.\n• Передача фотографий осуществляется по зашифрованному каналу (HTTPS/TLS).\n• Фотографии обрабатываются в оперативной памяти сервера и не записываются на диск.\n• Разработчик не имеет доступа к локальным данным пользователя.'**
   String get privacySection4Body;
 
   /// No description provided for @privacySection5Title.
   ///
   /// In ru, this message translates to:
-  /// **'5. Безопасность'**
+  /// **'5. Передача данных третьим лицам'**
   String get privacySection5Title;
 
   /// No description provided for @privacySection5Body.
   ///
   /// In ru, this message translates to:
-  /// **'Все данные передаются по защищённому протоколу HTTPS. Мы принимаем разумные меры для защиты вашей информации от несанкционированного доступа.'**
+  /// **'Фотографии передаются на защищённые облачные серверы исключительно для обработки и распознавания.\n\n• Данные не сохраняются на сторонних серверах после обработки.\n• Разработчик не передаёт, не продаёт и не предоставляет данные пользователей третьим лицам.\n• Обезличенная статистика может использоваться для улучшения сервиса.'**
   String get privacySection5Body;
 
   /// No description provided for @privacySection6Title.
   ///
   /// In ru, this message translates to:
-  /// **'6. Права пользователя'**
+  /// **'6. Права пользователя (ст. 14 №152-ФЗ)'**
   String get privacySection6Title;
 
   /// No description provided for @privacySection6Body.
   ///
   /// In ru, this message translates to:
-  /// **'Вы можете в любое время:\n• Удалить историю анализов на устройстве\n• Удалить приложение и все связанные данные\n• Обратиться к нам с вопросами о ваших данных'**
+  /// **'В соответствии с Федеральным законом №152-ФЗ «О персональных данных» вы имеете право:\n\n• Получить информацию об обработке ваших данных\n• Потребовать удаления ваших данных\n• Отозвать согласие на обработку данных\n\nДля удаления всех данных достаточно удалить приложение или очистить данные приложения в настройках устройства.'**
   String get privacySection6Body;
 
   /// No description provided for @privacySection7Title.
   ///
   /// In ru, this message translates to:
-  /// **'7. Контакты'**
+  /// **'7. Файлы cookie и аналитика'**
   String get privacySection7Title;
 
   /// No description provided for @privacySection7Body.
   ///
   /// In ru, this message translates to:
-  /// **'По вопросам конфиденциальности обращайтесь:\nai.stain.fix.app@gmail.com'**
+  /// **'Приложение не использует файлы cookie и рекламные трекеры. Приложение не требует регистрации.'**
   String get privacySection7Body;
 
   /// No description provided for @termsTitle.
@@ -707,43 +719,43 @@ abstract class AppLocalizations {
   /// No description provided for @termsLastUpdated.
   ///
   /// In ru, this message translates to:
-  /// **'Последнее обновление: 13 мая 2026'**
+  /// **'Последнее обновление: 19 мая 2026 г.'**
   String get termsLastUpdated;
 
   /// No description provided for @termsSection1Title.
   ///
   /// In ru, this message translates to:
-  /// **'1. Предмет соглашения'**
+  /// **'1. Общие положения'**
   String get termsSection1Title;
 
   /// No description provided for @termsSection1Body.
   ///
   /// In ru, this message translates to:
-  /// **'Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между разработчиком приложения «Пятновыводитель» (далее — «Разработчик») и пользователем (далее — «Пользователь»), возникающие при использовании мобильного приложения «Пятновыводитель» (далее — «Приложение»).'**
+  /// **'Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует использование мобильного приложения «Пятновыводитель» (далее — «Приложение»), разработанного ИП Зубков С.В. (далее — «Разработчик»).\nИспользуя Приложение, вы подтверждаете согласие с условиями настоящего Соглашения. Если вы не согласны — прекратите использование Приложения.'**
   String get termsSection1Body;
 
   /// No description provided for @termsSection2Title.
   ///
   /// In ru, this message translates to:
-  /// **'2. Описание услуги'**
+  /// **'2. Описание сервиса'**
   String get termsSection2Title;
 
   /// No description provided for @termsSection2Body.
   ///
   /// In ru, this message translates to:
-  /// **'Приложение предоставляет услугу анализа фотографий пятен с использованием технологий распознавания изображений и генерации рекомендаций по их удалению. Рекомендации носят информационный характер.'**
+  /// **'Приложение предоставляет следующие функции:\n\n• Анализ фотографий пятен для определения типа загрязнения\n• Генерация рекомендаций по удалению пятен с различных типов тканей\n• Ведение истории анализов'**
   String get termsSection2Body;
 
   /// No description provided for @termsSection3Title.
   ///
   /// In ru, this message translates to:
-  /// **'3. Условия использования'**
+  /// **'3. Профессиональный дисклеймер'**
   String get termsSection3Title;
 
   /// No description provided for @termsSection3Body.
   ///
   /// In ru, this message translates to:
-  /// **'• Пользователь обязуется использовать Приложение только в законных целях.\n\n• Бесплатный план включает 3 анализа в день.\n\n• Дополнительные анализы доступны через покупку пакетов или оформление PRO-подписки.\n\n• Пользователь несёт ответственность за качество предоставленных фотографий.'**
+  /// **'ВАЖНО: Приложение предоставляет исключительно справочную информацию. Рекомендации носят информационный характер.\n\n• Разработчик не несёт ответственности за повреждение ткани или вещей при следовании рекомендациям\n• Перед применением любого средства рекомендуется протестировать его на незаметном участке ткани\n• Приложение НЕ заменяет профессиональную химчистку'**
   String get termsSection3Body;
 
   /// No description provided for @termsSection4Title.
@@ -755,19 +767,19 @@ abstract class AppLocalizations {
   /// No description provided for @termsSection4Body.
   ///
   /// In ru, this message translates to:
-  /// **'Рекомендации, предоставленные Приложением, носят информационный характер. Разработчик не несёт ответственности за:\n\n• Повреждение ткани или вещей при следовании рекомендациям\n• Аллергические реакции на рекомендованные средства\n• Неточность определения типа пятна или ткани\n• Перебои в работе сервиса по техническим причинам\n\nПеред применением любого средства рекомендуется протестировать его на незаметном участке ткани.'**
+  /// **'• Результаты анализа носят рекомендательный характер и НЕ являются экспертным заключением.\n• Разработчик НЕ несёт ответственности за решения, принятые на основании результатов работы Приложения.\n• Разработчик НЕ гарантирует 100% точность распознавания и анализа.\n• Разработчик НЕ несёт ответственности за убытки, возникшие в результате использования или невозможности использования Приложения.\n• Разработчик НЕ несёт ответственности за перебои в работе, вызванные техническими причинами, действиями третьих лиц или обстоятельствами непреодолимой силы.\n• Максимальная ответственность разработчика ограничена суммой, уплаченной пользователем за последние 12 месяцев.'**
   String get termsSection4Body;
 
   /// No description provided for @termsSection5Title.
   ///
   /// In ru, this message translates to:
-  /// **'5. Платные услуги'**
+  /// **'5. Подписки, платежи и возврат средств'**
   String get termsSection5Title;
 
   /// No description provided for @termsSection5Body.
   ///
   /// In ru, this message translates to:
-  /// **'Оплата производится через платёжную систему RuStore. Условия возврата средств определяются правилами RuStore.\n\nPRO-подписка продлевается автоматически, если не отменена за 24 часа до окончания текущего периода.'**
+  /// **'• Часть функций доступна по подписке или через покупку пакетов анализов.\n• Оплата производится через RuStore.\n• Возврат средств осуществляется в соответствии с политикой RuStore и действующим законодательством РФ (ст. 32 Закона «О защите прав потребителей»).\n• Подписка продлевается автоматически, если не отменена за 24 часа до окончания текущего периода.\n• Для отмены подписки перейдите в настройки RuStore → Подписки.'**
   String get termsSection5Body;
 
   /// No description provided for @termsSection6Title.
@@ -779,32 +791,98 @@ abstract class AppLocalizations {
   /// No description provided for @termsSection6Body.
   ///
   /// In ru, this message translates to:
-  /// **'Все права на Приложение, его дизайн, код и контент принадлежат Разработчику. Пользователю предоставляется неисключительная лицензия на использование Приложения в личных некоммерческих целях.'**
+  /// **'• Все права на Приложение, включая дизайн, код, логотипы, тексты и графику, принадлежат Разработчику.\n• Пользователю предоставляется ограниченная, неисключительная, непередаваемая лицензия на использование Приложения.\n• Запрещается: копирование, декомпиляция, обратная разработка (исследование готового мобильного приложения, а также документации на него с целью понять принцип работы), распространение Приложения или его частей.\n• Пользователь сохраняет права на загруженные им фотографии. Результаты анализа предоставляются для личного использования.'**
   String get termsSection6Body;
 
   /// No description provided for @termsSection7Title.
   ///
   /// In ru, this message translates to:
-  /// **'7. Изменение условий'**
+  /// **'7. Права и обязанности пользователя'**
   String get termsSection7Title;
 
   /// No description provided for @termsSection7Body.
   ///
   /// In ru, this message translates to:
-  /// **'Разработчик оставляет за собой право изменять условия настоящего Соглашения. Актуальная версия всегда доступна в разделе «Настройки» Приложения.'**
+  /// **'• Пользователь обязуется использовать Приложение в соответствии с законодательством Российской Федерации.\n• Запрещается использование Приложения для незаконных целей.\n• Пользователь несёт ответственность за содержимое загружаемых изображений.\n• Пользователь может прекратить использование Приложения в любой момент, удалив его с устройства.'**
   String get termsSection7Body;
 
   /// No description provided for @termsSection8Title.
   ///
   /// In ru, this message translates to:
-  /// **'8. Контакты'**
+  /// **'8. Возрастные ограничения'**
   String get termsSection8Title;
 
   /// No description provided for @termsSection8Body.
   ///
   /// In ru, this message translates to:
-  /// **'По вопросам, связанным с настоящим Соглашением:\nai.stain.fix.app@gmail.com'**
+  /// **'Приложение предназначено для лиц старше 12+ лет.'**
   String get termsSection8Body;
+
+  /// No description provided for @privacyLastUpdated.
+  ///
+  /// In ru, this message translates to:
+  /// **'Последнее обновление: 19 мая 2026 г.'**
+  String get privacyLastUpdated;
+
+  /// No description provided for @privacySection8Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'8. Возрастные ограничения'**
+  String get privacySection8Title;
+
+  /// No description provided for @privacySection8Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Приложение предназначено для лиц старше 12+ лет.'**
+  String get privacySection8Body;
+
+  /// No description provided for @privacySection9Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'9. Изменения политики'**
+  String get privacySection9Title;
+
+  /// No description provided for @privacySection9Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'Разработчик оставляет за собой право обновлять настоящую Политику. Актуальная версия всегда доступна в приложении и по адресу: https://zubcoder.github.io/AI-Stain-Fix/privacy-policy.html'**
+  String get privacySection9Body;
+
+  /// No description provided for @privacySection10Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'10. Контакты'**
+  String get privacySection10Title;
+
+  /// No description provided for @privacySection10Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'По вопросам обработки персональных данных: ai.stain.fix.app@gmail.com'**
+  String get privacySection10Body;
+
+  /// No description provided for @termsSection9Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'9. Применимое право и разрешение споров'**
+  String get termsSection9Title;
+
+  /// No description provided for @termsSection9Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'• Настоящее Соглашение регулируется законодательством Российской Федерации.\n• Споры разрешаются путём переговоров, а при недостижении согласия — в суде по месту нахождения Разработчика.\n• Разработчик вправе в одностороннем порядке изменять условия настоящего Соглашения, уведомив пользователей через обновление Приложения.'**
+  String get termsSection9Body;
+
+  /// No description provided for @termsSection10Title.
+  ///
+  /// In ru, this message translates to:
+  /// **'10. Контакты'**
+  String get termsSection10Title;
+
+  /// No description provided for @termsSection10Body.
+  ///
+  /// In ru, this message translates to:
+  /// **'По вопросам, связанным с настоящим Соглашением: ai.stain.fix.app@gmail.com'**
+  String get termsSection10Body;
 }
 
 class _AppLocalizationsDelegate
