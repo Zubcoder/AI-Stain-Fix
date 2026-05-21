@@ -1,6 +1,5 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -55,6 +54,7 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   Future<void> _analyzeImage(Uint8List bytes) async {
+    HapticFeedback.mediumImpact();
     final provider = context.read<StainProvider>();
     final lang = context.read<LocaleProvider>().locale.languageCode;
     await provider.analyzeStain(bytes, language: lang);

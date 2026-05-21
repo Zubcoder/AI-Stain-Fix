@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:share_plus/share_plus.dart' show Share;
 
 import '../l10n/app_localizations.dart';
 import '../providers/locale_provider.dart';
@@ -74,6 +75,11 @@ class SettingsScreen extends StatelessWidget {
               icon: Icons.star_outline,
               title: l10n.rateInRustore,
               onTap: () => _launchRuStore(),
+            ),
+            _SettingsTile(
+              icon: Icons.share_rounded,
+              title: l10n.shareApp,
+              onTap: () => Share.share(l10n.shareAppText),
             ),
             _SettingsTile(
               icon: Icons.privacy_tip_outlined,

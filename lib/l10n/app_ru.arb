@@ -34,6 +34,8 @@
   "howToUse": "Как пользоваться",
   "support": "Поддержка",
   "rateInRustore": "Оценить в RuStore",
+  "shareApp": "Поделиться приложением",
+  "shareAppText": "Попробуй Пятновыводитель — определяет как вывести пятна по фото! https://apps.rustore.ru/app/com.zubcoder.ai_stain_fix",
   "privacyPolicy": "Политика конфиденциальности",
   "termsOfService": "Пользовательское соглашение",
   "version": "Версия",
@@ -99,8 +101,8 @@
   "proFeature2": "Доступ к истории анализов",
   "proFeature3": "Приоритетная обработка",
   "proFeature4": "Поддержка новых типов тканей",
-  "proMonthly": "149 ₽/мес",
-  "proYearly": "1 190 ₽/год",
+  "proMonthly": "79 ₽/мес",
+  "proYearly": "590 ₽/год",
   "purchaseTitle": "Покупка: {product}",
   "@purchaseTitle": {
     "placeholders": {

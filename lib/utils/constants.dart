@@ -28,7 +28,7 @@ class AppConstants {
   static const String languagePrefKey = 'language';
   static const String themePrefKey = 'theme_mode';
 
-  static const int freeScansPerDay = 3;
+  static const int freeScansPerDay = 5;
   static const String scanCountPrefKey = 'scan_count';
   static const String scanDatePrefKey = 'scan_date';
 

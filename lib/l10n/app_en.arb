@@ -34,6 +34,8 @@
   "howToUse": "How to use",
   "support": "Support",
   "rateInRustore": "Rate in RuStore",
+  "shareApp": "Share app",
+  "shareAppText": "Try Stain Fix — identifies how to remove stains from photos! https://apps.rustore.ru/app/com.zubcoder.ai_stain_fix",
   "privacyPolicy": "Privacy policy",
   "termsOfService": "Terms of service",
   "version": "Version",
@@ -99,8 +101,8 @@
   "proFeature2": "Access to analysis history",
   "proFeature3": "Priority processing",
   "proFeature4": "Support for new fabric types",
-  "proMonthly": "149 ₽/mo",
-  "proYearly": "1,190 ₽/yr",
+  "proMonthly": "79 ₽/mo",
+  "proYearly": "590 ₽/yr",
   "purchaseTitle": "Purchase: {product}",
   "@purchaseTitle": {
     "placeholders": {
