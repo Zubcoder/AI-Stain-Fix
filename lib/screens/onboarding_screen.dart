@@ -31,12 +31,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         description: l10n.onboardingDesc2,
       ),
       _OnboardingSlide(
-        icon: Icons.checklist_outlined,
+        icon: Icons.checkroom_rounded,
         title: l10n.onboardingTitle3,
         description: l10n.onboardingDesc3,
       ),
       _OnboardingSlide(
-        icon: Icons.psychology_outlined,
+        icon: Icons.checklist_outlined,
         title: l10n.onboardingTitle4,
         description: l10n.onboardingDesc4,
       ),
