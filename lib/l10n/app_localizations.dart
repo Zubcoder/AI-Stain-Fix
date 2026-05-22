@@ -257,7 +257,7 @@ abstract class AppLocalizations {
   /// No description provided for @freePlanDesc.
   ///
   /// In ru, this message translates to:
-  /// **'3 бесплатных анализа каждый день'**
+  /// **'5 бесплатных анализов каждый день'**
   String get freePlanDesc;
 
   /// No description provided for @unlimited.

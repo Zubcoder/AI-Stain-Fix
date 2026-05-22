@@ -88,7 +88,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get freePlan => 'Бесплатный план';
 
   @override
-  String get freePlanDesc => '3 бесплатных анализа каждый день';
+  String get freePlanDesc => '5 бесплатных анализов каждый день';
 
   @override
   String get unlimited => 'Безлимитные анализы каждый день';
