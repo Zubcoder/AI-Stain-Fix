@@ -106,6 +106,7 @@ class SubscriptionScreen extends StatelessWidget {
   Widget _buildFeatures(AppLocalizations l10n, ThemeData theme) {
     final features = [
       l10n.proFeature1,
+      l10n.proFeatureFabric,
       l10n.proFeature2,
       l10n.proFeature3,
       l10n.proFeature4,

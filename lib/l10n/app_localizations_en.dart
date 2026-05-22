@@ -193,18 +193,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboardingDesc2 => 'Smart recognition of stain type and fabric';
 
   @override
-  String get onboardingTitle3 => 'Get instructions';
+  String get onboardingTitle3 => 'Fabric Inspector';
 
   @override
-  String get onboardingDesc3 =>
-      'Step-by-step removal recipe with available products';
+  String get onboardingDesc3 => 'Photo fabric — type, label decoding, care';
 
   @override
-  String get onboardingTitle4 => 'Smart assistant';
+  String get onboardingTitle4 => 'Step-by-step recipe';
 
   @override
-  String get onboardingDesc4 =>
-      'Considers fabric type, stain age, and available products';
+  String get onboardingDesc4 => 'Instructions considering fabric and products';
 
   @override
   String get errorAnalysis => 'Analysis error';
@@ -241,6 +239,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proFeature4 => 'Support for new fabric types';
+
+  @override
+  String get proFeatureFabric => 'Fabric Inspector — type + labels';
 
   @override
   String get proMonthly => '79 ₽/mo';
@@ -357,7 +358,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsSection2Body =>
-      'The Application provides the following features:\n\n• Photo analysis of stains to determine contamination type\n• Generation of stain removal recommendations for various fabric types\n• Analysis history management';
+      'The Application provides the following features:\n\n• Photo analysis of stains to determine contamination type\n• Generation of stain removal recommendations\n• Fabric type identification from photos and care symbol decoding\n• Analysis history management';
 
   @override
   String get termsSection3Title => '3. Professional Disclaimer';

@@ -449,25 +449,25 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingTitle3.
   ///
   /// In ru, this message translates to:
-  /// **'Получите инструкцию'**
+  /// **'Инспектор ткани'**
   String get onboardingTitle3;
 
   /// No description provided for @onboardingDesc3.
   ///
   /// In ru, this message translates to:
-  /// **'Пошаговый рецепт удаления с доступными средствами'**
+  /// **'Фото ткани — тип, расшифровка ярлыка, уход'**
   String get onboardingDesc3;
 
   /// No description provided for @onboardingTitle4.
   ///
   /// In ru, this message translates to:
-  /// **'Умный помощник'**
+  /// **'Пошаговый рецепт'**
   String get onboardingTitle4;
 
   /// No description provided for @onboardingDesc4.
   ///
   /// In ru, this message translates to:
-  /// **'Учитывает тип ткани, возраст пятна и доступные средства'**
+  /// **'Инструкция с учётом ткани и средств'**
   String get onboardingDesc4;
 
   /// No description provided for @errorAnalysis.
@@ -535,6 +535,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Поддержка новых типов тканей'**
   String get proFeature4;
+
+  /// No description provided for @proFeatureFabric.
+  ///
+  /// In ru, this message translates to:
+  /// **'Инспектор ткани — тип + ярлыки'**
+  String get proFeatureFabric;
 
   /// No description provided for @proMonthly.
   ///
@@ -743,7 +749,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsSection2Body.
   ///
   /// In ru, this message translates to:
-  /// **'Приложение предоставляет следующие функции:\n\n• Анализ фотографий пятен для определения типа загрязнения\n• Генерация рекомендаций по удалению пятен с различных типов тканей\n• Ведение истории анализов'**
+  /// **'Приложение предоставляет следующие функции:\n\n• Анализ фотографий пятен для определения типа загрязнения\n• Генерация рекомендаций по удалению пятен\n• Определение типа ткани по фотографии и расшифровка символов ухода\n• Ведение истории анализов'**
   String get termsSection2Body;
 
   /// No description provided for @termsSection3Title.
