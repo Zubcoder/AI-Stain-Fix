@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../l10n/app_localizations.dart';
 import 'camera_screen.dart';
 import 'history_screen.dart';
 import 'settings_screen.dart';
-import 'subscription_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final _screens = const [
     CameraScreen(),
     HistoryScreen(),
-    SubscriptionScreen(),
     SettingsScreen(),
   ];
 
@@ -52,11 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: const Icon(Icons.history_outlined),
               activeIcon: const Icon(Icons.history),
               label: l10n.history,
-            ),
-            BottomNavigationBarItem(
-              icon: const Icon(Icons.workspace_premium_outlined),
-              activeIcon: const Icon(Icons.workspace_premium),
-              label: l10n.pro,
             ),
             BottomNavigationBarItem(
               icon: const Icon(Icons.settings_outlined),

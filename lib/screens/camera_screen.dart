@@ -10,6 +10,7 @@ import '../providers/subscription_provider.dart';
 import '../utils/constants.dart';
 import '../widgets/app_logo.dart';
 import 'result_screen.dart';
+import 'subscription_screen.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -128,6 +129,28 @@ class _CameraScreenState extends State<CameraScreen> {
           ],
         ),
         actions: [
+          Consumer<SubscriptionProvider>(
+            builder: (context, sub, _) {
+              if (!sub.isPro) {
+                return TextButton.icon(
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (_) => const SubscriptionScreen()),
+                  ),
+                  icon: const Icon(Icons.workspace_premium_rounded,
+                      color: AppColors.accent, size: 18),
+                  label: const Text(
+                    'PRO',
+                    style: TextStyle(
+                      color: AppColors.accent,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                );
+              }
+              return const SizedBox.shrink();
+            },
+          ),
           Container(
             margin: const EdgeInsets.only(right: 16),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
