@@ -81,6 +81,85 @@ STAIN_PROMPTS = {
     "en": STAIN_PROMPT_EN,
 }
 
+FABRIC_PROMPT_RU = (
+    "Ты — эксперт по текстилю и уходу за одеждой. "
+    "Проанализируй фотографию ткани/одежды и определи:\n\n"
+    "1. Тип ткани (хлопок, лён, шёлк, шерсть, кашемир, полиэстер, нейлон, вискоза, ацетат, смесовая)\n"
+    "2. Подтип (сатин, бязь, поплин, твид, джерси, шифон, атлас и т.д.)\n"
+    "3. Плотность (лёгкая, средняя, плотная)\n"
+    "4. Рекомендации по стирке\n"
+    "5. Расшифровка символов на ярлыке (если виден ярлык)\n\n"
+    "РЕЖИМЫ:\n"
+    "- ТКАНЬ крупным планом → определи тип по текстуре\n"
+    "- ОДЕЖДА целиком → тип ткани + общие рекомендации\n"
+    "- ЯРЛЫК с символами → расшифруй символы стирки\n\n"
+    "ВАЖНО:\n"
+    '- Если на фото НЕ ткань/одежда — верни {"error": "not_fabric"}\n'
+    "- Для точного состава нужен ярлык — напомни\n"
+    "- Рекомендации безопасные (лучше занизить температуру)\n\n"
+    "Ответ строго в JSON:\n"
+    "{\n"
+    '  "fabric_type": "Шерсть",\n'
+    '  "fabric_subtype": "Мериносовая, тонкая",\n'
+    '  "density": "Средняя",\n'
+    '  "composition_estimate": "90% шерсть, 10% эластан (примерно)",\n'
+    '  "care_instructions": {\n'
+    '    "washing": {"temperature": "30°C макс", "mode": "Деликатный / ручная", "detergent": "Жидкое для шерсти"},\n'
+    '    "drying": {"machine": false, "method": "Горизонтально на полотенце"},\n'
+    '    "ironing": {"temperature": "До 150°C", "method": "Через влажную ткань"},\n'
+    '    "forbidden": ["Отбеливатель", "Сушка в барабане", "Выжимание скручиванием", "Выше 40°C"]\n'
+    "  },\n"
+    '  "label_symbols": null,\n'
+    '  "stain_removal_tip": "Для шерсти: холодная вода + нейтральное мыло. Не тереть — промакивать.",\n'
+    '  "disclaimer": "Визуальная оценка. Точный состав — на ярлыке.",\n'
+    '  "confidence": 0.80\n'
+    "}\n\n"
+    'Если виден ярлык — добавь "label_symbols": [{"symbol": "описание символа", "meaning": "что означает"}].\n'
+    "Отвечай ТОЛЬКО на русском языке."
+)
+
+FABRIC_PROMPT_EN = (
+    "You are a textile and garment care expert. "
+    "Analyze the fabric/clothing photo and determine:\n\n"
+    "1. Fabric type (cotton, linen, silk, wool, cashmere, polyester, nylon, viscose, blend)\n"
+    "2. Subtype (satin, calico, tweed, jersey, chiffon, etc.)\n"
+    "3. Density (light, medium, heavy)\n"
+    "4. Care instructions\n"
+    "5. Care label symbols (if visible)\n\n"
+    "MODES:\n"
+    "- FABRIC close-up → identify by texture\n"
+    "- CLOTHING full → fabric type + general care\n"
+    "- CARE LABEL → decode washing symbols\n\n"
+    "IMPORTANT:\n"
+    '- Not fabric → {"error": "not_fabric"}\n'
+    "- For exact composition, remind about care label\n"
+    "- Safe recommendations (lower temperature is better)\n\n"
+    "Response in JSON:\n"
+    "{\n"
+    '  "fabric_type": "Wool",\n'
+    '  "fabric_subtype": "Merino, fine",\n'
+    '  "density": "Medium",\n'
+    '  "composition_estimate": "~90% wool, 10% elastane",\n'
+    '  "care_instructions": {\n'
+    '    "washing": {"temperature": "30°C max", "mode": "Delicate / hand wash", "detergent": "Liquid wool detergent"},\n'
+    '    "drying": {"machine": false, "method": "Flat on towel"},\n'
+    '    "ironing": {"temperature": "Up to 150°C", "method": "Through damp cloth"},\n'
+    '    "forbidden": ["Bleach", "Tumble dry", "Wringing", "Above 40°C"]\n'
+    "  },\n"
+    '  "label_symbols": null,\n'
+    '  "stain_removal_tip": "For wool: cold water + mild soap. Blot, don\'t rub.",\n'
+    '  "disclaimer": "Visual assessment. Exact composition is on the care label.",\n'
+    '  "confidence": 0.80\n'
+    "}\n\n"
+    'If care label visible — add "label_symbols": [{"symbol": "symbol desc", "meaning": "what it means"}].\n'
+    "Respond ONLY in English."
+)
+
+FABRIC_PROMPTS = {
+    "ru": FABRIC_PROMPT_RU,
+    "en": FABRIC_PROMPT_EN,
+}
+
 
 async def _call_gemini(parts: list[dict]) -> dict:
     """Call Gemini API with given content parts."""
@@ -141,6 +220,30 @@ async def analyze_stain(req: AnalyzeRequest):
     if req.fabric_hint:
         hint_label = "User hint about fabric" if req.language == "en" else "Подсказка пользователя о ткани"
         prompt += f"\n\n{hint_label}: {req.fabric_hint}"
+
+    parts: list[dict] = [
+        {"text": prompt},
+        {
+            "inline_data": {
+                "mime_type": "image/jpeg",
+                "data": base64.b64encode(image_bytes).decode(),
+            }
+        },
+    ]
+
+    data = await _call_gemini(parts)
+    return AiResponse(success=True, data=data)
+
+
+@router.post("/fabric-inspect", response_model=AiResponse)
+async def inspect_fabric(req: AnalyzeRequest):
+    """Inspect fabric type and care instructions via Gemini AI."""
+    try:
+        image_bytes = base64.b64decode(req.image_base64)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid base64 image")
+
+    prompt = FABRIC_PROMPTS.get(req.language, FABRIC_PROMPT_RU)
 
     parts: list[dict] = [
         {"text": prompt},

@@ -438,4 +438,49 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get termsSection10Body =>
       'По вопросам, связанным с настоящим Соглашением: ai.stain.fix.app@gmail.com';
+
+  @override
+  String get fabricInspectorButton => 'Инспектор ткани';
+
+  @override
+  String get fabricFromGallery => 'Ткань из галереи';
+
+  @override
+  String get fabricInspectorTitle => 'Инспектор ткани';
+
+  @override
+  String get fabricDensity => 'Плотность';
+
+  @override
+  String get fabricConfidence => 'Уверенность';
+
+  @override
+  String get fabricCareTitle => 'Рекомендации по уходу';
+
+  @override
+  String get fabricWashing => 'Стирка';
+
+  @override
+  String get fabricDetergent => 'Средство';
+
+  @override
+  String get fabricDrying => 'Сушка';
+
+  @override
+  String get fabricIroning => 'Глажка';
+
+  @override
+  String get fabricForbidden => 'Запрещено';
+
+  @override
+  String get fabricMachineYes => 'Можно в машинке';
+
+  @override
+  String get fabricLabelSymbols => 'Символы на ярлыке';
+
+  @override
+  String get fabricStainTip => 'Совет по пятнам';
+
+  @override
+  String get analyzingFabric => 'Определяем ткань...';
 }

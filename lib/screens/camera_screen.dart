@@ -9,6 +9,7 @@ import '../providers/stain_provider.dart';
 import '../providers/subscription_provider.dart';
 import '../utils/constants.dart';
 import '../widgets/app_logo.dart';
+import 'fabric_result_screen.dart';
 import 'result_screen.dart';
 import 'subscription_screen.dart';
 
@@ -71,27 +72,70 @@ class _CameraScreenState extends State<CameraScreen> {
         ),
       );
     } else if (provider.state == AnalysisState.error) {
+      _showError(provider.error);
+    }
+  }
+
+  Future<void> _pickAndInspectFabric(ImageSource source) async {
+    if (_remainingScans <= 0) {
+      _showNoScansDialog();
+      return;
+    }
+
+    final picked = await _imagePicker.pickImage(
+      source: source,
+      maxWidth: 1280,
+      imageQuality: 85,
+    );
+    if (picked == null) return;
+
+    final bytes = await picked.readAsBytes();
+    _lastImageBytes = bytes;
+    await _inspectFabric(bytes);
+  }
+
+  Future<void> _inspectFabric(Uint8List bytes) async {
+    HapticFeedback.mediumImpact();
+    final provider = context.read<StainProvider>();
+    final lang = context.read<LocaleProvider>().locale.languageCode;
+    await provider.inspectFabric(bytes, language: lang);
+
+    if (!mounted) return;
+
+    if (provider.state == AnalysisState.doneFabric) {
+      await _loadRemaining();
       if (!mounted) return;
-      final l10n = AppLocalizations.of(context)!;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(provider.error ?? l10n.errorAnalysis),
-          backgroundColor: AppColors.error,
-          duration: const Duration(seconds: 5),
-          action: _lastImageBytes != null
-              ? SnackBarAction(
-                  label: l10n.retry,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    if (_lastImageBytes != null) {
-                      _analyzeImage(_lastImageBytes!);
-                    }
-                  },
-                )
-              : null,
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (_) => FabricResultScreen(result: provider.fabricResult!),
         ),
       );
+    } else if (provider.state == AnalysisState.error) {
+      _showError(provider.error);
     }
+  }
+
+  void _showError(String? error) {
+    if (!mounted) return;
+    final l10n = AppLocalizations.of(context)!;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(error ?? l10n.errorAnalysis),
+        backgroundColor: AppColors.error,
+        duration: const Duration(seconds: 5),
+        action: _lastImageBytes != null
+            ? SnackBarAction(
+                label: l10n.retry,
+                textColor: Colors.white,
+                onPressed: () {
+                  if (_lastImageBytes != null) {
+                    _analyzeImage(_lastImageBytes!);
+                  }
+                },
+              )
+            : null,
+      ),
+    );
   }
 
   void _showNoScansDialog() {
@@ -182,7 +226,7 @@ class _CameraScreenState extends State<CameraScreen> {
       ),
       body: Consumer<StainProvider>(
         builder: (context, provider, _) {
-          if (provider.state == AnalysisState.analyzing) {
+          if (provider.state == AnalysisState.analyzing || provider.state == AnalysisState.analyzingFabric) {
             return Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -190,7 +234,9 @@ class _CameraScreenState extends State<CameraScreen> {
                   const CircularProgressIndicator(color: AppColors.primary),
                   const SizedBox(height: 24),
                   Text(
-                    l10n.analyzing,
+                    provider.state == AnalysisState.analyzingFabric
+                        ? l10n.analyzingFabric
+                        : l10n.analyzing,
                     style: TextStyle(
                       color: theme.textTheme.bodyMedium?.color,
                       fontSize: 16,
@@ -268,6 +314,27 @@ class _CameraScreenState extends State<CameraScreen> {
                       onPressed: () => _pickAndAnalyze(ImageSource.gallery),
                       icon: const Icon(Icons.photo_library_outlined),
                       label: Text(l10n.fromGallery),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: () => _pickAndInspectFabric(ImageSource.camera),
+                      icon: const Icon(Icons.texture),
+                      label: Text(l10n.fabricInspectorButton),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF6D4C41),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton.icon(
+                      onPressed: () => _pickAndInspectFabric(ImageSource.gallery),
+                      icon: const Icon(Icons.texture_outlined),
+                      label: Text(l10n.fabricFromGallery),
                     ),
                   ),
                 ],

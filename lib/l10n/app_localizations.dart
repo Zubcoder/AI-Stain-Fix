@@ -883,6 +883,96 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'По вопросам, связанным с настоящим Соглашением: ai.stain.fix.app@gmail.com'**
   String get termsSection10Body;
+
+  /// No description provided for @fabricInspectorButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Инспектор ткани'**
+  String get fabricInspectorButton;
+
+  /// No description provided for @fabricFromGallery.
+  ///
+  /// In ru, this message translates to:
+  /// **'Ткань из галереи'**
+  String get fabricFromGallery;
+
+  /// No description provided for @fabricInspectorTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Инспектор ткани'**
+  String get fabricInspectorTitle;
+
+  /// No description provided for @fabricDensity.
+  ///
+  /// In ru, this message translates to:
+  /// **'Плотность'**
+  String get fabricDensity;
+
+  /// No description provided for @fabricConfidence.
+  ///
+  /// In ru, this message translates to:
+  /// **'Уверенность'**
+  String get fabricConfidence;
+
+  /// No description provided for @fabricCareTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Рекомендации по уходу'**
+  String get fabricCareTitle;
+
+  /// No description provided for @fabricWashing.
+  ///
+  /// In ru, this message translates to:
+  /// **'Стирка'**
+  String get fabricWashing;
+
+  /// No description provided for @fabricDetergent.
+  ///
+  /// In ru, this message translates to:
+  /// **'Средство'**
+  String get fabricDetergent;
+
+  /// No description provided for @fabricDrying.
+  ///
+  /// In ru, this message translates to:
+  /// **'Сушка'**
+  String get fabricDrying;
+
+  /// No description provided for @fabricIroning.
+  ///
+  /// In ru, this message translates to:
+  /// **'Глажка'**
+  String get fabricIroning;
+
+  /// No description provided for @fabricForbidden.
+  ///
+  /// In ru, this message translates to:
+  /// **'Запрещено'**
+  String get fabricForbidden;
+
+  /// No description provided for @fabricMachineYes.
+  ///
+  /// In ru, this message translates to:
+  /// **'Можно в машинке'**
+  String get fabricMachineYes;
+
+  /// No description provided for @fabricLabelSymbols.
+  ///
+  /// In ru, this message translates to:
+  /// **'Символы на ярлыке'**
+  String get fabricLabelSymbols;
+
+  /// No description provided for @fabricStainTip.
+  ///
+  /// In ru, this message translates to:
+  /// **'Совет по пятнам'**
+  String get fabricStainTip;
+
+  /// No description provided for @analyzingFabric.
+  ///
+  /// In ru, this message translates to:
+  /// **'Определяем ткань...'**
+  String get analyzingFabric;
 }
 
 class _AppLocalizationsDelegate

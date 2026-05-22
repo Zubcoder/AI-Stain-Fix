@@ -165,5 +165,21 @@
   "termsSection9Title": "9. Governing Law and Dispute Resolution",
   "termsSection9Body": "• This Agreement is governed by the laws of the Russian Federation.\n• Disputes shall be resolved through negotiation, and if no agreement is reached — in court at the Developer's location.\n• The Developer may unilaterally amend the terms of this Agreement by notifying users through an Application update.",
   "termsSection10Title": "10. Contact",
-  "termsSection10Body": "For questions related to this Agreement: ai.stain.fix.app@gmail.com"
+  "termsSection10Body": "For questions related to this Agreement: ai.stain.fix.app@gmail.com",
+
+  "fabricInspectorButton": "Fabric Inspector",
+  "fabricFromGallery": "Fabric from gallery",
+  "fabricInspectorTitle": "Fabric Inspector",
+  "fabricDensity": "Density",
+  "fabricConfidence": "Confidence",
+  "fabricCareTitle": "Care Instructions",
+  "fabricWashing": "Washing",
+  "fabricDetergent": "Detergent",
+  "fabricDrying": "Drying",
+  "fabricIroning": "Ironing",
+  "fabricForbidden": "Forbidden",
+  "fabricMachineYes": "Machine washable",
+  "fabricLabelSymbols": "Care Label Symbols",
+  "fabricStainTip": "Stain removal tip",
+  "analyzingFabric": "Identifying fabric..."
 }
