@@ -6,6 +6,7 @@ import '../providers/stain_provider.dart';
 import '../providers/subscription_provider.dart';
 import '../utils/constants.dart';
 import 'result_screen.dart';
+import 'subscription_screen.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key});
@@ -166,10 +167,11 @@ class HistoryScreen extends StatelessWidget {
             const SizedBox(height: 24),
             ElevatedButton.icon(
               onPressed: () {
-                final homeState = context.findAncestorStateOfType<State>();
-                if (homeState != null) {
-                  DefaultTabController.of(context);
-                }
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const SubscriptionScreen(),
+                  ),
+                );
               },
               icon: const Icon(Icons.workspace_premium),
               label: Text(l10n.goToPro),
