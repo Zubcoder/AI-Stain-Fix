@@ -216,6 +216,23 @@ class AppLocalizationsRu extends AppLocalizations {
   String get recordDeleted => 'Запись удалена';
 
   @override
+  String get undo => 'Отменить';
+
+  @override
+  String get deleteConfirmTitle => 'Удалить запись?';
+
+  @override
+  String get deleteConfirmBody => 'Эта запись будет удалена из истории.';
+
+  @override
+  String get delete => 'Удалить';
+
+  @override
+  String shareResultText(String stainType, String fabricType, String difficulty) {
+    return 'Пятно: $stainType\nТкань: $fabricType\nСложность: $difficulty\n\nОпределено с помощью Пятновыводитель';
+  }
+
+  @override
   String fabricLabel(String fabric) {
     return 'Ткань: $fabric';
   }

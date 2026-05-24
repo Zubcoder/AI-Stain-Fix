@@ -60,6 +60,11 @@ class StainProvider extends ChangeNotifier {
     }
   }
 
+  void insertInHistory(int index, StainResult result) {
+    _history.insert(index.clamp(0, _history.length), result);
+    notifyListeners();
+  }
+
   Future<int> getRemainingScans() async {
     final prefs = await SharedPreferences.getInstance();
     final today = DateTime.now().toIso8601String().substring(0, 10);
