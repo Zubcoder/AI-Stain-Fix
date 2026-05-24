@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
 import 'camera_screen.dart';
+import 'chat_screen.dart';
 import 'history_screen.dart';
 import 'settings_screen.dart';
 import 'subscription_screen.dart';
@@ -18,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final _screens = const [
     CameraScreen(),
+    ChatScreen(),
     HistoryScreen(),
     SubscriptionScreen(),
     SettingsScreen(),
@@ -47,6 +49,11 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: const Icon(Icons.camera_alt_outlined),
               activeIcon: const Icon(Icons.camera_alt),
               label: l10n.camera,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.smart_toy_outlined),
+              activeIcon: const Icon(Icons.smart_toy_rounded),
+              label: l10n.tabChat,
             ),
             BottomNavigationBarItem(
               icon: const Icon(Icons.history_outlined),

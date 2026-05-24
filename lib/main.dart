@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'l10n/app_localizations.dart';
 
+import 'providers/chat_provider.dart';
 import 'providers/locale_provider.dart';
 import 'providers/stain_provider.dart';
 import 'providers/subscription_provider.dart';
@@ -44,6 +45,7 @@ class AIStainFixApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => StainProvider()),
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
         ChangeNotifierProvider(create: (_) => ThemeProvider()..loadTheme()),
+        ChangeNotifierProvider(create: (_) => ChatProvider()),
       ],
       child: Consumer2<LocaleProvider, ThemeProvider>(
         builder: (context, localeProv, themeProvider, _) {
