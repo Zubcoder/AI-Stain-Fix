@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../l10n/app_localizations.dart';
 import '../providers/stain_provider.dart';
 import '../providers/subscription_provider.dart';
+import '../services/share_card_service.dart';
 import '../utils/constants.dart';
 import 'result_screen.dart';
 
@@ -101,9 +103,22 @@ class HistoryScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    trailing: Icon(
-                      Icons.chevron_right,
-                      color: theme.textTheme.bodyMedium?.color,
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.share_rounded,
+                              color: AppColors.primary, size: 20),
+                          onPressed: () {
+                            HapticFeedback.lightImpact();
+                            ShareCardService.shareResultCard(result);
+                          },
+                        ),
+                        Icon(
+                          Icons.chevron_right,
+                          color: theme.textTheme.bodyMedium?.color,
+                        ),
+                      ],
                     ),
                     onTap: () {
                       Navigator.of(context).push(
