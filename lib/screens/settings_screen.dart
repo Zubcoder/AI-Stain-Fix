@@ -6,13 +6,33 @@ import 'package:share_plus/share_plus.dart' show Share;
 import '../l10n/app_localizations.dart';
 import '../providers/locale_provider.dart';
 import '../providers/theme_provider.dart';
+import '../services/notification_service.dart';
 import '../utils/constants.dart' show AppConstants;
 import 'onboarding_screen.dart';
 import 'privacy_policy_screen.dart';
 import 'terms_screen.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool _notificationsEnabled = false;
+  bool _notificationToggleBusy = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadNotificationState();
+  }
+
+  Future<void> _loadNotificationState() async {
+    final enabled = await NotificationService.isEnabled();
+    if (mounted) setState(() => _notificationsEnabled = enabled);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +69,46 @@ class SettingsScreen extends StatelessWidget {
                 onChanged: (_) => themeProvider.toggleTheme(),
               ),
               onTap: () => themeProvider.toggleTheme(),
+            ),
+          ]),
+          const SizedBox(height: 16),
+          _buildSection(theme, l10n.notifications, [
+            _SettingsTile(
+              icon: Icons.notifications_rounded,
+              title: l10n.notifications,
+              subtitle: l10n.notificationsDesc,
+              trailing: Switch(
+                value: _notificationsEnabled,
+                activeThumbColor: theme.colorScheme.primary,
+                onChanged: _notificationToggleBusy
+                    ? null
+                    : (value) async {
+                        setState(() {
+                          _notificationsEnabled = value;
+                          _notificationToggleBusy = true;
+                        });
+                        try {
+                          await NotificationService.scheduleDailyReminder(
+                            enabled: value,
+                            title: l10n.notificationTitle,
+                            body: l10n.notificationBody,
+                          );
+                        } catch (_) {
+                          final actual =
+                              await NotificationService.isEnabled();
+                          if (mounted) {
+                            setState(
+                                () => _notificationsEnabled = actual);
+                          }
+                        } finally {
+                          if (mounted) {
+                            setState(
+                                () => _notificationToggleBusy = false);
+                          }
+                        }
+                      },
+              ),
+              onTap: () {},
             ),
           ]),
           const SizedBox(height: 16),

@@ -119,6 +119,11 @@
   "selectLanguage": "Select language",
   "describeProblem": "Describe the problem:\n",
   "feedback": "Feedback",
+  "notifications": "Notifications",
+  "notificationsDesc": "We'll remind you about stains",
+  "notificationTitle": "Stain Fix",
+  "notificationBody": "Got unsolved stains? Check today!",
+
   "darkTheme": "Dark theme",
   "lightTheme": "Light theme",
   "privacyPolicyTitle": "Privacy Policy",
