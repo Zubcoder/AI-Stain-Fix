@@ -121,6 +121,18 @@
   "feedback": "Обратная связь",
   "darkTheme": "Тёмная тема",
   "lightTheme": "Светлая тема",
+
+  "tabChat": "Чат",
+  "chatTitle": "AI Эксперт",
+  "chatInputHint": "Спросите про пятна...",
+  "chatEmptyTitle": "Спросите AI-эксперта",
+  "chatEmptySubtitle": "Задайте вопрос о пятнах, тканях, чистке или приложите фото",
+  "chatSuggestion1": "Как вывести кофе с рубашки?",
+  "chatSuggestion2": "Чем отстирать кровь?",
+  "chatSuggestion3": "Масло на джинсах — что делать?",
+  "chatClearHistory": "Очистить чат",
+  "chatError": "Ошибка. Попробуйте позже.",
+
   "privacyPolicyTitle": "Политика конфиденциальности",
   "privacyPolicyLastUpdated": "Последнее обновление: 19 мая 2026 г.",
   "privacySection1Title": "1. Общие положения",

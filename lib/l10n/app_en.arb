@@ -121,6 +121,18 @@
   "feedback": "Feedback",
   "darkTheme": "Dark theme",
   "lightTheme": "Light theme",
+
+  "tabChat": "Chat",
+  "chatTitle": "AI Expert",
+  "chatInputHint": "Ask about stains...",
+  "chatEmptyTitle": "Ask the AI Expert",
+  "chatEmptySubtitle": "Ask about stains, fabrics, cleaning, or attach a photo",
+  "chatSuggestion1": "How to remove coffee from a shirt?",
+  "chatSuggestion2": "How to wash out blood?",
+  "chatSuggestion3": "Oil on jeans — what to do?",
+  "chatClearHistory": "Clear chat",
+  "chatError": "Error. Try again later.",
+
   "privacyPolicyTitle": "Privacy Policy",
   "privacyPolicyLastUpdated": "Last updated: May 19, 2026",
   "privacySection1Title": "1. General Provisions",
