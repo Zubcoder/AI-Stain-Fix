@@ -119,6 +119,11 @@
   "selectLanguage": "Выбор языка",
   "describeProblem": "Опишите проблему:\n",
   "feedback": "Обратная связь",
+  "notifications": "Уведомления",
+  "notificationsDesc": "Напомним проверить пятна",
+  "notificationTitle": "Stain Fix",
+  "notificationBody": "Есть нерешённые пятна? Проверьте сегодня!",
+
   "darkTheme": "Тёмная тема",
   "lightTheme": "Светлая тема",
   "privacyPolicyTitle": "Политика конфиденциальности",

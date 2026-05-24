@@ -11,11 +11,13 @@ import 'providers/stain_provider.dart';
 import 'providers/subscription_provider.dart';
 import 'providers/theme_provider.dart';
 import 'screens/splash_screen.dart';
+import 'services/notification_service.dart';
 import 'utils/constants.dart';
 import 'utils/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  NotificationService.init();
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
