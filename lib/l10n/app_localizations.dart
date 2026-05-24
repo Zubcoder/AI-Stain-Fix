@@ -488,6 +488,36 @@ abstract class AppLocalizations {
   /// **'Запись удалена'**
   String get recordDeleted;
 
+  /// No description provided for @undo.
+  ///
+  /// In ru, this message translates to:
+  /// **'Отменить'**
+  String get undo;
+
+  /// No description provided for @deleteConfirmTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Удалить запись?'**
+  String get deleteConfirmTitle;
+
+  /// No description provided for @deleteConfirmBody.
+  ///
+  /// In ru, this message translates to:
+  /// **'Эта запись будет удалена из истории.'**
+  String get deleteConfirmBody;
+
+  /// No description provided for @delete.
+  ///
+  /// In ru, this message translates to:
+  /// **'Удалить'**
+  String get delete;
+
+  /// No description provided for @shareResultText.
+  ///
+  /// In ru, this message translates to:
+  /// **'Пятно: {stainType}\nТкань: {fabricType}\nСложность: {difficulty}\n\nОпределено с помощью Пятновыводитель'**
+  String shareResultText(String stainType, String fabricType, String difficulty);
+
   /// No description provided for @fabricLabel.
   ///
   /// In ru, this message translates to:

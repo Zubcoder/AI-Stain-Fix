@@ -216,6 +216,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get recordDeleted => 'Record deleted';
 
   @override
+  String get undo => 'Undo';
+
+  @override
+  String get deleteConfirmTitle => 'Delete entry?';
+
+  @override
+  String get deleteConfirmBody => 'This entry will be removed from history.';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String shareResultText(String stainType, String fabricType, String difficulty) {
+    return 'Stain: $stainType\nFabric: $fabricType\nDifficulty: $difficulty\n\nIdentified with Stain Fix';
+  }
+
+  @override
   String fabricLabel(String fabric) {
     return 'Fabric: $fabric';
   }
