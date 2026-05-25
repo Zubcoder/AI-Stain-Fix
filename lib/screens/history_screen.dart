@@ -114,9 +114,9 @@ class HistoryScreen extends StatelessWidget {
                               ShareCardData(
                                 appName: l10n.appName,
                                 icon: Icons.auto_fix_high_rounded,
-                                title: result.stainType,
+                                title: ShareCardHelper.stripMarkdown(result.stainType),
                                 subtitle: l10n.fabricLabel(result.fabricType),
-                                body: result.summary,
+                                body: ShareCardHelper.stripMarkdown(result.summary),
                                 accentColor: AppColors.primary,
                               ),
                             );

@@ -27,6 +27,19 @@ class ShareCardData {
 class ShareCardHelper {
   static final _screenshotController = ScreenshotController();
 
+  static String stripMarkdown(String text) {
+    var result = text;
+    result = result.replaceAll(RegExp(r'\*\*(.+?)\*\*'), r'$1');
+    result = result.replaceAll(RegExp(r'\*(.+?)\*'), r'$1');
+    result = result.replaceAll(RegExp(r'__(.+?)__'), r'$1');
+    result = result.replaceAll(RegExp(r'_(.+?)_'), r'$1');
+    result = result.replaceAll(RegExp(r'#{1,6}\s*'), '');
+    result = result.replaceAll(RegExp(r'^\s*[-*+]\s', multiLine: true), '');
+    result = result.replaceAll(RegExp(r'^\s*\d+\.\s', multiLine: true), '');
+    result = result.replaceAll(RegExp(r'`(.+?)`'), r'$1');
+    return result.trim();
+  }
+
   static Future<void> shareAsCard(BuildContext context, ShareCardData data) async {
     final Uint8List imageBytes = await _screenshotController.captureFromWidget(
       MediaQuery(

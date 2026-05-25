@@ -126,7 +126,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Widget _buildEmptyState(AppLocalizations l10n, ThemeData theme) {
-    return Center(
+    return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(32),
         child: Column(
@@ -208,10 +208,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Widget _buildInputBar(AppLocalizations l10n, ThemeData theme) {
     return Container(
-      padding: EdgeInsets.only(
-        left: 8, right: 8, top: 8,
-        bottom: MediaQuery.of(context).padding.bottom + 8,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       decoration: BoxDecoration(
         color: theme.scaffoldBackgroundColor,
         border: Border(top: BorderSide(color: theme.dividerColor)),
