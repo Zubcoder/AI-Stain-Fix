@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:share_plus/share_plus.dart' show Share;
-
 import '../l10n/app_localizations.dart';
+import '../widgets/share_card.dart';
 import '../providers/stain_provider.dart';
 import '../providers/subscription_provider.dart';
 import '../utils/constants.dart';
@@ -110,14 +109,17 @@ class HistoryScreen extends StatelessWidget {
                           icon: Icon(Icons.share_rounded,
                               size: 20, color: theme.textTheme.bodyMedium?.color),
                           onPressed: () {
-                            final text = StringBuffer()
-                              ..writeln(l10n.appName)
-                              ..writeln()
-                              ..writeln(result.stainType)
-                              ..writeln(l10n.fabricLabel(result.fabricType))
-                              ..writeln()
-                              ..writeln(result.summary);
-                            Share.share(text.toString());
+                            ShareCardHelper.shareAsCard(
+                              context,
+                              ShareCardData(
+                                appName: l10n.appName,
+                                icon: Icons.auto_fix_high_rounded,
+                                title: result.stainType,
+                                subtitle: l10n.fabricLabel(result.fabricType),
+                                body: result.summary,
+                                accentColor: AppColors.primary,
+                              ),
+                            );
                           },
                         ),
                         Icon(
