@@ -27,6 +27,28 @@ class AppLocalizationsRu extends AppLocalizations {
   String get settings => 'Настройки';
 
   @override
+  String get chatTab => 'Чат';
+
+  @override
+  String get chatTitle => 'Спросить эксперта';
+
+  @override
+  String get chatEmpty =>
+      'Задайте вопрос об удалении пятен, стирке или уходе за одеждой';
+
+  @override
+  String get chatHint => 'Введите вопрос...';
+
+  @override
+  String get chatSuggestion1 => 'Как отстирать кофе с рубашки?';
+
+  @override
+  String get chatSuggestion2 => 'При скольки стирать шерсть?';
+
+  @override
+  String get chatSuggestion3 => 'Чем вывести жирное пятно?';
+
+  @override
   String get takePhoto => 'Сделать фото';
 
   @override

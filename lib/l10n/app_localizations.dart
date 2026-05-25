@@ -134,6 +134,48 @@ abstract class AppLocalizations {
   /// **'Настройки'**
   String get settings;
 
+  /// No description provided for @chatTab.
+  ///
+  /// In ru, this message translates to:
+  /// **'Чат'**
+  String get chatTab;
+
+  /// No description provided for @chatTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Спросить эксперта'**
+  String get chatTitle;
+
+  /// No description provided for @chatEmpty.
+  ///
+  /// In ru, this message translates to:
+  /// **'Задайте вопрос об удалении пятен, стирке или уходе за одеждой'**
+  String get chatEmpty;
+
+  /// No description provided for @chatHint.
+  ///
+  /// In ru, this message translates to:
+  /// **'Введите вопрос...'**
+  String get chatHint;
+
+  /// No description provided for @chatSuggestion1.
+  ///
+  /// In ru, this message translates to:
+  /// **'Как отстирать кофе с рубашки?'**
+  String get chatSuggestion1;
+
+  /// No description provided for @chatSuggestion2.
+  ///
+  /// In ru, this message translates to:
+  /// **'При скольки стирать шерсть?'**
+  String get chatSuggestion2;
+
+  /// No description provided for @chatSuggestion3.
+  ///
+  /// In ru, this message translates to:
+  /// **'Чем вывести жирное пятно?'**
+  String get chatSuggestion3;
+
   /// No description provided for @takePhoto.
   ///
   /// In ru, this message translates to:

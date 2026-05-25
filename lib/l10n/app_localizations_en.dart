@@ -27,6 +27,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'Settings';
 
   @override
+  String get chatTab => 'Chat';
+
+  @override
+  String get chatTitle => 'Ask an expert';
+
+  @override
+  String get chatEmpty =>
+      'Ask a question about stain removal, laundry or fabric care';
+
+  @override
+  String get chatHint => 'Type your question...';
+
+  @override
+  String get chatSuggestion1 => 'How to remove coffee from a shirt?';
+
+  @override
+  String get chatSuggestion2 => 'What temperature for wool?';
+
+  @override
+  String get chatSuggestion3 => 'How to remove grease stains?';
+
+  @override
   String get takePhoto => 'Take photo';
 
   @override

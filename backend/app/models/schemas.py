@@ -17,3 +17,20 @@ class AiResponse(BaseModel):
     success: bool
     data: dict | None = None
     error: str | None = None
+
+
+class ChatMessageItem(BaseModel):
+    role: str
+    text: str
+
+
+class ChatRequest(BaseModel):
+    message: str
+    image_base64: str | None = None
+    history: list[ChatMessageItem] = []
+    language: str = "ru"
+
+
+class ChatResponse(BaseModel):
+    success: bool
+    reply: str

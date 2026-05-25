@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
+import '../models/chat_message.dart';
 import '../models/fabric_result.dart';
 import '../models/stain_result.dart';
 import '../utils/constants.dart';
@@ -166,6 +168,37 @@ class AiService {
             'Нет подключения к серверу. Проверьте интернет.');
       }
       throw AiServiceException('Не удалось проанализировать. Попробуйте позже.');
+    }
+  }
+
+  static Future<String> chat({
+    required String message,
+    required List<ChatMessage> history,
+    String language = 'ru',
+    File? imageFile,
+  }) async {
+    String? imageBase64;
+    if (imageFile != null) {
+      final bytes = await imageFile.readAsBytes();
+      imageBase64 = base64Encode(bytes);
+    }
+
+    final response = await http.post(
+      Uri.parse('${AppConstants.baseUrl}/api/v1/ai/chat'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'message': message,
+        'image_base64': imageBase64,
+        'history': history.map((m) => m.toJson()).toList(),
+        'language': language,
+      }),
+    ).timeout(_timeout);
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body) as Map<String, dynamic>;
+      return data['reply'] as String? ?? '';
+    } else {
+      throw AiServiceException('Ошибка сервера: ${response.statusCode}');
     }
   }
 

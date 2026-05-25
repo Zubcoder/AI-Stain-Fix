@@ -8,7 +8,7 @@ import httpx
 from fastapi import APIRouter, HTTPException
 
 from ..config import settings
-from ..models.schemas import AnalyzeRequest, AiResponse
+from ..models.schemas import AnalyzeRequest, AiResponse, ChatRequest, ChatResponse
 
 router = APIRouter(prefix="/api/v1/ai", tags=["AI"])
 logger = logging.getLogger(__name__)
@@ -257,3 +257,61 @@ async def inspect_fabric(req: AnalyzeRequest):
 
     data = await _call_gemini(parts)
     return AiResponse(success=True, data=data)
+
+
+CHAT_SYSTEM_RU = (
+    "Ты — эксперт по удалению пятен и уходу за тканями приложения Пятновыводитель. "
+    "Отвечай на вопросы о пятнах, стирке, уходе за одеждой и тканями. "
+    "Давай конкретные бытовые рекомендации. Будь дружелюбным и лаконичным. "
+    "Если вопрос не связан с тканями — вежливо направь к теме. Отвечай на русском."
+)
+
+CHAT_SYSTEM_EN = (
+    "You are a stain removal and fabric care expert for the Stain Fix app. "
+    "Answer questions about stains, laundry, clothing and fabric care. "
+    "Give specific household recommendations. Be friendly and concise. "
+    "If question is not about fabrics — politely redirect. Answer in English."
+)
+
+
+@router.post("/chat", response_model=ChatResponse)
+async def chat(req: ChatRequest):
+    """AI chat for stain removal and fabric care questions."""
+    system_prompt = CHAT_SYSTEM_RU if req.language == "ru" else CHAT_SYSTEM_EN
+
+    chat_parts: list[dict] = [{"text": system_prompt}]
+
+    for msg in req.history[-10:]:
+        prefix = "Пользователь: " if msg.role == "user" else "Ассистент: "
+        chat_parts.append({"text": prefix + msg.text})
+
+    user_text = ("Пользователь: " if req.language == "ru" else "User: ") + req.message
+    chat_parts.append({"text": user_text})
+
+    if req.image_base64:
+        try:
+            image_bytes = base64.b64decode(req.image_base64)
+            chat_parts.append({
+                "inline_data": {
+                    "mime_type": "image/jpeg",
+                    "data": base64.b64encode(image_bytes).decode(),
+                }
+            })
+        except Exception:
+            raise HTTPException(status_code=400, detail="Invalid base64 image")
+
+    payload = {"contents": [{"parts": chat_parts}]}
+    try:
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            resp = await client.post(
+                GEMINI_API_URL,
+                params={"key": settings.gemini_api_key},
+                json=payload,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            text = data["candidates"][0]["content"]["parts"][0]["text"]
+            return ChatResponse(success=True, reply=text)
+    except Exception as e:
+        logger.error("Chat error: %s", str(e))
+        raise HTTPException(status_code=500, detail=str(e))
