@@ -13,6 +13,7 @@ class ShareCardData {
   final String subtitle;
   final String body;
   final Color accentColor;
+  final String downloadUrl;
 
   const ShareCardData({
     required this.appName,
@@ -21,6 +22,7 @@ class ShareCardData {
     required this.subtitle,
     required this.body,
     this.accentColor = const Color(0xFF7C4DFF),
+    this.downloadUrl = 'https://apps.rustore.ru/app/com.zubcoder.ai_stain_fix',
   });
 }
 
@@ -54,9 +56,17 @@ class ShareCardHelper {
     final file = File('${dir.path}/share_card_${DateTime.now().millisecondsSinceEpoch}.png');
     await file.writeAsBytes(imageBytes);
 
+    final shareText = StringBuffer()
+      ..writeln(data.title)
+      ..writeln(data.subtitle)
+      ..writeln()
+      ..writeln(data.body)
+      ..writeln()
+      ..writeln('\u{1F4F2} Скачать ${data.appName}: ${data.downloadUrl}');
+
     await Share.shareXFiles(
       [XFile(file.path)],
-      text: '${data.title}\n${data.subtitle}',
+      text: shareText.toString(),
     );
   }
 }
@@ -139,14 +149,24 @@ class _ShareCardWidget extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border(top: BorderSide(color: Colors.grey[200]!)),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Column(
               children: [
-                Icon(Icons.auto_fix_high_rounded, size: 14, color: data.accentColor),
-                const SizedBox(width: 6),
-                Text('Создано в ${data.appName}',
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.auto_fix_high_rounded, size: 14, color: data.accentColor),
+                    const SizedBox(width: 6),
+                    Text('Создано в ${data.appName}',
+                        style: TextStyle(
+                          fontSize: 12, color: Colors.grey[500], fontWeight: FontWeight.w500)),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Text(data.downloadUrl,
                     style: TextStyle(
-                      fontSize: 12, color: Colors.grey[500], fontWeight: FontWeight.w500)),
+                      fontSize: 10,
+                      color: data.accentColor,
+                    )),
               ],
             ),
           ),
