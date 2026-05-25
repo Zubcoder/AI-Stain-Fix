@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart' show Share;
 
 import '../l10n/app_localizations.dart';
 import '../providers/stain_provider.dart';
@@ -102,9 +103,28 @@ class HistoryScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    trailing: Icon(
-                      Icons.chevron_right,
-                      color: theme.textTheme.bodyMedium?.color,
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.share_rounded,
+                              size: 20, color: theme.textTheme.bodyMedium?.color),
+                          onPressed: () {
+                            final text = StringBuffer()
+                              ..writeln(l10n.appName)
+                              ..writeln()
+                              ..writeln(result.stainType)
+                              ..writeln(l10n.fabricLabel(result.fabricType))
+                              ..writeln()
+                              ..writeln(result.summary);
+                            Share.share(text.toString());
+                          },
+                        ),
+                        Icon(
+                          Icons.chevron_right,
+                          color: theme.textTheme.bodyMedium?.color,
+                        ),
+                      ],
                     ),
                     onTap: () {
                       Navigator.of(context).push(
