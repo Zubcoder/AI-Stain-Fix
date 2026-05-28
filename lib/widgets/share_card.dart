@@ -31,14 +31,14 @@ class ShareCardHelper {
 
   static String stripMarkdown(String text) {
     var result = text;
-    result = result.replaceAll(RegExp(r'\*\*(.+?)\*\*'), r'$1');
-    result = result.replaceAll(RegExp(r'\*(.+?)\*'), r'$1');
-    result = result.replaceAll(RegExp(r'__(.+?)__'), r'$1');
-    result = result.replaceAll(RegExp(r'_(.+?)_'), r'$1');
+    result = result.replaceAllMapped(RegExp(r'\*\*(.+?)\*\*'), (m) => m.group(1)!);
+    result = result.replaceAllMapped(RegExp(r'\*(.+?)\*'), (m) => m.group(1)!);
+    result = result.replaceAllMapped(RegExp(r'__(.+?)__'), (m) => m.group(1)!);
+    result = result.replaceAllMapped(RegExp(r'_(.+?)_'), (m) => m.group(1)!);
     result = result.replaceAll(RegExp(r'#{1,6}\s*'), '');
-    result = result.replaceAll(RegExp(r'^\s*[-*+]\s', multiLine: true), '');
-    result = result.replaceAll(RegExp(r'^\s*\d+\.\s', multiLine: true), '');
-    result = result.replaceAll(RegExp(r'`(.+?)`'), r'$1');
+    result = result.replaceAll(RegExp(r'^\s*[-*+]\s', multiLine: true), '• ');
+    result = result.replaceAllMapped(RegExp(r'^\s*(\d+)\.\s', multiLine: true), (m) => '${m.group(1)}. ');
+    result = result.replaceAllMapped(RegExp(r'`(.+?)`'), (m) => m.group(1)!);
     return result.trim();
   }
 
