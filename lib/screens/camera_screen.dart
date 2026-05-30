@@ -12,6 +12,7 @@ import '../widgets/app_logo.dart';
 import 'fabric_result_screen.dart';
 import 'result_screen.dart';
 import 'subscription_screen.dart';
+import '../services/analytics_service.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
@@ -59,11 +60,13 @@ class _CameraScreenState extends State<CameraScreen> {
     HapticFeedback.mediumImpact();
     final provider = context.read<StainProvider>();
     final lang = context.read<LocaleProvider>().locale.languageCode;
+    AnalyticsService.scanStarted('stain');
     await provider.analyzeStain(bytes, language: lang);
 
     if (!mounted) return;
 
     if (provider.state == AnalysisState.done) {
+      AnalyticsService.scanCompleted('stain');
       await _loadRemaining();
       if (!mounted) return;
       Navigator.of(context).push(

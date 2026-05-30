@@ -8,6 +8,7 @@ import '../l10n/app_localizations.dart';
 import '../models/chat_message.dart';
 import '../services/ai_service.dart';
 import '../utils/constants.dart';
+import '../services/analytics_service.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -36,6 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     final userMessage = ChatMessage(role: 'user', text: text.isNotEmpty ? text : 'Что на фото?');
 
+    AnalyticsService.chatMessageSent();
     setState(() {
       _messages.add(userMessage);
       _isLoading = true;
@@ -51,6 +53,7 @@ class _ChatScreenState extends State<ChatScreen> {
         imageFile: _pendingImage,
       );
 
+      AnalyticsService.chatResponseReceived();
       setState(() {
         _messages.add(ChatMessage(role: 'assistant', text: reply));
         _pendingImage = null;

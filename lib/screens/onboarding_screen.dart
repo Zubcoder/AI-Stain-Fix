@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../l10n/app_localizations.dart';
 import '../utils/constants.dart';
 import 'home_screen.dart';
+import '../services/analytics_service.dart';
 
 class OnboardingScreen extends StatefulWidget {
   final bool isFromSettings;
@@ -47,6 +48,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     if (!widget.isFromSettings) {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool(AppConstants.onboardingDonePrefKey, true);
+      AnalyticsService.onboardingCompleted();
     }
 
     if (!mounted) return;

@@ -11,6 +11,7 @@ import 'onboarding_screen.dart';
 import 'privacy_policy_screen.dart';
 import 'subscription_screen.dart';
 import 'terms_screen.dart';
+import '../services/analytics_service.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -62,9 +63,15 @@ class SettingsScreen extends StatelessWidget {
               trailing: Switch(
                 value: themeProvider.isDark,
                 activeThumbColor: theme.colorScheme.primary,
-                onChanged: (_) => themeProvider.toggleTheme(),
+                onChanged: (_) {
+                  themeProvider.toggleTheme();
+                  AnalyticsService.themeChanged(themeProvider.isDark ? 'light' : 'dark');
+                },
               ),
-              onTap: () => themeProvider.toggleTheme(),
+              onTap: () {
+                themeProvider.toggleTheme();
+                AnalyticsService.themeChanged(themeProvider.isDark ? 'light' : 'dark');
+              },
             ),
           ]),
           const SizedBox(height: 16),
@@ -220,6 +227,7 @@ class SettingsScreen extends StatelessWidget {
                   : null,
               onTap: () {
                 localeProv.setLocale(const Locale('ru'));
+                AnalyticsService.languageChanged('ru');
                 Navigator.pop(context);
               },
             ),
@@ -232,6 +240,7 @@ class SettingsScreen extends StatelessWidget {
                   : null,
               onTap: () {
                 localeProv.setLocale(const Locale('en'));
+                AnalyticsService.languageChanged('en');
                 Navigator.pop(context);
               },
             ),

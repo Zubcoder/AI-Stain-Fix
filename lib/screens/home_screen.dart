@@ -4,6 +4,7 @@ import 'camera_screen.dart';
 import 'chat_screen.dart';
 import 'history_screen.dart';
 import 'settings_screen.dart';
+import '../services/analytics_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -40,7 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
-          onTap: (i) => setState(() => _currentIndex = i),
+          onTap: (i) {
+            const tabNames = ['camera', 'chat', 'history', 'settings'];
+            AnalyticsService.tabChanged(tabNames[i]);
+            setState(() => _currentIndex = i);
+          },
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
