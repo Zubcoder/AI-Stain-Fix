@@ -27,6 +27,28 @@ class AppLocalizationsRu extends AppLocalizations {
   String get settings => 'Настройки';
 
   @override
+  String get chatTab => 'Чат';
+
+  @override
+  String get chatTitle => 'Спросить эксперта';
+
+  @override
+  String get chatEmpty =>
+      'Задайте вопрос об удалении пятен, стирке или уходе за одеждой';
+
+  @override
+  String get chatHint => 'Введите вопрос...';
+
+  @override
+  String get chatSuggestion1 => 'Как отстирать кофе с рубашки?';
+
+  @override
+  String get chatSuggestion2 => 'При скольки стирать шерсть?';
+
+  @override
+  String get chatSuggestion3 => 'Чем вывести жирное пятно?';
+
+  @override
   String get takePhoto => 'Сделать фото';
 
   @override
@@ -88,7 +110,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get freePlan => 'Бесплатный план';
 
   @override
-  String get freePlanDesc => '3 бесплатных анализа каждый день';
+  String get freePlanDesc => '5 бесплатных анализов каждый день';
 
   @override
   String get unlimited => 'Безлимитные анализы каждый день';
@@ -193,18 +215,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get onboardingDesc2 => 'Умное распознавание вида пятна и типа ткани';
 
   @override
-  String get onboardingTitle3 => 'Получите инструкцию';
+  String get onboardingTitle3 => 'Инспектор ткани';
 
   @override
-  String get onboardingDesc3 =>
-      'Пошаговый рецепт удаления с доступными средствами';
+  String get onboardingDesc3 => 'Фото ткани — тип, расшифровка ярлыка, уход';
 
   @override
-  String get onboardingTitle4 => 'Умный помощник';
+  String get onboardingTitle4 => 'Пошаговый рецепт';
 
   @override
-  String get onboardingDesc4 =>
-      'Учитывает тип ткани, возраст пятна и доступные средства';
+  String get onboardingDesc4 => 'Инструкция с учётом ткани и средств';
 
   @override
   String get errorAnalysis => 'Ошибка анализа';
@@ -241,6 +261,9 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get proFeature4 => 'Поддержка новых типов тканей';
+
+  @override
+  String get proFeatureFabric => 'Инспектор ткани — тип + ярлыки';
 
   @override
   String get proMonthly => '79 ₽/мес';
@@ -357,7 +380,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get termsSection2Body =>
-      'Приложение предоставляет следующие функции:\n\n• Анализ фотографий пятен для определения типа загрязнения\n• Генерация рекомендаций по удалению пятен с различных типов тканей\n• Ведение истории анализов';
+      'Приложение предоставляет следующие функции:\n\n• Анализ фотографий пятен для определения типа загрязнения\n• Генерация рекомендаций по удалению пятен\n• Определение типа ткани по фотографии и расшифровка символов ухода\n• Ведение истории анализов';
 
   @override
   String get termsSection3Title => '3. Профессиональный дисклеймер';
@@ -438,4 +461,49 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get termsSection10Body =>
       'По вопросам, связанным с настоящим Соглашением: ai.stain.fix.app@gmail.com';
+
+  @override
+  String get fabricInspectorButton => 'Инспектор ткани';
+
+  @override
+  String get fabricFromGallery => 'Ткань из галереи';
+
+  @override
+  String get fabricInspectorTitle => 'Инспектор ткани';
+
+  @override
+  String get fabricDensity => 'Плотность';
+
+  @override
+  String get fabricConfidence => 'Уверенность';
+
+  @override
+  String get fabricCareTitle => 'Рекомендации по уходу';
+
+  @override
+  String get fabricWashing => 'Стирка';
+
+  @override
+  String get fabricDetergent => 'Средство';
+
+  @override
+  String get fabricDrying => 'Сушка';
+
+  @override
+  String get fabricIroning => 'Глажка';
+
+  @override
+  String get fabricForbidden => 'Запрещено';
+
+  @override
+  String get fabricMachineYes => 'Можно в машинке';
+
+  @override
+  String get fabricLabelSymbols => 'Символы на ярлыке';
+
+  @override
+  String get fabricStainTip => 'Совет по пятнам';
+
+  @override
+  String get analyzingFabric => 'Определяем ткань...';
 }

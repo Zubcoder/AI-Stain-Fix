@@ -106,6 +106,7 @@ class SubscriptionScreen extends StatelessWidget {
   Widget _buildFeatures(AppLocalizations l10n, ThemeData theme) {
     final features = [
       l10n.proFeature1,
+      l10n.proFeatureFabric,
       l10n.proFeature2,
       l10n.proFeature3,
       l10n.proFeature4,
@@ -136,7 +137,7 @@ class SubscriptionScreen extends StatelessWidget {
               child: _ProPlanCard(
                 title: l10n.proMonthly,
                 theme: theme,
-                onTap: () => _showPurchaseDialog(context, 'PRO Monthly', l10n, theme),
+                onTap: () => _showProPurchaseDialog(context, 'PRO Monthly', l10n, theme),
               ),
             ),
             const SizedBox(width: 12),
@@ -147,7 +148,7 @@ class SubscriptionScreen extends StatelessWidget {
                     title: l10n.proYearly,
                     theme: theme,
                     highlighted: true,
-                    onTap: () => _showPurchaseDialog(context, 'PRO Yearly', l10n, theme),
+                    onTap: () => _showProPurchaseDialog(context, 'PRO Yearly', l10n, theme),
                   ),
                   Positioned(
                     top: 0,
@@ -243,6 +244,38 @@ class SubscriptionScreen extends StatelessWidget {
               color: theme.textTheme.bodyMedium?.color,
               fontSize: 13,
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showProPurchaseDialog(
+      BuildContext context, String product, AppLocalizations l10n, ThemeData theme) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        backgroundColor: theme.colorScheme.surface,
+        title: Text(l10n.purchaseTitle(product)),
+        content: Text(l10n.purchaseDesc),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(l10n.cancel),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              final subs = context.read<SubscriptionProvider>();
+              subs.setPro();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(l10n.demoAdded),
+                  backgroundColor: AppColors.success,
+                ),
+              );
+            },
+            child: Text(l10n.demoPurchase),
           ),
         ],
       ),

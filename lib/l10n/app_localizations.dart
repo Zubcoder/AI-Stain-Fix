@@ -134,6 +134,48 @@ abstract class AppLocalizations {
   /// **'Настройки'**
   String get settings;
 
+  /// No description provided for @chatTab.
+  ///
+  /// In ru, this message translates to:
+  /// **'Чат'**
+  String get chatTab;
+
+  /// No description provided for @chatTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Спросить эксперта'**
+  String get chatTitle;
+
+  /// No description provided for @chatEmpty.
+  ///
+  /// In ru, this message translates to:
+  /// **'Задайте вопрос об удалении пятен, стирке или уходе за одеждой'**
+  String get chatEmpty;
+
+  /// No description provided for @chatHint.
+  ///
+  /// In ru, this message translates to:
+  /// **'Введите вопрос...'**
+  String get chatHint;
+
+  /// No description provided for @chatSuggestion1.
+  ///
+  /// In ru, this message translates to:
+  /// **'Как отстирать кофе с рубашки?'**
+  String get chatSuggestion1;
+
+  /// No description provided for @chatSuggestion2.
+  ///
+  /// In ru, this message translates to:
+  /// **'При скольки стирать шерсть?'**
+  String get chatSuggestion2;
+
+  /// No description provided for @chatSuggestion3.
+  ///
+  /// In ru, this message translates to:
+  /// **'Чем вывести жирное пятно?'**
+  String get chatSuggestion3;
+
   /// No description provided for @takePhoto.
   ///
   /// In ru, this message translates to:
@@ -257,7 +299,7 @@ abstract class AppLocalizations {
   /// No description provided for @freePlanDesc.
   ///
   /// In ru, this message translates to:
-  /// **'3 бесплатных анализа каждый день'**
+  /// **'5 бесплатных анализов каждый день'**
   String get freePlanDesc;
 
   /// No description provided for @unlimited.
@@ -449,25 +491,25 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingTitle3.
   ///
   /// In ru, this message translates to:
-  /// **'Получите инструкцию'**
+  /// **'Инспектор ткани'**
   String get onboardingTitle3;
 
   /// No description provided for @onboardingDesc3.
   ///
   /// In ru, this message translates to:
-  /// **'Пошаговый рецепт удаления с доступными средствами'**
+  /// **'Фото ткани — тип, расшифровка ярлыка, уход'**
   String get onboardingDesc3;
 
   /// No description provided for @onboardingTitle4.
   ///
   /// In ru, this message translates to:
-  /// **'Умный помощник'**
+  /// **'Пошаговый рецепт'**
   String get onboardingTitle4;
 
   /// No description provided for @onboardingDesc4.
   ///
   /// In ru, this message translates to:
-  /// **'Учитывает тип ткани, возраст пятна и доступные средства'**
+  /// **'Инструкция с учётом ткани и средств'**
   String get onboardingDesc4;
 
   /// No description provided for @errorAnalysis.
@@ -535,6 +577,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Поддержка новых типов тканей'**
   String get proFeature4;
+
+  /// No description provided for @proFeatureFabric.
+  ///
+  /// In ru, this message translates to:
+  /// **'Инспектор ткани — тип + ярлыки'**
+  String get proFeatureFabric;
 
   /// No description provided for @proMonthly.
   ///
@@ -743,7 +791,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsSection2Body.
   ///
   /// In ru, this message translates to:
-  /// **'Приложение предоставляет следующие функции:\n\n• Анализ фотографий пятен для определения типа загрязнения\n• Генерация рекомендаций по удалению пятен с различных типов тканей\n• Ведение истории анализов'**
+  /// **'Приложение предоставляет следующие функции:\n\n• Анализ фотографий пятен для определения типа загрязнения\n• Генерация рекомендаций по удалению пятен\n• Определение типа ткани по фотографии и расшифровка символов ухода\n• Ведение истории анализов'**
   String get termsSection2Body;
 
   /// No description provided for @termsSection3Title.
@@ -883,6 +931,96 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'По вопросам, связанным с настоящим Соглашением: ai.stain.fix.app@gmail.com'**
   String get termsSection10Body;
+
+  /// No description provided for @fabricInspectorButton.
+  ///
+  /// In ru, this message translates to:
+  /// **'Инспектор ткани'**
+  String get fabricInspectorButton;
+
+  /// No description provided for @fabricFromGallery.
+  ///
+  /// In ru, this message translates to:
+  /// **'Ткань из галереи'**
+  String get fabricFromGallery;
+
+  /// No description provided for @fabricInspectorTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Инспектор ткани'**
+  String get fabricInspectorTitle;
+
+  /// No description provided for @fabricDensity.
+  ///
+  /// In ru, this message translates to:
+  /// **'Плотность'**
+  String get fabricDensity;
+
+  /// No description provided for @fabricConfidence.
+  ///
+  /// In ru, this message translates to:
+  /// **'Уверенность'**
+  String get fabricConfidence;
+
+  /// No description provided for @fabricCareTitle.
+  ///
+  /// In ru, this message translates to:
+  /// **'Рекомендации по уходу'**
+  String get fabricCareTitle;
+
+  /// No description provided for @fabricWashing.
+  ///
+  /// In ru, this message translates to:
+  /// **'Стирка'**
+  String get fabricWashing;
+
+  /// No description provided for @fabricDetergent.
+  ///
+  /// In ru, this message translates to:
+  /// **'Средство'**
+  String get fabricDetergent;
+
+  /// No description provided for @fabricDrying.
+  ///
+  /// In ru, this message translates to:
+  /// **'Сушка'**
+  String get fabricDrying;
+
+  /// No description provided for @fabricIroning.
+  ///
+  /// In ru, this message translates to:
+  /// **'Глажка'**
+  String get fabricIroning;
+
+  /// No description provided for @fabricForbidden.
+  ///
+  /// In ru, this message translates to:
+  /// **'Запрещено'**
+  String get fabricForbidden;
+
+  /// No description provided for @fabricMachineYes.
+  ///
+  /// In ru, this message translates to:
+  /// **'Можно в машинке'**
+  String get fabricMachineYes;
+
+  /// No description provided for @fabricLabelSymbols.
+  ///
+  /// In ru, this message translates to:
+  /// **'Символы на ярлыке'**
+  String get fabricLabelSymbols;
+
+  /// No description provided for @fabricStainTip.
+  ///
+  /// In ru, this message translates to:
+  /// **'Совет по пятнам'**
+  String get fabricStainTip;
+
+  /// No description provided for @analyzingFabric.
+  ///
+  /// In ru, this message translates to:
+  /// **'Определяем ткань...'**
+  String get analyzingFabric;
 }
 
 class _AppLocalizationsDelegate

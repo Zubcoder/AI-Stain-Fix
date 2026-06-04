@@ -13,9 +13,12 @@ import 'providers/theme_provider.dart';
 import 'screens/splash_screen.dart';
 import 'utils/constants.dart';
 import 'utils/theme.dart';
+import 'services/analytics_service.dart';
+import 'services/crash_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  CrashService.init();
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -25,6 +28,7 @@ void main() async {
   final onboardingDone =
       prefs.getBool(AppConstants.onboardingDonePrefKey) ?? false;
 
+  await AnalyticsService.init('4d301429-04c4-44ce-8b79-519504d65915');
   runApp(AIStainFixApp(onboardingDone: onboardingDone));
 }
 

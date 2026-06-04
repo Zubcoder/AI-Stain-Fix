@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-
 import '../l10n/app_localizations.dart';
 import 'camera_screen.dart';
+import 'chat_screen.dart';
 import 'history_screen.dart';
 import 'settings_screen.dart';
-import 'subscription_screen.dart';
+import '../services/analytics_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,8 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final _screens = const [
     CameraScreen(),
+    ChatScreen(),
     HistoryScreen(),
-    SubscriptionScreen(),
     SettingsScreen(),
   ];
 
@@ -41,7 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
-          onTap: (i) => setState(() => _currentIndex = i),
+          onTap: (i) {
+            const tabNames = ['camera', 'chat', 'history', 'settings'];
+            AnalyticsService.tabChanged(tabNames[i]);
+            setState(() => _currentIndex = i);
+          },
+          type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
               icon: const Icon(Icons.camera_alt_outlined),
@@ -49,14 +54,14 @@ class _HomeScreenState extends State<HomeScreen> {
               label: l10n.camera,
             ),
             BottomNavigationBarItem(
+              icon: const Icon(Icons.chat_outlined),
+              activeIcon: const Icon(Icons.chat_rounded),
+              label: l10n.chatTab,
+            ),
+            BottomNavigationBarItem(
               icon: const Icon(Icons.history_outlined),
               activeIcon: const Icon(Icons.history),
               label: l10n.history,
-            ),
-            BottomNavigationBarItem(
-              icon: const Icon(Icons.workspace_premium_outlined),
-              activeIcon: const Icon(Icons.workspace_premium),
-              label: l10n.pro,
             ),
             BottomNavigationBarItem(
               icon: const Icon(Icons.settings_outlined),

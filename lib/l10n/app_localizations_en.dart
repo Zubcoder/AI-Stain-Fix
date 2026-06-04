@@ -27,6 +27,28 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'Settings';
 
   @override
+  String get chatTab => 'Chat';
+
+  @override
+  String get chatTitle => 'Ask an expert';
+
+  @override
+  String get chatEmpty =>
+      'Ask a question about stain removal, laundry or fabric care';
+
+  @override
+  String get chatHint => 'Type your question...';
+
+  @override
+  String get chatSuggestion1 => 'How to remove coffee from a shirt?';
+
+  @override
+  String get chatSuggestion2 => 'What temperature for wool?';
+
+  @override
+  String get chatSuggestion3 => 'How to remove grease stains?';
+
+  @override
   String get takePhoto => 'Take photo';
 
   @override
@@ -88,7 +110,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get freePlan => 'Free plan';
 
   @override
-  String get freePlanDesc => '3 free analyses every day';
+  String get freePlanDesc => '5 free analyses every day';
 
   @override
   String get unlimited => 'Unlimited analyses every day';
@@ -193,18 +215,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboardingDesc2 => 'Smart recognition of stain type and fabric';
 
   @override
-  String get onboardingTitle3 => 'Get instructions';
+  String get onboardingTitle3 => 'Fabric Inspector';
 
   @override
-  String get onboardingDesc3 =>
-      'Step-by-step removal recipe with available products';
+  String get onboardingDesc3 => 'Photo fabric — type, label decoding, care';
 
   @override
-  String get onboardingTitle4 => 'Smart assistant';
+  String get onboardingTitle4 => 'Step-by-step recipe';
 
   @override
-  String get onboardingDesc4 =>
-      'Considers fabric type, stain age, and available products';
+  String get onboardingDesc4 => 'Instructions considering fabric and products';
 
   @override
   String get errorAnalysis => 'Analysis error';
@@ -241,6 +261,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proFeature4 => 'Support for new fabric types';
+
+  @override
+  String get proFeatureFabric => 'Fabric Inspector — type + labels';
 
   @override
   String get proMonthly => '79 ₽/mo';
@@ -357,7 +380,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsSection2Body =>
-      'The Application provides the following features:\n\n• Photo analysis of stains to determine contamination type\n• Generation of stain removal recommendations for various fabric types\n• Analysis history management';
+      'The Application provides the following features:\n\n• Photo analysis of stains to determine contamination type\n• Generation of stain removal recommendations\n• Fabric type identification from photos and care symbol decoding\n• Analysis history management';
 
   @override
   String get termsSection3Title => '3. Professional Disclaimer';
@@ -438,4 +461,49 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get termsSection10Body =>
       'For questions related to this Agreement: ai.stain.fix.app@gmail.com';
+
+  @override
+  String get fabricInspectorButton => 'Fabric Inspector';
+
+  @override
+  String get fabricFromGallery => 'Fabric from gallery';
+
+  @override
+  String get fabricInspectorTitle => 'Fabric Inspector';
+
+  @override
+  String get fabricDensity => 'Density';
+
+  @override
+  String get fabricConfidence => 'Confidence';
+
+  @override
+  String get fabricCareTitle => 'Care Instructions';
+
+  @override
+  String get fabricWashing => 'Washing';
+
+  @override
+  String get fabricDetergent => 'Detergent';
+
+  @override
+  String get fabricDrying => 'Drying';
+
+  @override
+  String get fabricIroning => 'Ironing';
+
+  @override
+  String get fabricForbidden => 'Forbidden';
+
+  @override
+  String get fabricMachineYes => 'Machine washable';
+
+  @override
+  String get fabricLabelSymbols => 'Care Label Symbols';
+
+  @override
+  String get fabricStainTip => 'Stain removal tip';
+
+  @override
+  String get analyzingFabric => 'Identifying fabric...';
 }

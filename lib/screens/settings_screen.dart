@@ -9,7 +9,9 @@ import '../providers/theme_provider.dart';
 import '../utils/constants.dart' show AppConstants;
 import 'onboarding_screen.dart';
 import 'privacy_policy_screen.dart';
+import 'subscription_screen.dart';
 import 'terms_screen.dart';
+import '../services/analytics_service.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -29,6 +31,21 @@ class SettingsScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          _buildSection(theme, 'PRO', [
+            _SettingsTile(
+              icon: Icons.workspace_premium,
+              title: l10n.subscriptionTitle,
+              subtitle: l10n.unlimited,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const SubscriptionScreen(),
+                  ),
+                );
+              },
+            ),
+          ]),
+          const SizedBox(height: 16),
           _buildSection(theme, l10n.general, [
             _SettingsTile(
               icon: Icons.language,
@@ -46,9 +63,15 @@ class SettingsScreen extends StatelessWidget {
               trailing: Switch(
                 value: themeProvider.isDark,
                 activeThumbColor: theme.colorScheme.primary,
-                onChanged: (_) => themeProvider.toggleTheme(),
+                onChanged: (_) {
+                  themeProvider.toggleTheme();
+                  AnalyticsService.themeChanged(themeProvider.isDark ? 'light' : 'dark');
+                },
               ),
-              onTap: () => themeProvider.toggleTheme(),
+              onTap: () {
+                themeProvider.toggleTheme();
+                AnalyticsService.themeChanged(themeProvider.isDark ? 'light' : 'dark');
+              },
             ),
           ]),
           const SizedBox(height: 16),
@@ -204,6 +227,7 @@ class SettingsScreen extends StatelessWidget {
                   : null,
               onTap: () {
                 localeProv.setLocale(const Locale('ru'));
+                AnalyticsService.languageChanged('ru');
                 Navigator.pop(context);
               },
             ),
@@ -216,6 +240,7 @@ class SettingsScreen extends StatelessWidget {
                   : null,
               onTap: () {
                 localeProv.setLocale(const Locale('en'));
+                AnalyticsService.languageChanged('en');
                 Navigator.pop(context);
               },
             ),

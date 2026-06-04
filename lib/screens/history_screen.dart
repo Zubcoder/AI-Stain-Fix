@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../l10n/app_localizations.dart';
+import '../widgets/share_card.dart';
 import '../providers/stain_provider.dart';
 import '../providers/subscription_provider.dart';
 import '../utils/constants.dart';
 import 'result_screen.dart';
+import 'subscription_screen.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key});
@@ -101,9 +102,31 @@ class HistoryScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    trailing: Icon(
-                      Icons.chevron_right,
-                      color: theme.textTheme.bodyMedium?.color,
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.share_rounded,
+                              size: 20, color: theme.textTheme.bodyMedium?.color),
+                          onPressed: () {
+                            ShareCardHelper.shareAsCard(
+                              context,
+                              ShareCardData(
+                                appName: l10n.appName,
+                                icon: Icons.auto_fix_high_rounded,
+                                title: ShareCardHelper.stripMarkdown(result.stainType),
+                                subtitle: l10n.fabricLabel(result.fabricType),
+                                body: ShareCardHelper.stripMarkdown(result.summary),
+                                accentColor: AppColors.primary,
+                              ),
+                            );
+                          },
+                        ),
+                        Icon(
+                          Icons.chevron_right,
+                          color: theme.textTheme.bodyMedium?.color,
+                        ),
+                      ],
                     ),
                     onTap: () {
                       Navigator.of(context).push(
@@ -166,10 +189,11 @@ class HistoryScreen extends StatelessWidget {
             const SizedBox(height: 24),
             ElevatedButton.icon(
               onPressed: () {
-                final homeState = context.findAncestorStateOfType<State>();
-                if (homeState != null) {
-                  DefaultTabController.of(context);
-                }
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => const SubscriptionScreen(),
+                  ),
+                );
               },
               icon: const Icon(Icons.workspace_premium),
               label: Text(l10n.goToPro),
