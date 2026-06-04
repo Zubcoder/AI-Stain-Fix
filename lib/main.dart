@@ -14,9 +14,11 @@ import 'screens/splash_screen.dart';
 import 'utils/constants.dart';
 import 'utils/theme.dart';
 import 'services/analytics_service.dart';
+import 'services/crash_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  CrashService.init();
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
