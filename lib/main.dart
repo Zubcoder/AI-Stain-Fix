@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'l10n/app_localizations.dart';
+import 'services/analytics_service.dart';
+import 'services/crash_service.dart';
 
 import 'providers/locale_provider.dart';
 import 'providers/stain_provider.dart';
@@ -17,9 +19,11 @@ import 'utils/theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  CrashService.init();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+  await AnalyticsService.init('4d301429-04c4-44ce-8b79-519504d65915');
 
   final prefs = await SharedPreferences.getInstance();
   final onboardingDone =

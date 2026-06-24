@@ -23,6 +23,9 @@ dependencies:
   # Storage
   shared_preferences: ^2.3.3
 
+  # Analytics
+  appmetrica_plugin: ^4.0.0
+
   # HTTP
   http: ^1.2.2
 
