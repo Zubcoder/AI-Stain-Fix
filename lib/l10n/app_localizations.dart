@@ -257,7 +257,7 @@ abstract class AppLocalizations {
   /// No description provided for @freePlanDesc.
   ///
   /// In ru, this message translates to:
-  /// **'3 бесплатных анализа каждый день'**
+  /// **'5 бесплатных анализов каждый день'**
   String get freePlanDesc;
 
   /// No description provided for @unlimited.
@@ -269,7 +269,7 @@ abstract class AppLocalizations {
   /// No description provided for @savingsPercent.
   ///
   /// In ru, this message translates to:
-  /// **'Экономия 37%'**
+  /// **'Экономия 50%'**
   String get savingsPercent;
 
   /// No description provided for @settingsTitle.
@@ -539,7 +539,7 @@ abstract class AppLocalizations {
   /// No description provided for @proMonthly.
   ///
   /// In ru, this message translates to:
-  /// **'79 ₽/мес'**
+  /// **'99 ₽/мес'**
   String get proMonthly;
 
   /// No description provided for @proYearly.

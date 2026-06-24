@@ -88,13 +88,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get freePlan => 'Free plan';
 
   @override
-  String get freePlanDesc => '3 free analyses every day';
+  String get freePlanDesc => '5 free analyses every day';
 
   @override
   String get unlimited => 'Unlimited analyses every day';
 
   @override
-  String get savingsPercent => 'Save 37%';
+  String get savingsPercent => 'Save 50%';
 
   @override
   String get settingsTitle => 'Settings';
@@ -243,7 +243,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get proFeature4 => 'Support for new fabric types';
 
   @override
-  String get proMonthly => '79 ₽/mo';
+  String get proMonthly => '99 ₽/mo';
 
   @override
   String get proYearly => '590 ₽/yr';
