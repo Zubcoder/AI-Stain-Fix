@@ -11,6 +11,7 @@ import 'onboarding_screen.dart';
 import 'privacy_policy_screen.dart';
 import 'subscription_screen.dart';
 import 'terms_screen.dart';
+import '../widgets/cross_promo_widget.dart';
 import '../services/analytics_service.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -133,6 +134,8 @@ class SettingsScreen extends StatelessWidget {
               onTap: null,
             ),
           ]),
+          const SizedBox(height: 16),
+          const CrossPromoSection(currentPackageId: 'com.zubcoder.ai_stain_fix'),
         ],
       ),
     );
