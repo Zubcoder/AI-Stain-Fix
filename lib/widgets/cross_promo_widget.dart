@@ -13,6 +13,7 @@ class CrossPromoSection extends StatelessWidget {
       descRu: 'AI-агроном в кармане',
       descEn: 'AI agronomist in your pocket',
       packageId: 'com.zubcoder.agroscan',
+      color: Color(0xFF4CAF50),
       iconAsset: 'assets/cross_promo/agroscan.png',
     ),
     _AppInfo(
@@ -21,6 +22,7 @@ class CrossPromoSection extends StatelessWidget {
       descRu: 'AI-диагностика авто',
       descEn: 'AI car diagnostics',
       packageId: 'com.smartmechanic.smart_mechanic',
+      color: Color(0xFFFF5722),
       iconAsset: 'assets/cross_promo/mechanic.png',
     ),
     _AppInfo(
@@ -29,6 +31,7 @@ class CrossPromoSection extends StatelessWidget {
       descRu: 'Удаление пятен по фото',
       descEn: 'Photo-based stain removal',
       packageId: 'com.zubcoder.ai_stain_fix',
+      color: Color(0xFF9C27B0),
       iconAsset: 'assets/cross_promo/stain_fix.png',
     ),
     _AppInfo(
@@ -37,6 +40,7 @@ class CrossPromoSection extends StatelessWidget {
       descRu: 'Состав продуктов по фото',
       descEn: 'Food composition by photo',
       packageId: 'com.zubcoder.foodscan',
+      color: Color(0xFFFF9800),
       iconAsset: 'assets/cross_promo/foodscan.png',
     ),
     _AppInfo(
@@ -45,6 +49,7 @@ class CrossPromoSection extends StatelessWidget {
       descRu: 'Проверка лекарств',
       descEn: 'Medication checker',
       packageId: 'com.zubcoder.aipharmacist',
+      color: Color(0xFF00BCD4),
       iconAsset: 'assets/cross_promo/pharmacist.png',
     ),
     _AppInfo(
@@ -53,6 +58,7 @@ class CrossPromoSection extends StatelessWidget {
       descRu: 'Дизайн участка по фото',
       descEn: 'Landscape design by photo',
       packageId: 'com.zubcoder.ai_landscape',
+      color: Color(0xFF8BC34A),
       iconAsset: 'assets/cross_promo/landscape.png',
     ),
     _AppInfo(
@@ -61,6 +67,7 @@ class CrossPromoSection extends StatelessWidget {
       descRu: 'Путешествие в прошлое',
       descEn: 'Journey to the past',
       packageId: 'com.zubkov.city_in_time',
+      color: Color(0xFF795548),
       iconAsset: 'assets/cross_promo/cityintime.png',
     ),
     _AppInfo(
@@ -69,60 +76,79 @@ class CrossPromoSection extends StatelessWidget {
       descRu: 'Рецепты по фото',
       descEn: 'Recipes by photo',
       packageId: 'com.zubcoder.ai_kulinar',
+      color: Color(0xFFE91E63),
       iconAsset: 'assets/cross_promo/kulinar.png',
     ),
     _AppInfo(
       nameRu: 'AI Ремонт',
       nameEn: 'AI Remont',
-      descRu: 'Ремонт по фото',
-      descEn: 'DIY repair by photo',
+      descRu: 'Смета ремонта по фото',
+      descEn: 'Repair estimate by photo',
       packageId: 'com.zubcoder.ai_remont',
+      color: Color(0xFFFF6D00),
       iconAsset: 'assets/cross_promo/remont.png',
     ),
     _AppInfo(
       nameRu: 'AI Нумизмат',
       nameEn: 'AI Numizmat',
-      descRu: 'Определение монет',
-      descEn: 'Coin identification',
+      descRu: 'Определи монету по фото',
+      descEn: 'Identify coins by photo',
       packageId: 'com.zubcoder.ai_numizmat',
+      color: Color(0xFFFFD700),
       iconAsset: 'assets/cross_promo/numizmat.png',
     ),
     _AppInfo(
       nameRu: 'AI Юрист',
       nameEn: 'AI Yurist',
-      descRu: 'Юридическая помощь',
-      descEn: 'Legal assistance',
+      descRu: 'Юридический AI-помощник',
+      descEn: 'Legal AI assistant',
       packageId: 'com.zubcoder.ai_yurist',
+      color: Color(0xFF1A237E),
       iconAsset: 'assets/cross_promo/yurist.png',
     ),
     _AppInfo(
       nameRu: 'AI Лингвист',
       nameEn: 'AI Linguist',
-      descRu: 'Учи английский с AI',
-      descEn: 'Learn English with AI',
-      packageId: 'com.zubcoder.ai_linguist',
-      iconAsset: 'assets/cross_promo/linguist.png',
+      descRu: 'Переводчик и языковой помощник',
+      descEn: 'Translator and language assistant',
+      packageId: 'com.zubcoder.ai_lingvist',
+      color: Color(0xFF3F51B5),
+      iconAsset: 'assets/cross_promo/lingvist.png',
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
     final isRu = Localizations.localeOf(context).languageCode == 'ru';
-    final filtered = _apps.where((a) => a.packageId != currentPackageId).toList();
+    final apps =
+        _apps.where((a) => a.packageId != currentPackageId).toList();
+    final theme = Theme.of(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.only(left: 4, bottom: 8),
           child: Text(
-            isRu ? 'Другие приложения' : 'Other apps',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+            isRu ? 'Наши приложения' : 'Our Apps',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: theme.colorScheme.primary,
+              letterSpacing: 0.5,
+            ),
           ),
         ),
-        ...filtered.map((app) => _CrossPromoTile(app: app, isRu: isRu)),
+        Card(
+          child: Column(
+            children: [
+              for (int i = 0; i < apps.length; i++) ...[
+                if (i > 0) const Divider(height: 1, indent: 56),
+                _CrossPromoTile(app: apps[i], isRu: isRu),
+              ],
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -134,6 +160,7 @@ class _AppInfo {
   final String descRu;
   final String descEn;
   final String packageId;
+  final Color color;
   final String iconAsset;
 
   const _AppInfo({
@@ -142,6 +169,7 @@ class _AppInfo {
     required this.descRu,
     required this.descEn,
     required this.packageId,
+    required this.color,
     required this.iconAsset,
   });
 }
@@ -163,14 +191,17 @@ class _CrossPromoTile extends StatelessWidget {
           width: 44,
           height: 44,
           fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) => Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(12),
+          errorBuilder: (context, error, stackTrace) => CircleAvatar(
+            backgroundColor: app.color,
+            radius: 22,
+            child: Text(
+              app.nameRu.characters.first,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
             ),
-            child: const Icon(Icons.apps, size: 24),
           ),
         ),
       ),

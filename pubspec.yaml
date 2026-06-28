@@ -46,6 +46,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/cross_promo/
     - assets/icons/
     - assets/images/
     - assets/cross_promo/
