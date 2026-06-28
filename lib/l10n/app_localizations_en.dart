@@ -446,7 +446,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacySection10Body =>
-      'For questions regarding personal data processing: ai.stain.fix.app@gmail.com';
+      'For questions regarding personal data processing: zubcoder.app@yandex.ru';
 
   @override
   String get termsSection9Title => '9. Governing Law and Dispute Resolution';
@@ -460,7 +460,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsSection10Body =>
-      'For questions related to this Agreement: ai.stain.fix.app@gmail.com';
+      'For questions related to this Agreement: zubcoder.app@yandex.ru';
 
   @override
   String get fabricInspectorButton => 'Fabric Inspector';
