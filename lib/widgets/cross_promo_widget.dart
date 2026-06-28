@@ -191,7 +191,7 @@ class _CrossPromoTile extends StatelessWidget {
           width: 44,
           height: 44,
           fit: BoxFit.cover,
-          errorBuilder: (_, __, ___) => CircleAvatar(
+          errorBuilder: (context, error, stackTrace) => CircleAvatar(
             backgroundColor: app.color,
             radius: 22,
             child: Text(
