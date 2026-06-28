@@ -905,7 +905,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacySection10Body.
   ///
   /// In ru, this message translates to:
-  /// **'По вопросам обработки персональных данных: ai.stain.fix.app@gmail.com'**
+  /// **'По вопросам обработки персональных данных: zubcoder.app@yandex.ru'**
   String get privacySection10Body;
 
   /// No description provided for @termsSection9Title.
@@ -929,7 +929,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsSection10Body.
   ///
   /// In ru, this message translates to:
-  /// **'По вопросам, связанным с настоящим Соглашением: ai.stain.fix.app@gmail.com'**
+  /// **'По вопросам, связанным с настоящим Соглашением: zubcoder.app@yandex.ru'**
   String get termsSection10Body;
 
   /// No description provided for @fabricInspectorButton.

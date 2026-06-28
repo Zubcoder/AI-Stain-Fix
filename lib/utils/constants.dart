@@ -22,7 +22,7 @@ class AppConstants {
   static const String appNameRu = 'Пятновыводитель';
   static const String appTagline = 'Умное удаление пятен по фото';
   static const String appVersion = '1.0.0';
-  static const String supportEmail = 'ai.stain.fix.app@gmail.com';
+  static const String supportEmail = 'zubcoder.app@yandex.ru';
 
   static const String onboardingDonePrefKey = 'onboarding_done';
   static const String languagePrefKey = 'language';
